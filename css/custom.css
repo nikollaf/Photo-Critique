@@ -1,0 +1,1877 @@
+
+@media only screen and (max-width: 40em) {
+
+    .full-image {
+        margin-left: -8px !important;
+        min-width: 103.5% !important;
+
+    }
+
+
+    .vote {
+        font-size: 13px !important;
+    }
+}
+
+@media only screen and (min-width: 64.063em) {
+      .large-21 {
+          width: 21%;
+          position: fixed;
+      }
+
+    .large-23 {
+        height: 503px;
+        overflow-y: hidden;
+        position: relative;
+        width: 24%;
+    }
+
+    .pad-top {
+        margin-top: 31px;
+    }
+}
+
+@media only screen and (min-width: 90.063em) {
+    .large-21 {
+        width: 18%;
+        position: fixed;
+    }
+}
+
+.images {
+    margin-top: 5px;
+    padding: 0;
+}
+
+.nav>li>a:hover {
+    color: #c4c4c4 !important;
+}
+
+.city-up {
+    float: left;
+    width: 124px;
+    padding-top: 5px;
+    padding-right: 24px;
+    clear: left;
+    text-align: right;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.image {
+    border: 3px solid white;
+}
+
+.fixed {
+    background-color: white !important;
+    border-radius: 0 0 0 20px;
+}
+
+
+body, h1, h2, h3, h4, h5, h6 {
+    font-family: 'Source Sans Pro', sans-serif;
+    color: #4E4E4E;
+
+}
+
+body {
+    background: #F0F0F0;
+}
+
+
+.cont h1 {
+    text-align: center;
+    font-weight: bold;
+    color: #F3F3F3;
+    margin: 0;
+}
+
+.feature {
+    margin-top: 40px;
+    border-radius: 18px;
+    overflow-y: scroll;
+    height: 289px;
+    border: 1px solid #D5D5D5;
+}
+
+
+
+.dropdown .glyphicon {
+    font-size: 11.2px;
+    color: grey;
+}
+
+.filter-nav {
+    margin-bottom: 15px;
+}
+
+.large-block-grid-3 > li {
+    padding: 0 0.625rem .85rem;
+}
+
+.button {
+    color: #808080;
+    text-transform: none;
+    border: 1px solid #ececec;
+    border-bottom: 2px solid #ececec;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+    height: 25px;
+    font-size: 11px;
+    padding: 0 10px;
+    display: inline-block;
+    position: relative;
+    cursor: pointer;
+    white-space: nowrap;
+    line-height: 25px;
+    font-weight: 700;
+    text-decoration: none;
+    background: #fff;
+    -webkit-background-clip: padding-box;
+    background-clip: padding-box;
+    -webkit-transition: all .2s linear;
+    -moz-transition: all .2s linear;
+    -ms-transition: all .2s linear;
+    -o-transition: all .2s linear;
+}
+
+
+
+.bord {
+    border-right: 1px solid #d6d6d6;
+    margin-right: -4px !important;
+}
+
+.image-vote span {
+    color: grey;
+    font-size: 13px;
+}
+
+.btn-fans {
+    border-radius: 0 !important;
+    padding: 0;
+    display: inline-block;
+    margin: 10px auto;
+    padding-left: 10px;
+
+
+}
+
+.profile-pic {
+    background: #f6f6f6;
+    padding: 4px;
+    border-radius: 3px;
+    margin-top: 10px;
+}
+
+.profile-pic img {
+    border-radius: 2px;
+    display: block;
+    margin: 0 auto;
+}
+
+
+
+.connect {
+    margin: 4px 0 0 0;
+}
+
+.user-info {
+    text-align: center;
+    font-size: 16px;
+    margin: 20 0 20px 0;
+}
+
+
+
+.connect button:hover {
+    background: #3096e8;
+}
+.connect button {
+    display: block;
+    width: 100%;
+    font-size: 11px;
+    border: 0;
+    background: #93CFFF;
+    color: white;
+    padding: 7px 0;
+    margin: 0;
+    border-radius: 3px;
+    -o-border-radius: 3px;
+    -ms-border-radius: 3px;
+    -moz-border-radius: 3px;
+    -webkit-border-radius: 3px;
+    -webkit-transition: all 0.2s ease-in-out;
+    -moz-transition: all 0.2s ease-in-out;
+    -ms-transition: all 0.2s ease-in-out;
+    -o-transition: all 0.2s ease-in-out;
+    transition: all 0.2s ease-in-out;
+
+}
+
+.vibes {
+    list-style-type: none;
+
+}
+
+.vibes li {
+    display: inline-block;
+}
+
+.images li {
+    display: inline-block;
+    list-style-type: none;
+    padding-right: 5px;
+
+}
+
+.padles {
+    padding: 0 0.25rem .55rem !important;
+}
+
+.move-down {
+    padding-top: 10px;
+}
+
+.dropdown {
+    list-style: none;
+}
+
+.image-author {
+    margin: 13px auto 10px 16px;
+}
+
+.game-pad {
+    padding: 0 0.625rem .4rem !important;
+}
+
+.padles img {
+    background-color: #d6d6d6;
+    border: 1px solid white;
+}
+
+.center-div {
+    position: absolute;
+    right: 50%;
+    top: 50%;
+    left: 50%;
+}
+
+.image-author img {
+    border-radius: 30px;
+}
+
+.author-city {
+    font-size: 22px;
+}
+
+.liked {
+    color: rgb(189, 130, 130) !important;
+    cursor: default !important;
+}
+
+.like:hover {
+    color: #444444;
+    cursor: pointer;
+}
+
+.panel-image img.panel-image-preview {
+    width: 100%;
+    border-radius: 4px 4px 0px 0px;
+}
+
+.panel-heading ~ .panel-image img.panel-image-preview {
+    border-radius: 0px;
+}
+
+.panel-image ~ .panel-body, .panel-image.hide-panel-body ~ .panel-body {
+    overflow: hidden;
+}
+.panel-image ~ .panel-footer a {
+    padding: 0px 10px;
+    font-size: 1.3em;
+    color: rgb(100, 100, 100);
+}
+
+.images-list {
+    margin-bottom: 13px;
+}
+
+.panel-image.hide-panel-body ~ .panel-body {
+    height: 0px;
+    padding: 0px;
+}
+
+.like {
+    color: #d6d6d6;
+}
+
+.author img {
+    width: 45px;
+    height: 45px;
+
+}
+
+.nav > li > a {
+    display: inline-block;
+}
+
+
+.instagram ul.grid{
+    list-style: none;
+    width: 570px;
+    margin: 0 auto;
+    text-align: left;
+}
+
+.instagram ul.grid li{
+    padding: 2px;
+    float:left;
+}
+
+.instagram ul.grid li img{
+    width:280px;
+    height:280px;
+    display:block;
+    border:none;
+}
+
+
+.instagram .bar{
+    background-color:#5c9bb7;
+
+    background-image:-webkit-linear-gradient(top, #5c9bb7, #5392ad);
+    background-image:-moz-linear-gradient(top, #5c9bb7, #5392ad);
+    background-image:linear-gradient(top, #5c9bb7, #5392ad);
+
+    box-shadow: 0 1px 1px #ccc;
+    border-radius: 2px;
+    width: 580px;
+    padding: 10px;
+    margin: 45px auto 25px;
+    position:relative;
+    text-align:right;
+    line-height: 1;
+}
+
+.instagram .bar a{
+    background:#4987a1 center center no-repeat;
+    width:32px;
+    height:32px;
+    display:inline-block;
+    text-decoration:none !important;
+    margin-right:5px;
+    border-radius:2px;
+    cursor:pointer;
+}
+
+.instagram .bar a.active{
+    background-color:#c14694;
+}
+
+
+
+.instagram .bar input{
+    background:#fff no-repeat 13px 13px;
+
+    border: none;
+    width: 100%;
+    line-height: 19px;
+    padding: 11px 0;
+
+    border-radius: 2px;
+    box-shadow: 0 2px 8px #c4c4c4 inset;
+    text-align: left;
+    font-size: 14px;
+    font-family: inherit;
+    color: #738289;
+    font-weight: bold;
+    outline: none;
+    text-indent: 40px;
+}
+
+/*-------------------------
+	List layout
+--------------------------*/
+
+.instagram ul.list{
+    list-style: none;
+    width: 500px;
+    margin: 0 auto;
+    text-align: left;
+}
+
+.instagram ul.list li{
+    border-bottom: 1px solid #ddd;
+    padding: 10px;
+    overflow: hidden;
+}
+
+.instagram ul.list li img{
+    width:120px;
+    height:120px;
+    float:left;
+    border:none;
+}
+
+.instagram ul.list li p{
+    margin-left: 135px;
+    font-weight: bold;
+    color:#6e7a7f;
+}
+
+a:hover {
+    color: #444;
+}
+
+.user-nav-pic a {
+    padding: 0 !important;
+}
+
+.btn-lg {
+    padding: 5px 15px;
+    font-size: 12px;
+}
+
+
+.brand-name {
+    margin: 0 0 20px 0;
+
+}
+
+.green-color {
+    color: #4E4E4E !important;
+}
+
+.hide_it {
+    display: inline;
+    color: rgb(29, 199, 193);
+}
+
+.btn {
+    border-radius: 19px;
+    transition: .5s;
+}
+
+.main-image {
+
+    border-radius: 12px;
+}
+
+.image-detail {
+    text-align: left !important;
+}
+
+
+.side-cont h4 {
+
+    color: #999;
+    font-weight: bold;
+}
+
+.cont-points {
+    float: right;
+    margin-top: 6px;
+    color: #A2A2A2;
+}
+
+.cont-title {
+    float: left;
+    color: #818181;
+    font-weight: 800;
+}
+
+.dropdown-menu>li>a {
+    font-size: 12px;
+}
+
+img {
+
+    transition: .6s;
+
+}
+
+
+
+.thumbnail {
+    border: none;
+    margin-bottom: 0;
+}
+
+
+a {
+    color: #9E9E9E;
+    font-weight: 800;
+}
+
+.list-style {
+    list-style: none;
+}
+
+.more-pics img {
+    border-radius: 75px;
+    opacity: .65;
+
+}
+
+.no-margin {
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+}
+
+.image-pad {
+    padding-top: 32px;
+    padding-bottom: 32px;
+}
+
+.comment-btn {
+    margin-top: -10px;
+    margin-bottom: 10px;
+    width: 100%;
+    border-radius: 0;
+    padding: 4px;
+}
+
+.side-images {
+    margin-top: 330px;
+}
+
+.more-pics img:hover {
+    opacity: 1;
+    border-radius: 75px;
+}
+
+.small-user-feed, .user-images, .full-image {
+    border-radius: 90px;
+}
+
+.small-user-feed:hover, .user-images:hover, .full-image:hover {
+    border-radius: 30px;
+}
+
+.user-images {
+    border: 3px solid white;
+}
+
+.image-feed {
+    min-height: 300px;
+}
+
+.more-pics h5 {
+    text-align: center;
+}
+
+.city-points {
+    font-size: 16px;
+    color: #d8452e;
+    font-weight: bold;
+
+
+}
+
+.btn-default:hover {
+    border-radius: 10px;
+    background-color: white;
+}
+
+.filter {
+    margin: 0;
+    padding: 0;
+}
+
+.rank {
+    border-radius: 15px;
+}
+
+.rank ul {
+    margin-left: 0;
+    font-size: 12px;
+    line-height: 1.4;
+}
+
+
+
+.btn-default {
+    border-color: transparent;
+}
+
+.first-rank {
+    padding-top: 12px;
+}
+
+.move_left h4 {
+    text-align: center;
+    font-weight: bold;
+    margin-top: -3px;
+    line-height: 1;
+    font-size: 13px;
+}
+
+.navbar {
+    border-radius: 0;
+}
+
+.move_left h4 span {
+    font-size: 13px;
+    padding-left: 1px;
+}
+
+
+.float-li {
+    float: left;
+    margin: 4px;
+}
+
+[data-magellan-expedition] {
+    opacity: .95;
+    background-color: inherit;
+    padding: 5px 0 0 0;
+}
+
+.move_left:last-child {
+    padding-bottom: 7px;
+}
+
+.image-feed p {
+    margin-bottom: .65rem;
+}
+
+.pad-left-game .image0 {
+    border-radius: 60px 8px 8px 8px;
+}
+
+.pad-left-game .image1 {
+    border-radius: 8px 60px 8px 8px;
+}
+
+.pad-left-game .image2 {
+    border-radius: 8px 8px 8px 60px;
+}
+
+.pad-left-game .image3 {
+    border-radius: 8px 8px 60px 8px;
+}
+
+
+.filter li {
+    padding-right: 5px;
+    display: inline-block;
+}
+
+.login h1 {
+    text-align: center;
+}
+
+.city-rank-num {
+    font-size: 76px;
+    color: #e2e2e2;
+    font-weight: 800;
+    margin: 0 10px 0 0;
+    padding-left: 15px;
+}
+
+.city-rank-name {
+    margin-top: -10px;
+}
+
+.city-rank-arrow a span {
+    font-size: 76px;
+    color: #e2e2e2;
+    margin-top: 25px;
+}
+
+.city-name a {
+    font-weight: bold;
+    color: #444;
+}
+
+.city-rank-arrow a span:hover {
+    color: #444444;
+}
+
+.city-rank-int {
+    font-size: 28px;
+    color: #d8452e;
+}
+
+.pad-left-none {
+    padding-left: 0;
+}
+
+.box-form {
+    position: relative;
+    display: block;
+    margin-bottom: 40px;
+    padding: 35px 70px;
+    background-color: #f1f1f1;
+    border-radius: 2px;
+}
+
+.btn-register {
+    background-color: rgb(31, 224, 217);
+    color: white;
+    border-color: rgb(31, 224, 217);
+    font-size: 18px;
+}
+
+.btn-login {
+    font-size: 18px;
+    background-color: #44E965;
+    border-color: #44E965;
+    color: white;
+}
+
+.btn-login:hover {
+    background-color: #42D55F;
+    color: white;
+}
+
+.btn-register:hover {
+    background-color: rgb(29, 199, 193);
+    color: white;
+}
+
+.input-form {
+    display: block;
+    height: 46px;
+    padding: 0 15px;
+    background: #f4f4f4;
+    line-height: 46px;
+    font-size: 17px;
+    border: 1px solid #d6d6d6;
+    border-radius: 2px;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+    box-sizing: border-box;
+    -webkit-transition: all .2s linear;
+    -moz-transition: all .2s linear;
+    -ms-transition: all .2s linear;
+    transition: all .2s linear;
+}
+
+.ui-helper-hidden-accessible {
+    display: none;
+}
+
+.ui-autocomplete {
+    background-color: white;
+    list-style: none;
+    width: 80%;
+    opacity: .89;
+}
+
+.city-query {
+    padding: 4px;
+    border-radius: 19px;
+    width: 96%;
+    border: 1px solid #f7f7f7;
+
+    margin-top: 3px;
+    color: #aeaeae;
+}
+
+.full-list {
+    margin: 0 0 13px 0;
+    padding: 0 0 15px 0;
+    border-bottom: 1px solid #ddd;
+}
+
+.curvy-color {
+    background-color: rgba(255,255,255,0.8);
+    border: 1px solid #e7e7e7;
+}
+
+.cols-menu {
+      columns: 2;
+      -webkit-columns: 2;
+      -moz-columns: 2;
+}
+
+.four-cols-menu {
+    columns: 4;
+    -webkit-columns: 4;
+    -moz-columns: 4;
+}
+
+.dropdown-menu {
+    opacity: .98;
+    -webkit-box-shadow: 0 1px 0px rgba(0,0,0,0.175);
+    box-shadow: 0 1px 0px rgba(0,0,0,0.175);
+}
+
+
+
+.city-banner h1 {
+    line-height: 1;
+}
+
+.comments {
+    margin: 20px auto !important;
+}
+
+.comments span {
+    opacity: .6;
+}
+
+.cities {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 10px;
+    margin-left: 0;
+}
+
+.nav>li>a {
+    padding: 15px 38px;
+}
+
+.auth {
+    margin-top: 25px;
+}
+
+.red {
+    background-color: red;
+}
+
+.city-detail li:first-child {
+    padding-left: 0;
+}
+
+#imageupload {
+    width: 50%;
+    height: 200px;
+    margin: 10px auto;
+    border-radius: 31px;
+    display: block;
+    background-color: white;
+}
+
+.btn-image-submit {
+    width: 80%;
+    display: block;
+    padding: 5px;
+    margin: 0 auto;
+}
+
+.city-detail li {
+    display: inline;
+    padding-left: 5%;
+    color: #888888;
+}
+
+.city-detail span {
+    font-size: 13px;
+    margin-right: 4px;
+    top: 0;
+}
+
+.pad-left {
+    padding-left: 14px;
+}
+
+.city-detail {
+    text-align: center;
+    margin-bottom: 0;
+    margin-left: 0;
+}
+
+.curvy {
+    border: 1px solid #E4E4E4;
+    border-radius: 18px;
+    margin-bottom: 9px;
+    background-color: rgba(255,255,255,0.8);
+}
+
+.nearby {
+    padding: 10px 30px 10px 20px;
+}
+
+.green {
+    background-color: green;
+}
+
+.brand-name h1 a {
+    font-size: 25px;
+    color: #aaa;
+}
+
+.user-nav-pic {
+    margin-top: 7px;
+}
+
+.user-pic {
+    margin: 0 4px 0 0;
+    vertical-align: middle;
+    -webkit-border-radius: 2px;
+    -moz-border-radius: 2px;
+    border-radius: 19px;
+}
+
+.user-feed {
+    margin-top: 10px;
+}
+
+.notifications {
+    min-width: 260px;
+}
+
+.dropdown-menu {
+
+}
+
+.notifications>li>a {
+    display: inline-block;
+    padding: 3px 0 3px 5px;
+    color: inherit;
+}
+
+.navbar {
+    border-color: #eee !important;
+    border-top: 1px solid;
+    border-bottom: 1px solid;
+    margin-bottom: 10px;
+}
+
+.image-hover img {
+    transition: 1s all;
+}
+
+
+.city img {
+    border-radius: 135px;
+}
+
+.city img:hover {
+    border-radius: 30px;
+}
+
+.total {
+    float: right;
+    transition: .4s all;
+}
+
+.vote a {
+    line-height: 2.2;
+}
+
+.navbar-default {
+    background-color: rgba(56, 56, 56, 0.98);
+}
+
+.curvy-color {
+    background-color: white;
+    margin-top: 4px;
+}
+
+.navbar-default .navbar-nav>li>a, .navbar-default .navbar-brand {
+    color: whitesmoke;
+}
+
+
+.vote {
+    padding-top: 1px;
+    font-size: 12px;
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.mar-top {
+    margin-top: 15px;
+}
+
+.pad-left-game {
+    padding-left: 19px;
+}
+
+
+
+.btn-radio {
+    width: 100%;
+}
+.img-instagram {
+    display: block;
+    margin: 0 auto 5px auto;
+
+}
+
+[class*="block-grid-"] {
+    margin: 0;
+}
+
+.profile-pic img {
+    background-color: white;
+}
+
+.space-20 {
+    margin-top: 20px;
+}
+
+.to-like {
+    float: right;
+    background: none;
+    border: none;
+}
+
+.to-highlight {
+    float: left;
+    background: none;
+    border: none;
+}
+
+.not-clicked-like {
+    color: #ccc;
+}
+
+.not-clicked-like:hover {
+    cursor: pointer;
+    color: rgb(189, 130, 130);
+}
+
+.highlighted {
+    color: rgb(218, 165, 85) !important;
+    cursor: default !important;
+}
+
+.world-feed-title {
+    font-size: 53px;
+    margin-bottom: 0;
+    margin-top: -10px;
+    text-align: center;
+}
+
+.clicker {
+    position: absolute;
+    left: 50%;
+    top: 100%;
+}
+
+.dropdown-menu li {
+    display: block;
+
+}
+
+.img-width {
+    max-width: 100%;
+}
+
+.not-clicked-highlight {
+    color: #ccc;
+}
+
+.not-clicked-highlight:hover {
+    cursor: pointer;
+    color: rgb(218, 165, 85);
+}
+
+
+.author-info {
+    float: left;
+}
+
+.sort_by {
+    float: left;
+}
+
+.ind_images {
+    padding-top: 30px;
+    margin-left: -50px;
+}
+
+.categories {
+    float: right;
+}
+
+.fans {
+    padding: 0;
+    list-style: none;
+    text-align: center;
+}
+
+.fans li {
+
+    border-top: 1px solid #d6d6d6;
+}
+
+.life {
+    font-size: 20px;
+    padding-left: 2px;
+}
+
+.main-city {
+    font-size: 48px;
+    margin-bottom: 0;
+}
+
+.add-image {
+    position: relative;
+    width: 174px;
+    padding: 0;
+    background-image: none;
+    background-color: #fff;
+    text-align: center;
+
+    -webkit-transition: all .25s ease-out;
+    -moz-transition: all .25s ease-out;
+    -o-transition: all .25s ease-out;
+    transition: all .25s ease-out;
+}
+
+
+
+/*-------------------------------------*/
+/*  Grid Mason ********************/
+/*-------------------------------------*/
+
+.grid li {
+    display: inline-block;
+    height: 225px;
+
+
+
+}
+
+/**** Transitions ****/
+
+.masonry,
+.masonry li { /* apply before masonry add class */
+    position: absolute;
+
+    -webkit-transition-duration: .7s;
+    transition-duration: .7s;
+
+    -webkit-transition-property: all;
+    transition-property: all;
+}
+
+.masonry .masonry-enter { /* limit animated properties for entering elements */
+    -webkit-transition-property: -webkit-transform, opacity;
+    transition-property: transform, opacity;
+}
+
+.masonry-enter,
+.masonry-leave.masonry-leave-active {
+    opacity: 0;
+    -webkit-transform: scale(0.1);
+    transform: scale(0.1);
+}
+
+.item {
+    float: left;
+    width: 128px;
+    height: 128px;
+    line-height: 128px;
+    text-align: center;
+    border: 1px solid #888;
+    margin: 8px;
+}
+
+.masonry-leave,
+.masonry-enter.masonry-enter-active {
+    opacity: 1;
+    -webkit-transform: scale(1);
+    transform: scale(1);
+}
+
+
+/* ------------------------------------------- */
+/* Mixins
+/* ------------------------------------------- */
+/* ------------------------------------------- */
+/* Toggle Fade
+/* ------------------------------------------- */
+/* line 64, ../sass/ng-animation.scss */
+.toggle {
+    -webkit-transition: all 0 cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    -moz-transition: all 0 cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    -ms-transition: all 0 cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    -o-transition: all 0 cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    transition: all 0 cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    /* easeOutQuad */
+    -webkit-transition-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    -moz-transition-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    -ms-transition-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    -o-transition-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    transition-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    /* easeOutQuad */
+}
+/* line 66, ../sass/ng-animation.scss */
+.toggle.ng-enter {
+    opacity: 0;
+    transition-duration: 250ms;
+    -webkit-transition-duration: 250ms;
+}
+/* line 71, ../sass/ng-animation.scss */
+.toggle.ng-enter-active {
+    opacity: 1;
+}
+/* line 75, ../sass/ng-animation.scss */
+.toggle.ng-leave {
+    opacity: 1;
+    transition-duration: 250ms;
+    -webkit-transition-duration: 250ms;
+}
+/* line 80, ../sass/ng-animation.scss */
+.toggle.ng-leave-active {
+    opacity: 0;
+}
+/* line 85, ../sass/ng-animation.scss */
+.toggle.ng-hide-add {
+    transition-duration: 250ms;
+    -webkit-transition-duration: 250ms;
+    opacity: 1;
+}
+/* line 89, ../sass/ng-animation.scss */
+.toggle.ng-hide-add.ng-hide-add-active {
+    opacity: 0;
+}
+/* line 94, ../sass/ng-animation.scss */
+.toggle.ng-hide-remove {
+    transition-duration: 250ms;
+    -webkit-transition-duration: 250ms;
+    display: block !important;
+    opacity: 0;
+}
+/* line 99, ../sass/ng-animation.scss */
+.toggle.ng-hide-remove.ng-hide-remove-active {
+    opacity: 1;
+}
+
+/* ------------------------------------------- */
+/* Slide Top
+/* ------------------------------------------- */
+/* line 109, ../sass/ng-animation.scss */
+.slide-top {
+    -webkit-transition: all 0 cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    -moz-transition: all 0 cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    -ms-transition: all 0 cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    -o-transition: all 0 cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    transition: all 0 cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    /* easeOutQuad */
+    -webkit-transition-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    -moz-transition-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    -ms-transition-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    -o-transition-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    transition-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    /* easeOutQuad */
+}
+/* line 111, ../sass/ng-animation.scss */
+.slide-top.ng-enter {
+    transform: translateY(60px);
+    -ms-transform: translateY(60px);
+    -webkit-transform: translateY(60px);
+    transition-duration: 250ms;
+    -webkit-transition-duration: 250ms;
+    opacity: 0;
+}
+/* line 117, ../sass/ng-animation.scss */
+.slide-top.ng-enter-active {
+    transform: translateY(0);
+    -ms-transform: translateY(0);
+    -webkit-transform: translateY(0);
+    opacity: 1;
+}
+/* line 122, ../sass/ng-animation.scss */
+.slide-top.ng-leave {
+    transform: translateY(0);
+    -ms-transform: translateY(0);
+    -webkit-transform: translateY(0);
+    transition-duration: 250ms;
+    -webkit-transition-duration: 250ms;
+    opacity: 1;
+}
+/* line 128, ../sass/ng-animation.scss */
+.slide-top.ng-leave-active {
+    transform: translateY(60px);
+    -ms-transform: translateY(60px);
+    -webkit-transform: translateY(60px);
+    opacity: 0;
+}
+/* line 134, ../sass/ng-animation.scss */
+.slide-top.ng-hide-add {
+    transform: translateY(0);
+    -ms-transform: translateY(0);
+    -webkit-transform: translateY(0);
+    transition-duration: 250ms;
+    -webkit-transition-duration: 250ms;
+    opacity: 1;
+}
+/* line 139, ../sass/ng-animation.scss */
+.slide-top.ng-hide-add.ng-hide-add-active {
+    transform: translateY(60px);
+    -ms-transform: translateY(60px);
+    -webkit-transform: translateY(60px);
+    opacity: 0;
+}
+/* line 145, ../sass/ng-animation.scss */
+.slide-top.ng-hide-remove {
+    transform: translateY(60px);
+    -ms-transform: translateY(60px);
+    -webkit-transform: translateY(60px);
+    transition-duration: 250ms;
+    -webkit-transition-duration: 250ms;
+    display: block !important;
+    opacity: 0;
+}
+/* line 151, ../sass/ng-animation.scss */
+.slide-top.ng-hide-remove.ng-hide-remove-active {
+    transform: translateY(0);
+    -ms-transform: translateY(0);
+    -webkit-transform: translateY(0);
+    opacity: 1;
+}
+
+/* ------------------------------------------- */
+/* Slide Rigth
+/* ------------------------------------------- */
+/* line 163, ../sass/ng-animation.scss */
+.slide-right {
+    -webkit-transition: all 0 cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    -moz-transition: all 0 cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    -ms-transition: all 0 cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    -o-transition: all 0 cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    transition: all 0 cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    /* easeOutQuad */
+    -webkit-transition-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    -moz-transition-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    -ms-transition-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    -o-transition-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    transition-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    /* easeOutQuad */
+}
+/* line 165, ../sass/ng-animation.scss */
+.slide-right.ng-enter {
+    transform: translateX(60px);
+    -ms-transform: translateX(60px);
+    -webkit-transform: translateX(60px);
+    transition-duration: 250ms;
+    -webkit-transition-duration: 250ms;
+    opacity: 0;
+}
+/* line 171, ../sass/ng-animation.scss */
+.slide-right.ng-enter-active {
+    transform: translateX(0);
+    -ms-transform: translateX(0);
+    -webkit-transform: translateX(0);
+    opacity: 1;
+}
+/* line 176, ../sass/ng-animation.scss */
+.slide-right.ng-leave {
+    transform: translateX(0);
+    -ms-transform: translateX(0);
+    -webkit-transform: translateX(0);
+    transition-duration: 250ms;
+    -webkit-transition-duration: 250ms;
+    opacity: 1;
+}
+/* line 182, ../sass/ng-animation.scss */
+.slide-right.ng-leave-active {
+    transform: translateX(60px);
+    -ms-transform: translateX(60px);
+    -webkit-transform: translateX(60px);
+    opacity: 0;
+}
+/* line 188, ../sass/ng-animation.scss */
+.slide-right.ng-hide-add {
+    transform: translateX(0);
+    -ms-transform: translateX(0);
+    -webkit-transform: translateX(0);
+    transition-duration: 250ms;
+    -webkit-transition-duration: 250ms;
+    opacity: 1;
+}
+/* line 193, ../sass/ng-animation.scss */
+.slide-right.ng-hide-add.ng-hide-add-active {
+    transform: translateX(60px);
+    -ms-transform: translateX(60px);
+    -webkit-transform: translateX(60px);
+    opacity: 0;
+}
+/* line 199, ../sass/ng-animation.scss */
+.slide-right.ng-hide-remove {
+    transform: translateX(60px);
+    -ms-transform: translateX(60px);
+    -webkit-transform: translateX(60px);
+    transition-duration: 250ms;
+    -webkit-transition-duration: 250ms;
+    display: block !important;
+    opacity: 0;
+}
+/* line 205, ../sass/ng-animation.scss */
+.slide-right.ng-hide-remove.ng-hide-remove-active {
+    transform: translateX(0);
+    -ms-transform: translateX(0);
+    -webkit-transform: translateX(0);
+    opacity: 1;
+}
+
+/* ------------------------------------------- */
+/* Slide Left
+/* ------------------------------------------- */
+/* line 217, ../sass/ng-animation.scss */
+.slide-left {
+    -webkit-transition: all 0 cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    -moz-transition: all 0 cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    -ms-transition: all 0 cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    -o-transition: all 0 cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    transition: all 0 cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    /* easeOutQuad */
+    -webkit-transition-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    -moz-transition-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    -ms-transition-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    -o-transition-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    transition-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    /* easeOutQuad */
+}
+/* line 219, ../sass/ng-animation.scss */
+.slide-left.ng-enter {
+    transform: translateX(-60px);
+    -ms-transform: translateX(-60px);
+    -webkit-transform: translateX(-60px);
+    transition-duration: 250ms;
+    -webkit-transition-duration: 250ms;
+    opacity: 0;
+}
+/* line 225, ../sass/ng-animation.scss */
+.slide-left.ng-enter-active {
+    transform: translateX(0);
+    -ms-transform: translateX(0);
+    -webkit-transform: translateX(0);
+    opacity: 1;
+}
+/* line 230, ../sass/ng-animation.scss */
+.slide-left.ng-leave {
+    transform: translateX(0);
+    -ms-transform: translateX(0);
+    -webkit-transform: translateX(0);
+    transition-duration: 250ms;
+    -webkit-transition-duration: 250ms;
+    opacity: 1;
+}
+/* line 236, ../sass/ng-animation.scss */
+.slide-left.ng-leave-active {
+    transform: translateX(-60px);
+    -ms-transform: translateX(-60px);
+    -webkit-transform: translateX(-60px);
+    opacity: 0;
+}
+/* line 242, ../sass/ng-animation.scss */
+.slide-left.ng-hide-add {
+    transform: translateX(0);
+    -ms-transform: translateX(0);
+    -webkit-transform: translateX(0);
+    transition-duration: 250ms;
+    -webkit-transition-duration: 250ms;
+    opacity: 1;
+}
+/* line 247, ../sass/ng-animation.scss */
+.slide-left.ng-hide-add.ng-hide-add-active {
+    transform: translateX(-60px);
+    -ms-transform: translateX(-60px);
+    -webkit-transform: translateX(-60px);
+    opacity: 0;
+}
+/* line 253, ../sass/ng-animation.scss */
+.slide-left.ng-hide-remove {
+    transform: translateX(-60px);
+    -ms-transform: translateX(-60px);
+    -webkit-transform: translateX(-60px);
+    transition-duration: 250ms;
+    -webkit-transition-duration: 250ms;
+    display: block !important;
+    opacity: 0;
+}
+/* line 259, ../sass/ng-animation.scss */
+.slide-left.ng-hide-remove.ng-hide-remove-active {
+    transform: translateX(0);
+    -ms-transform: translateX(0);
+    -webkit-transform: translateX(0);
+    opacity: 1;
+}
+
+/* ------------------------------------------- */
+/* Slide Down
+/* ------------------------------------------- */
+/* line 270, ../sass/ng-animation.scss */
+.slide-down {
+    -webkit-transition: all 0 cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    -moz-transition: all 0 cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    -ms-transition: all 0 cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    -o-transition: all 0 cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    transition: all 0 cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    /* easeOutQuad */
+    -webkit-transition-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    -moz-transition-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    -ms-transition-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    -o-transition-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    transition-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    /* easeOutQuad */
+}
+/* line 273, ../sass/ng-animation.scss */
+.slide-down.ng-enter {
+    transform: translateY(-60px);
+    -ms-transform: translateY(-60px);
+    -webkit-transform: translateY(-60px);
+    transition-duration: 250ms;
+    -webkit-transition-duration: 250ms;
+    opacity: 0;
+}
+/* line 279, ../sass/ng-animation.scss */
+.slide-down.ng-enter-active {
+    transform: translateY(0);
+    -ms-transform: translateY(0);
+    -webkit-transform: translateY(0);
+    opacity: 1;
+}
+/* line 284, ../sass/ng-animation.scss */
+.slide-down.ng-leave {
+    transform: translateY(0);
+    -ms-transform: translateY(0);
+    -webkit-transform: translateY(0);
+    transition-duration: 250ms;
+    -webkit-transition-duration: 250ms;
+    opacity: 1;
+}
+/* line 290, ../sass/ng-animation.scss */
+.slide-down.ng-leave-active {
+    transform: translateY(-60px);
+    -ms-transform: translateY(-60px);
+    -webkit-transform: translateY(-60px);
+    opacity: 0;
+}
+/* line 296, ../sass/ng-animation.scss */
+.slide-down.ng-hide-add {
+    transform: translateY(0);
+    -ms-transform: translateY(0);
+    -webkit-transform: translateY(0);
+    transition-duration: 250ms;
+    -webkit-transition-duration: 250ms;
+    opacity: 1;
+}
+/* line 301, ../sass/ng-animation.scss */
+.slide-down.ng-hide-add.ng-hide-add-active {
+    transform: translateY(-60px);
+    -ms-transform: translateY(-60px);
+    -webkit-transform: translateY(-60px);
+    opacity: 0;
+}
+/* line 307, ../sass/ng-animation.scss */
+.slide-down.ng-hide-remove {
+    transform: translateY(-60px);
+    -ms-transform: translateY(-60px);
+    -webkit-transform: translateY(-60px);
+    transition-duration: 250ms;
+    -webkit-transition-duration: 250ms;
+    display: block !important;
+    opacity: 0;
+}
+/* line 313, ../sass/ng-animation.scss */
+.slide-down.ng-hide-remove.ng-hide-remove-active {
+    transform: translateY(0);
+    -ms-transform: translateY(0);
+    -webkit-transform: translateY(0);
+    opacity: 1;
+}
+
+
+
+
+
+
+
+/* ------------------------------------------- */
+/* Scale Fade
+/* ------------------------------------------- */
+/* line 544, ../sass/ng-animation.scss */
+.scale-fade {
+    -webkit-transition: all 0 cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    -moz-transition: all 0 cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    -ms-transition: all 0 cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    -o-transition: all 0 cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    transition: all 0 cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    /* easeOutQuad */
+    -webkit-transition-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    -moz-transition-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    -ms-transition-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    -o-transition-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    transition-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    /* easeOutQuad */
+}
+/* line 547, ../sass/ng-animation.scss */
+.scale-fade.ng-enter {
+    transform: scale(0.7);
+    -ms-transform: scale(0.7);
+    -webkit-transform: scale(0.7);
+    transition-duration: 250ms;
+    -webkit-transition-duration: 250ms;
+    opacity: 0;
+}
+/* line 553, ../sass/ng-animation.scss */
+.scale-fade.ng-enter-active {
+    transform: scale(1);
+    -ms-transform: scale(1);
+    -webkit-transform: scale(1);
+    opacity: 1;
+}
+/* line 558, ../sass/ng-animation.scss */
+.scale-fade.ng-leave {
+    transform: scale(1);
+    -ms-transform: scale(1);
+    -webkit-transform: scale(1);
+    transition-duration: 250ms;
+    -webkit-transition-duration: 250ms;
+    opacity: 1;
+}
+/* line 564, ../sass/ng-animation.scss */
+.scale-fade.ng-leave-active {
+    transform: scale(0.7);
+    -ms-transform: scale(0.7);
+    -webkit-transform: scale(0.7);
+    opacity: 0;
+}
+/* line 570, ../sass/ng-animation.scss */
+.scale-fade.ng-hide-add {
+    transform: scale(1);
+    -ms-transform: scale(1);
+    -webkit-transform: scale(1);
+    transition-duration: 250ms;
+    -webkit-transition-duration: 250ms;
+    opacity: 1;
+}
+/* line 575, ../sass/ng-animation.scss */
+.scale-fade.ng-hide-add.ng-hide-add-active {
+    transform: scale(0.7);
+    -ms-transform: scale(0.7);
+    -webkit-transform: scale(0.7);
+    opacity: 0;
+}
+/* line 581, ../sass/ng-animation.scss */
+.scale-fade.ng-hide-remove {
+    transform: scale(0.7);
+    -ms-transform: scale(0.7);
+    -webkit-transform: scale(0.7);
+    transition-duration: 250ms;
+    -webkit-transition-duration: 250ms;
+    display: block !important;
+    opacity: 0;
+}
+/* line 587, ../sass/ng-animation.scss */
+.scale-fade.ng-hide-remove.ng-hide-remove-active {
+    transform: scale(1);
+    -ms-transform: scale(1);
+    -webkit-transform: scale(1);
+    opacity: 1;
+}
+
+
+
+/* ------------------------------------------- */
+/* Scale in Fade
+/* ------------------------------------------- */
+/* line 653, ../sass/ng-animation.scss */
+.scale-fade-in {
+    -webkit-transition: all 0 cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    -moz-transition: all 0 cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    -ms-transition: all 0 cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    -o-transition: all 0 cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    transition: all 0 cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    /* easeOutQuad */
+    -webkit-transition-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    -moz-transition-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    -ms-transition-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    -o-transition-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    transition-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    /* easeOutQuad */
+}
+/* line 656, ../sass/ng-animation.scss */
+.scale-fade-in.ng-enter {
+    transform: scale(3);
+    -ms-transform: scale(3);
+    -webkit-transform: scale(3);
+    transition-duration: 250ms;
+    -webkit-transition-duration: 250ms;
+    opacity: 0;
+}
+/* line 662, ../sass/ng-animation.scss */
+.scale-fade-in.ng-enter-active {
+    transform: scale(1);
+    -ms-transform: scale(1);
+    -webkit-transform: scale(1);
+    opacity: 1;
+}
+/* line 667, ../sass/ng-animation.scss */
+.scale-fade-in.ng-leave {
+    transform: scale(1);
+    -ms-transform: scale(1);
+    -webkit-transform: scale(1);
+    transition-duration: 250ms;
+    -webkit-transition-duration: 250ms;
+    opacity: 1;
+}
+/* line 673, ../sass/ng-animation.scss */
+.scale-fade-in.ng-leave-active {
+    transform: scale(3);
+    -ms-transform: scale(3);
+    -webkit-transform: scale(3);
+    opacity: 0;
+}
+/* line 679, ../sass/ng-animation.scss */
+.scale-fade-in.ng-hide-add {
+    transform: scale(1);
+    -ms-transform: scale(1);
+    -webkit-transform: scale(1);
+    transition-duration: 250ms;
+    -webkit-transition-duration: 250ms;
+    opacity: 1;
+}
+/* line 684, ../sass/ng-animation.scss */
+.scale-fade-in.ng-hide-add.ng-hide-add-active {
+    transform: scale(3);
+    -ms-transform: scale(3);
+    -webkit-transform: scale(3);
+    opacity: 0;
+}
+/* line 690, ../sass/ng-animation.scss */
+.scale-fade-in.ng-hide-remove {
+    transform: scale(3);
+    -ms-transform: scale(3);
+    -webkit-transform: scale(3);
+    transition-duration: 250ms;
+    -webkit-transition-duration: 250ms;
+    display: block !important;
+    opacity: 0;
+}
+/* line 696, ../sass/ng-animation.scss */
+.scale-fade-in.ng-hide-remove.ng-hide-remove-active {
+    transform: scale(1);
+    -ms-transform: scale(1);
+    -webkit-transform: scale(1);
+    opacity: 1;
+}
+
+.ps-container .ps-scrollbar-x-rail {
+    position: absolute; /* please don't change 'position' */
+    bottom: 3px; /* there must be 'bottom' for ps-scrollbar-x-rail */
+    height: 8px;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
+    opacity: 0;
+    filter: alpha(opacity = 0);
+    -o-transition: background-color .2s linear, opacity .2s linear;
+    -webkit-transition: background-color .2s linear, opacity .2s linear;
+    -moz-transition: background-color .2s linear, opacity .2s linear;
+    transition: background-color .2s linear, opacity .2s linear;
+}
+
+.ps-container:hover .ps-scrollbar-x-rail,
+.ps-container.hover .ps-scrollbar-x-rail {
+    opacity: 0.6;
+    filter: alpha(opacity = 60);
+}
+
+.ps-container .ps-scrollbar-x-rail:hover,
+.ps-container .ps-scrollbar-x-rail.hover {
+    background-color: #eee;
+    opacity: 0.9;
+    filter: alpha(opacity = 90);
+}
+
+.ps-container .ps-scrollbar-x-rail.in-scrolling {
+    opacity: 0.9;
+    filter: alpha(opacity = 90);
+}
+
+.ps-container .ps-scrollbar-y-rail {
+    position: absolute; /* please don't change 'position' */
+    right: 3px; /* there must be 'right' for ps-scrollbar-y-rail */
+    width: 8px;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
+    opacity: 0;
+    filter: alpha(opacity = 0);
+    -o-transition: background-color .2s linear, opacity .2s linear;
+    -webkit-transition: background-color .2s linear, opacity .2s linear;
+    -moz-transition: background-color .2s linear, opacity .2s linear;
+    transition: background-color .2s linear, opacity .2s linear;
+}
+
+.ps-container:hover .ps-scrollbar-y-rail,
+.ps-container.hover .ps-scrollbar-y-rail {
+    opacity: 0.6;
+    filter: alpha(opacity = 60);
+}
+
+.ps-container .ps-scrollbar-y-rail:hover,
+.ps-container .ps-scrollbar-y-rail.hover {
+    background-color: #eee;
+    opacity: 0.9;
+    filter: alpha(opacity = 90);
+}
+
+.ps-container .ps-scrollbar-y-rail.in-scrolling {
+    opacity: 0.9;
+    filter: alpha(opacity = 90);
+}
+
+.ps-container .ps-scrollbar-x {
+    display: none;
+    position: absolute; /* please don't change 'position' */
+    bottom: 0; /* there must be 'bottom' for ps-scrollbar-x */
+    height: 8px;
+    background-color: #aaa;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
+    -o-transition: background-color .2s linear;
+    -webkit-transition: background-color.2s linear;
+    -moz-transition: background-color .2s linear;
+    transition: background-color .2s linear;
+}
+
+.ps-container.ie6 .ps-scrollbar-x {
+    font-size: 0; /* fixed scrollbar height in xp sp3 ie6 */
+}
+
+.ps-container .ps-scrollbar-x-rail:hover .ps-scrollbar-x,
+.ps-container .ps-scrollbar-x-rail.hover .ps-scrollbar-x {
+    background-color: #999;
+}
+
+.ps-container .ps-scrollbar-y {
+    position: absolute; /* please don't change 'position' */
+    right: 0; /* there must be 'right' for ps-scrollbar-y */
+    width: 8px;
+    background-color: #aaa;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
+    -o-transition: background-color .2s linear;
+    -webkit-transition: background-color.2s linear;
+    -moz-transition: background-color .2s linear;
+    transition: background-color .2s linear;
+}
+
+.ps-container.ie6 .ps-scrollbar-y {
+    font-size: 0; /* fixed scrollbar height in xp sp3 ie6 */
+}
+
+.ps-container .ps-scrollbar-y-rail:hover .ps-scrollbar-y,
+.ps-container .ps-scrollbar-y-rail.hover .ps-scrollbar-y {
+    background-color: #999;
+}
+
+.ps-container.ie .ps-scrollbar-x,
+.ps-container.ie .ps-scrollbar-y {
+    visibility: hidden;
+}
+
+.ps-container.ie:hover .ps-scrollbar-x,
+.ps-container.ie:hover .ps-scrollbar-y,
+.ps-container.ie.hover .ps-scrollbar-x,
+.ps-container.ie.hover .ps-scrollbar-y {
+    visibility: visible;
+}
