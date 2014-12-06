@@ -11,7 +11,25 @@ if (empty($_SESSION['id'])) {
         <a ng-href="#/user/{{mainImage.user_id}}">{{mainImage.user_name}}</a> in <a ng-href="#/city/{{mainImage.l_id}}">{{mainImage.city}}</a>
     </div>
 
-    <div class="medium-3 large-23 columns feed">
+
+    <div class="medium-9 large-7 large-centered medium-centered columns">
+
+        <img class="main-image img-responsive" ng-src="{{main_image}}">
+        <p class="left">
+            {{mainImage.category }} |
+            {{mainImage.vibe }}
+        </p>
+        <p class="right image-vote">
+            <span class="glyphicon glyphicon-heart"></span> {{mainImage.highlights | shortenedNumAsInt}}
+            <span class="glyphicon glyphicon-star"></span> {{mainImage.points | shortenedNumAsInt}}
+        </p>
+    </div>
+
+    
+</div>
+<div class="row">
+    <!-- COMMENTS -->
+    <div class="medium-5 large-5 large-push-3 medium-push-3 columns feed">
         <p class="text-center">"{{mainImage.caption}}"</p>
         <form ng-submit="submit(comment)">
             <h6 id="counter">{{150 - comment.length}} characters remaining</h6>
@@ -37,20 +55,10 @@ if (empty($_SESSION['id'])) {
         </div>
 
     </div>
-    <div class="medium-7 large-5 columns">
 
-        <img class="main-image img-responsive" ng-src="{{main_image}}">
-        <p class="left">
-            {{mainImage.category }} |
-            {{mainImage.vibe }}
-        </p>
-        <p class="right image-vote">
-            <span class="glyphicon glyphicon-heart"></span> {{mainImage.highlights | shortenedNumAsInt}}
-            <span class="glyphicon glyphicon-star"></span> {{mainImage.points | shortenedNumAsInt}}
-        </p>
-    </div>
 
-    <div class="large-4 medium-12 columns curvy image-pad">
+    <!-- MORE IMAGES -->
+    <div class="large-3 medium-12 columns curvy image-pad">
         <div class="row">
             <div class="no-margin row">
                 <div class="medium-4 large-6 columns more-pics">
@@ -113,6 +121,7 @@ if (empty($_SESSION['id'])) {
         </div>
     </div>
 </div>
+
 <script>
     $(function() {
         $('.large-23').perfectScrollbar({

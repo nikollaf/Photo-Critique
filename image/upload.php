@@ -249,9 +249,7 @@
 
             </div>
 
-            <div class="large-4 columns">
-                <h4>Facebook</h4>
-             </div>
+         
 
           </div>
            <div class="row">

@@ -37,44 +37,19 @@ if (!empty($_SESSION['id'])) {
 </style>
 
 <div class="row">
-    <div class="banner">
-        <ul>
-            <li>
-                <h4>Popular</h4>
-                <p>View the best photographs from all over the world</p>
-            </li>
-            <li>
-                <h4>Vibes</h4>
-                <p>A fun way to express your feelings
-                    <br>Show others how each photograph makes you feel</small>
-                </p>
-            </li>
-            <li>
-                <h4>Highlights</h4>
-                <p>Display your favorite photographs
-                    <br>Show others how each photograph makes you feel</p>
-                </p>
-            </li>
-            <li>
-                <h4>Chance</h4>
-                <p>Look at a variety of photographs with one click
-                    <br>Compare and contrast different categories from different cities
-                </p>
-            </li>
-        </ul>
-    </div>
+    
 </div>
 
 <script>
 
     //http://tympanus.net/codrops/2011/09/30/scrollbar-visibility-with-jscrollpane/
-    $('.banner').unslider({
-        speed: 500,               //  The speed to animate each slide (in milliseconds)
-        delay: 3000,              //  The delay between slide animations (in milliseconds)
-        complete: function() {},  //  A function that gets called after every slide animation
-        keys: true,               //  Enable keyboard (left, right) arrow shortcuts
-        dots: true,               //  Display dot navigation
-        fluid: false              //  Support responsive design. May break non-responsive designs
-    });
+    // $('.banner').unslider({
+    //     speed: 500,               //  The speed to animate each slide (in milliseconds)
+    //     delay: 3000,              //  The delay between slide animations (in milliseconds)
+    //     complete: function() {},  //  A function that gets called after every slide animation
+    //     keys: true,               //  Enable keyboard (left, right) arrow shortcuts
+    //     dots: true,               //  Display dot navigation
+    //     fluid: false              //  Support responsive design. May break non-responsive designs
+    // });
 </script>
 

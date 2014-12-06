@@ -1,6 +1,4 @@
-<?php
-include '../core/init.php';
-include 'header.php';
+<?php include '../core/init.php'; include 'header.php';
 
 require '../api/vendor/cloudinary/src/Cloudinary.php';
 require '../api/vendor/cloudinary/src/Uploader.php';

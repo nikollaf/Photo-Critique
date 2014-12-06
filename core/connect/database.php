@@ -3,14 +3,14 @@
 $config = array(
     'host'		=> 'localhost',
     'username' 	=> 'root',
-    'password' 	=> 'albania1',
+    'password' 	=> 'root',
     'dbname' 	=> 'worldlens_db'
 );
 
 function getConnection() {
-    $dbhost="127.0.0.1";
+    $dbhost="localhost";
     $dbuser="root";
-    $dbpass="albania1";
+    $dbpass="root";
     $dbname="worldlens_db";
     $dbh = new PDO("mysql:host=$dbhost;dbname=$dbname", $dbuser, $dbpass);
     $dbh->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);

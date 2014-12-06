@@ -23,42 +23,7 @@
         <a href="register.php">Register</a> / <a href="login.php">Login</a>
     </div>
 </div>
-<header class="navbar" role="banner">
 
-    <div class="row">
-
-
-        <ul class="nav navbar-nav">
-            <li>
-                <a href="../#/cont/usa">North America</a>
-            </li>
-            <li>
-                <a href="../#/cont/canada">South America</a>
-            </li>
-            <li>
-                <a href="../#/cont/europe">Europe</a>
-            </li>
-            <li>
-                <a href="../#/cont/asia">Middle East</a>
-            </li>
-
-            <li>
-                <a href="../#/cont/middle-east">Northeast Asia</a>
-            </li>
-            <li>
-                <a href="../#/cont/latin-america">Southeast Asia</a>
-            </li>
-            <li>
-                <a href="../#/cont/africa">Africa</a>
-            </li>
-            <li>
-                <a href="../#/cont/australia">Australia</a>
-            </li>
-        </ul>
-
-    </div>
-
-</header>
 
 
 

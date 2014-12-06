@@ -134,7 +134,7 @@ function ($scope, $routeParams, Image, $location) {
         $scope.mainImage = image[0];
          // fix blank load buG
         //$scope.profile_picture = 'http://res.cloudinary.com/world-lens/image/upload/w_45,h_45,c_fill/v1387844193/' +$scope.mainImage.profile_pic +'.jpg';
-        $scope.main_image = 'http://res.cloudinary.com/world-lens/image/upload/w_515,h_515,c_fill/v1387844193/' + $scope.mainImage.image_url +'.jpg';
+        $scope.main_image = 'http://res.cloudinary.com/world-lens/image/upload/w_0.8/v1387844193/' + $scope.mainImage.image_url +'.jpg';
 
         $scope.submit = function(comment) {
 

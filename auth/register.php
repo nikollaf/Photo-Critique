@@ -74,19 +74,7 @@ if (isset($_POST['submit'])) {
 <div class="row">
 
     <div class="large-3 push-1 columns">
-        <h2>You are<span class="reviews">
-                <span style="display: none;" class="green-color">human.</span>
-                <span class="hide_it">unique.</span>
-                <span style="display: none;" class="">happy.</span>
-                <span style="display: none;" class="">sad.</span>
-                <span style="display: none;" class="">exciting.</span>
-                <span style="display: none;" class="">boring.</span>
-                <span style="display: none;" class="">romantic.</span>
-                <span style="display: none;" class="">heartbroken.</span>
-                <span style="display: none;" class="">funny.</span>
-                <span style="display: none;" class="">serious.</span>
-                <span style="display: none;" class="">beautiful.</span>
-            </span></h2>
+        
     </div>
     <div class="large-3 pull-1 small-12 medium-12 columns">
         <form role="form" method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>" enctype="multipart/form-data">
