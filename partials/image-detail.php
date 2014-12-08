@@ -23,6 +23,14 @@ if (empty($_SESSION['id'])) {
             <span class="glyphicon glyphicon-heart"></span> {{mainImage.highlights | shortenedNumAsInt}}
             <span class="glyphicon glyphicon-star"></span> {{mainImage.points | shortenedNumAsInt}}
         </p>
+
+        <div id="rate" class="row">
+            <div class="medium-3">
+                <div id="exposure" data-toggle="tooltip" data-placement="right"></div>
+                <p></p>
+                <input type="hidden">
+            </div> 
+        </div>
     </div>
 
     
@@ -127,6 +135,17 @@ if (empty($_SESSION['id'])) {
         $('.large-23').perfectScrollbar({
             useBothWheelAxes: false
         });
+
+         $("#exposure").rateYo({
+            maxValue: 1,
+            numStars: 1,
+            ratedFill: '#34495e',
+            starWidth: "60px",
+            onChange: function (rating, rateYoInstance) {
+              $('p').text(rating);
+              $('input').val(rating);
+            }
+          });
     });
 </script>
 <!--

@@ -1196,7 +1196,7 @@ function userMessage() {
     $request = \Slim\Slim::getInstance()->request();
     $data = json_decode($request->getBody());
 
-    print_r($data);
+
     echo $data->id;
     echo $data->status;
 
