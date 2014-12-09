@@ -129,7 +129,7 @@ function($scope, $http, $routeParams, City, Highlight, Like) {
 worldlensControllers.controller('ImageListCtrl', ['$scope', '$routeParams', 'Image', '$location',
 function ($scope, $routeParams, Image, $location) {
 
-    //$scope.images = Image.show();
+    
     $scope.image = Image.query({ id: $routeParams.id }, function(image) {
         $scope.mainImage = image[0];
          // fix blank load buG
@@ -332,8 +332,6 @@ worldlensControllers.controller('GameListCtrl', ['$scope', 'Image', '$routeParam
 
         $scope.images = Image.show();
 
-
-
         console.log($scope.images);
 
         var myArray = ['People', 'Nature', 'Architecture', 'Food'];
@@ -342,10 +340,24 @@ worldlensControllers.controller('GameListCtrl', ['$scope', 'Image', '$routeParam
         $scope.randcat = myArray[Math.floor(Math.random() * myArray.length)];
         //$scope.randcity = myCity[Math.floor(Math.random() * myCity.length)];
 
-        $scope.reorder = function() {
+        $scope.reorder = function(cityId, imageId, img, status) {
             shuffleArray($scope.images);
             $scope.randcat = myArray[Math.floor(Math.random() * myArray.length)];
             //$scope.randcity = myCity[Math.floor(Math.random() * myCity.length)];
+            var key = $scope.images.indexOf(img);
+
+            postData = {cityId:cityId, imageId:imageId};
+
+            if (status == 'img.isLiked') {
+                Like.insert(postData);
+                $scope.images[key].img_points = parseInt($scope.images[key].img_points) + 1;
+                console.log("Liked");
+            } else if (status == '!img.isLiked') {
+                Like.delete(postData);
+                $scope.images[key].img_points = parseInt($scope.images[key].img_points) - 1;
+                console.log("Unliked");
+            }
+            img.isLiked = !img.isLiked;
         }
 
         // -> Fisher–Yates shuffle algorithm
@@ -383,27 +395,9 @@ worldlensControllers.controller('GameListCtrl', ['$scope', 'Image', '$routeParam
             }
             img.isLiked = !img.isLiked;
         };
-
-        $scope.highlight = function(userId, imageId, img, status) {
-
-            var key = $scope.images.indexOf(img);
-
-            postData = {userId:userId, imageId:imageId};
-
-            if (status == 'img.isHigh') {
-                Highlight.insert(postData);
-                $scope.images[key].h_points = parseInt($scope.images[key].h_points) + 1;
-                console.log("Liked");
-            } else if (status == '!img.isHigh') {
-                Highlight.delete(postData);
-                $scope.images[key].h_points = parseInt($scope.images[key].h_points) - 1;
-                console.log("Unliked");
-            }
-            img.isHigh = !img.isHigh;
-        }
-
-
 }]);
+
+
 /** City List Ctrl - Return all cities **/
 worldlensControllers.controller('ListCityCtrl', ['$scope', 'City', '$routeParams',
     function($scope, City, $routeParams) {
