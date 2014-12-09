@@ -10,49 +10,8 @@ if (empty($_SESSION['id'])) {
     <h1></h1>
     <div class="large-21 medium-12 small-12 columns curvy curvy-color">
 
-        <div class="large-12 medium-6 small-6 columns">
-            <div class="move_left first-rank">
-                <h4 class="text-center">Most Popular <span class="glyphicon glyphicon-heart"></span></h4>
-                <div class="rank">
-                    <ul class="cities">
-                        <li ng-repeat="city in cities | filter:query | orderBy:'-points' | limitTo:5">
-
-                            <a class="city-up" ng-href="#/city/{{ city.l_id }}">{{ city.city }}</a>
-                            <span class="city-points">{{city.points | number}}</span>
-                        </li>
-                    </ul>
-
-                </div>
-            </div>
-        </div>
-        <div class="large-12 medium-6 small-6 columns">
-            <div class="move_left">
-                <h4 class="text-center">Most Uploads <span class="glyphicon glyphicon-upload"></span></h4>
-                <div class="rank">
-                    <ul class="cities">
-                        <li ng-repeat="city in cities | filter:query | orderBy:'-uploads' | limitTo:5">
-
-                            <a class="city-up" ng-href="#/city/{{ city.l_id }}">{{ city.city }}</a>
-                            <span class="city-points">{{city.uploads | number}}</span>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-        <div class="large-12 medium-6 small-6 columns">
-            <div class="move_left">
-                <h4 class="text-center">Most Highlights <span class="glyphicon glyphicon-star"></span></h4>
-                <div class="rank">
-                    <ul class="cities">
-                        <li ng-repeat="city in cities | filter:query | orderBy:'-highlights' | limitTo:5">
-
-                            <a class="city-up" ng-href="#/city/{{ city.l_id }}">{{ city.city }}</a>
-                            <span class="city-points">{{city.highlights | number}}</span>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
+        
+        
     </div>
 
     <div class="large-9 columns">

@@ -43,6 +43,19 @@
     padding: 0;
 }
 
+form#rate {
+    text-align: center;
+}
+
+.vote-btn {
+    font-size: 21px;
+    padding: 7px 130px;
+}
+
+input:-webkit-autofill {
+    background-color: white !important;
+}
+
 .nav>li>a:hover {
     color: #c4c4c4 !important;
 }

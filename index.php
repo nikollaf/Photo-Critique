@@ -1,5 +1,8 @@
 <?php
 include 'core/init.php';
+
+
+
 ?>
 <!doctype html>
 <html lang="en" ng-app="worldlensApp">
@@ -40,7 +43,7 @@ include 'core/init.php';
 
             </form>
 
-          <a href="auth/register.php">Register</a>
+          
 
         </div>
       </div>
@@ -113,6 +116,8 @@ include 'core/init.php';
 
     </div>
     </div>
+
+
   <script src="http://code.jquery.com/jquery-2.0.3.min.js"></script>
 
 
@@ -136,7 +141,7 @@ include 'core/init.php';
 
 
   <script src="js/foundation.min.js"></script>
-  <script src="http://cdnjs.cloudflare.com/ajax/libs/foundation/5.0.3/js/foundation/foundation.orbit.min.js"></script>
+  
   <script src="js/ui-bootstrap.min.js"></script>
 
 

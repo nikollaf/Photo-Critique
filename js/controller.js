@@ -61,27 +61,11 @@ worldlensControllers.controller('WorldFeedCtrl', ['$scope', 'World', '$routePara
                 img.isLiked = !img.isLiked;
             };
 
-            $scope.highlight = function(userId, imageId, img, status) {
-
-                var key = $scope.world_images.indexOf(img);
-
-                postData = {userId:userId, imageId:imageId};
-
-                if (status == 'img.isHigh') {
-                    Highlight.insert(postData);
-                    $scope.world_images[key].h_points = parseInt($scope.world_images[key].h_points) + 1;
-                    console.log("Liked");
-                } else if (status == '!img.isHigh') {
-                    Highlight.delete(postData);
-                    $scope.world_images[key].h_points = parseInt($scope.world_images[key].h_points) - 1;
-                    console.log("Unliked");
-                }
-                img.isHigh = !img.isHigh;
-            }
+         
 
         });
 
-        $scope.totalDisplayed = 30;
+        $scope.totalDisplayed = 10;
 
         $scope.loadMore = function() {
             $scope.totalDisplayed += 20;
@@ -135,6 +119,76 @@ function ($scope, $routeParams, Image, $location) {
          // fix blank load buG
         //$scope.profile_picture = 'http://res.cloudinary.com/world-lens/image/upload/w_45,h_45,c_fill/v1387844193/' +$scope.mainImage.profile_pic +'.jpg';
         $scope.main_image = 'http://res.cloudinary.com/world-lens/image/upload/w_0.8/v1387844193/' + $scope.mainImage.image_url +'.jpg';
+
+        $("#exposure").rateYo({
+            maxValue: 1,
+            numStars: 1,
+            ratedFill: '#1abc9c',
+            starWidth: "60px",
+            onChange: function (rating, rateYoInstance) {
+           
+              $('input#exposure-rating').val(rating);
+
+              //$('input#exposure-rating').val(rating) = $('#total-rate');
+
+            }
+          });
+
+         $("#focus").rateYo({
+            maxValue: 1,
+            numStars: 1,
+            ratedFill: '#2ecc71',
+            starWidth: "60px",
+            onChange: function (rating, rateYoInstance) {
+           
+              $('input#focus-rating').val(rating);
+            }
+          });
+
+         $("#creativity").rateYo({
+            maxValue: 1,
+            numStars: 1,
+            ratedFill: '#9b59b6',
+            starWidth: "60px",
+            onChange: function (rating, rateYoInstance) {
+           
+              $('input#creativity-rating').val(rating);
+            }
+          });
+
+         $("#lighting").rateYo({
+            maxValue: 1,
+            numStars: 1,
+            ratedFill: '#3498db',
+            starWidth: "60px",
+            onChange: function (rating, rateYoInstance) {
+           
+              $('input#lighting-rating').val(rating);
+            }
+          });
+
+         $("#story").rateYo({
+            maxValue: 1,
+            numStars: 1,
+            ratedFill: '#34495e',
+            starWidth: "60px",
+            onChange: function (rating, rateYoInstance) {
+           
+              $('input#story-rating').val(rating);
+            }
+          });
+
+        $scope.vote = function(exposure, focus, creativity, lighting, story) {
+            // Image.vote({ 
+            //     exposure: exposure, 
+            //     focus: focus, 
+            //     creativity: creativity, 
+            //     lighting: lighting, 
+            //     story: story
+            // });
+
+            console.log($('input#exposure-rating').val());
+        }
 
         $scope.submit = function(comment) {
 

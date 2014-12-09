@@ -6,6 +6,8 @@ if (!empty($_SESSION['id'])) {
     //exit();
 }
 
+
+
 ?>
 
 <style>
@@ -37,7 +39,69 @@ if (!empty($_SESSION['id'])) {
 </style>
 
 <div class="row">
-    
+    <h1>Grow and become a Better Photographer</h1>
+
+    <p></p>
+
+
+       
+            <form role="form" method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>" enctype="multipart/form-data">
+                <h4>Try it now. You can always edit/change your username <small></small></h4>
+                <p>
+                <?php
+                if(empty($errors) === false){
+                    echo '<p class="text-error">' . implode('</p><p>', $errors) . '</p>';
+                }
+
+                ?>
+            </p>
+           
+           
+               
+           
+            <!--
+            <div class="form-group">
+                <input type="text" value="<?php if(isset($_POST['username'])) echo htmlentities($_POST['username']); ?>" name="username" id="username" class="form-control input-lg" placeholder="Username" tabindex="3">
+            </div>
+            -->
+            <div class="row">
+                <div class="form-group small-6 medium-6 columns">
+                    <input type="email" value="<?php if(isset($_POST['email'])) echo htmlentities($_POST['email']); ?>" name="email" id="email" class="form-control" placeholder="Email Address" tabindex="4">
+                </div>
+                <div class="form-group small-6 medium-6 columns">
+                    <input type="password" name="password" id="password" class="form-control" placeholder="Password" tabindex="5">
+                </div>
+            </div>
+            <!--
+            <div class="form-group">
+                <h4>Profile Picture</h4>
+                <input id="fileupload" type="file" name="file" accept="image/gif, image/jpeg, image/png">
+            </div>
+            -->
+            <div class="row">
+                <div class="small-6 medium-6 columns"><input type="submit" name="submit" value="Register" class="btn btn-register btn-block btn-lg" tabindex="7"></div>
+                <div class="small-6 medium-6 columns"></div>
+            </div>
+            <br>
+            <div class="row">
+                <div class="large-12 small-9 medium-9 columns">
+                    By registering, you agree to the <a href="" data-toggle="modal" data-target="#t_and_c_m">Terms and Conditions</a>.
+                </div>
+            </div>
+        </form>
+
+</div>
+
+<div class="row">
+    <h3>What makes a photo stand out?</h3>
+
+    <div class="row">
+        <div class="medium-6">
+            <h3>Composure</h3>
+            <p>In a strong photo, there should be a sense of overall organization. While entire books are written on composition, at the most basic level, composition is the process of establishing a sense of order for the elements within an image. Note Composition rules or guidelines are a helpful starting point, but they are useful only as long as they enhance the overall image.</p>
+        </div>
+        <div class="medium-6"></div>
+    </div>
 </div>
 
 <script>

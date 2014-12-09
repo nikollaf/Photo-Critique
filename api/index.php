@@ -39,10 +39,45 @@ $app->get('/user/:id', 'getUser');
 $app->get('/image/:id', 'showImage');
 
 $app->post('/login', 'login');
+$app->post('/register', 'register');
 
 $app->get('/user', 'mainUser');
 
 $app->run();
+
+function register() {
+    $request = \Slim\Slim::getInstance()->request();
+    $data = json_decode($request->getBody());
+
+    $email = $email->email;
+    $password = $password->password;
+
+    $db->getConnection();
+
+    global $bcrypt; // making the $bcrypt variable global so we can use here
+
+        $password   = $bcrypt->genHash($password);
+
+        $query  = $this->db->prepare("INSERT INTO `users`
+        SET email = :email, password = :password");
+
+
+        
+        $query->bindParam(':email', $email);
+        $query->bindParam(':first_name', $first_name);
+
+        try{
+            $query->execute();
+
+             login();
+
+            //mail($email, 'Please activate your account', "Hello " . $username. ",\r\nThank you for registering with us. Please visit the link below so we can activate your account:\r\n\r\nhttp://www.example.com/activate.php?email=" . $email . "&email_code=" . $email_code . "\r\n\r\n-- Example team");
+        }catch(PDOException $e){
+            die($e->getMessage());
+        }
+
+
+}
 
 
 function login() {
