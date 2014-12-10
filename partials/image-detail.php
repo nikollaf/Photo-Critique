@@ -23,7 +23,7 @@ if (empty($_SESSION['id'])) {
 
         <div style="clear: both;"></div>
 
-        <form ng-submit="vote(exposure, focus, creativity, lighting, story)" id="rate" class="row">
+        <form ng-submit="vote()" id="rate" class="row">
                 
                 <div class="medium-2 large-2 columns">
                     <h4>Exposure</h4>
@@ -92,9 +92,7 @@ if (empty($_SESSION['id'])) {
                 <p ng-show="feed.comment">
                     <a ng-href="#/user/{{feed.id}}">{{feed.first_name}}</a>: {{feed.comment}}
                 </p>
-                <p ng-show="feed.feature_image_id">
-                    <a ng-href="#/user/{{feed.id}}">{{feed.first_name}}</a> highlighted this image.
-                </p>
+              
             </div>
         </div>
 

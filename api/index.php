@@ -43,6 +43,8 @@ $app->post('/register', 'register');
 
 $app->get('/user', 'mainUser');
 
+$app->post('/vote', 'vote');
+
 $app->run();
 
 function register() {
@@ -1111,9 +1113,45 @@ function likeImage() {
 
 /********************************************************/
 /*---------------------------------------------------------*/
-/*                        HIGHLIGHT  (POST)              */
+/*                        VOTE  (POST)              */
 /*-------------------------------------------------------*/
 /*********************************************************/
+function vote() {
+    $request = \Slim\Slim::getInstance()->request();
+    $data = json_decode($request->getBody());
+
+    print_r($data);
+
+    try {
+        $sql = "INSERT INTO 
+                        votes 
+                    SET 
+                        exposure = :exposure, 
+                        focus = :focus, 
+                        lighting = :lighting,
+                        creativity = :creativity,
+                        story = :story,
+                        vote_user_id = :vote_user_id,
+                        image_id_fk = :image_id_fk";
+        $db = getConnection();
+        $stmt = $db->prepare($sql);
+
+        $stmt->bindParam(":exposure", $data->exposure);
+        $stmt->bindParam(":focus", $data->focus);
+        $stmt->bindParam(":lighting", $data->lighting);
+        $stmt->bindParam(":creativity", $data->creativity);
+        $stmt->bindParam(":story", $data->story);
+
+        $stmt->bindParam(":image_id_fk", $data->imageIdFk);
+        $stmt->bindParam(":vote_user_id", $_SESSION['id']);
+        $stmt->execute();
+        $db = null;
+
+    } catch(PDOException $e) {
+        echo '{"error":{"text":'. $e->getMessage() .'}}';
+    }
+
+}
 
 function highlight() {
 
@@ -1207,6 +1245,8 @@ function followUser($id) {
         echo '{"error":{"text":'. $e->getMessage() .'}}';
     }
 }
+
+
 
 function getMessage() {
 

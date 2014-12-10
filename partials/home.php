@@ -41,6 +41,8 @@ if (!empty($_SESSION['id'])) {
 <div class="row">
     <h1>Grow and become a Better Photographer</h1>
 
+    <p>Get real feedback on your photos, develop your passion for photography, and become part of the community where photography is encouraged.</p>
+
     <p></p>
 
 

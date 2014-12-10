@@ -10,7 +10,7 @@ if (empty($_SESSION['id'])) {
     <div class="large-9 columns">
       <div class="text-center curvy">
 
-    	<h1 class="main-city">Life in {{ mainCityName.city }}</h1>
+    	<h1 class="main-city">{{ mainCityName.city }}</h1>
           <ul class="city-detail">
               <li><span class="glyphicon glyphicon-user"></span>Members {{mainCityName.members | shortenedNumAsInt}}</li>
               <li><span class="glyphicon glyphicon-heart"></span>Likes {{mainCityName.points | shortenedNumAsInt}}</li>
@@ -70,35 +70,7 @@ if (empty($_SESSION['id'])) {
                             </ul>
                         </li>
 
-                        <li class="dropdown">
-                            <a class="btn btn-default btn-lg dropdown-toggle">
-                                <span class="glyphicon glyphicon-plus-sign"></span> Vibes
-                            </a>
-                            <ul class="dropdown-menu four-cols-menu">
-                                <li>
-                                    <a href="" ng-click="search.vibes = ''"> All</a>
-                                    <a href="" ng-click="search.vibes = 'Happy'"> Happy</a>
-                                    <a href="" ng-click="search.vibes = 'Sad'"> Sad</a>
-                                    <a href="" ng-click="search.vibes = 'Beautiful'"> Beautiful</a>
-                                    <a href="" ng-click="search.vibes = 'Hot'"> Hot</a>
-                                    <a href="" ng-click="search.vibes = 'Cold'"> Cold</a>
-                                    <a href="" ng-click="search.vibes = 'Cute'"> Cute</a>
-                                    <a href="" ng-click="search.vibes = 'Ugly'"> Ugly</a>
-                                    <a href="" ng-click="search.vibes = 'Peace'"> Peace</a>
-                                    <a href="" ng-click="search.vibes = 'Noise'"> Noise</a>
-                                    <a href="" ng-click="search.vibes = 'Exciting'"> Exciting</a>
-                                    <a href="" ng-click="search.vibes = 'Dull'"> Dull</a>
-                                    <a href="" ng-click="search.vibes = 'Romantic'"> Romantic</a>
-                                    <a href="" ng-click="search.vibes = 'Heartbreaking'"> Heartbreaking</a>
-                                    <a href="" ng-click="search.vibes = 'Funny'"> Funny</a>
-                                    <a href="" ng-click="search.vibes = 'Serious'"> Serious</a>
-                                    <a href="" ng-click="search.vibes = 'Luxury'"> Luxury</a>
-                                    <a href="" ng-click="search.vibes = 'Simplicity'"> Simplicity</a>
-                                    <a href="" ng-click="search.vibes = 'Mysterious'"> Mysterious</a>
-                                    <a href="" ng-click="search.vibes = 'Other'"> Other</a>
-                                </li>
-                            </ul>
-                        </li>
+                  
                     </ul>
                 </div>
             </div>
@@ -116,17 +88,13 @@ if (empty($_SESSION['id'])) {
                             <span class="glyphicon glyphicon-heart"></span> {{img.img_points | number}}
                         </div>
 
-                        <div  ng-if="(img.image_id == img.feature_image_id)" class="highlighted to-highlight">
-                            <span class="glyphicon glyphicon-star"></span> {{img.h_points | number }}
-                        </div>
+                 
 
                         <button ng-show="!img.liked_image" class="to-like not-clicked-like" ng-click="vote(img.image_l_id, img.image_id, $event)"  ng-disabled="isDisabledLike">
                             <span class="glyphicon glyphicon-heart "></span> {{img.img_points | number}}
                         </button>
 
-                        <button ng-show="!img.feature_image_id" class="to-highlight not-clicked-highlight" ng-click="highlight(img.image_id, img.id, $event)" ng-disabled="isDisabledHighlight">
-                            <span class="glyphicon glyphicon-star"></span> {{img.h_points | number }}
-                        </button>
+                    
                     </div>
                 </li>
             </ul>

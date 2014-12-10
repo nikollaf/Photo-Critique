@@ -110,8 +110,8 @@ function($scope, $http, $routeParams, City, Highlight, Like) {
 
 }]);
 
-worldlensControllers.controller('ImageListCtrl', ['$scope', '$routeParams', 'Image', '$location',
-function ($scope, $routeParams, Image, $location) {
+worldlensControllers.controller('ImageListCtrl', ['$scope', '$routeParams', 'Image','$location', '$http',
+function ($scope, $routeParams, Image, $location, $http) {
 
     
     $scope.image = Image.query({ id: $routeParams.id }, function(image) {
@@ -126,11 +126,7 @@ function ($scope, $routeParams, Image, $location) {
             ratedFill: '#1abc9c',
             starWidth: "60px",
             onChange: function (rating, rateYoInstance) {
-           
               $('input#exposure-rating').val(rating);
-
-              //$('input#exposure-rating').val(rating) = $('#total-rate');
-
             }
           });
 
@@ -140,7 +136,6 @@ function ($scope, $routeParams, Image, $location) {
             ratedFill: '#2ecc71',
             starWidth: "60px",
             onChange: function (rating, rateYoInstance) {
-           
               $('input#focus-rating').val(rating);
             }
           });
@@ -151,7 +146,6 @@ function ($scope, $routeParams, Image, $location) {
             ratedFill: '#9b59b6',
             starWidth: "60px",
             onChange: function (rating, rateYoInstance) {
-           
               $('input#creativity-rating').val(rating);
             }
           });
@@ -162,7 +156,6 @@ function ($scope, $routeParams, Image, $location) {
             ratedFill: '#3498db',
             starWidth: "60px",
             onChange: function (rating, rateYoInstance) {
-           
               $('input#lighting-rating').val(rating);
             }
           });
@@ -173,22 +166,11 @@ function ($scope, $routeParams, Image, $location) {
             ratedFill: '#34495e',
             starWidth: "60px",
             onChange: function (rating, rateYoInstance) {
-           
               $('input#story-rating').val(rating);
             }
           });
 
-        $scope.vote = function(exposure, focus, creativity, lighting, story) {
-            // Image.vote({ 
-            //     exposure: exposure, 
-            //     focus: focus, 
-            //     creativity: creativity, 
-            //     lighting: lighting, 
-            //     story: story
-            // });
-
-            console.log($('input#exposure-rating').val());
-        }
+      
 
         $scope.submit = function(comment) {
 
@@ -199,6 +181,30 @@ function ($scope, $routeParams, Image, $location) {
             });
         }
     });
+    
+
+    $scope.vote = function() {
+         $http.post('/Photo-Critique/api/index.php/vote', 
+            { 
+                exposure : $('input#exposure-rating').val(),
+                focus    : $('input#focus-rating').val(),
+                lighting : $('input#lighting-rating').val(),
+                creativity : $('creativity-rating').val(),
+                story   : $('input#story-rating').val()
+
+            }
+        ).success(function(data, status, headers, config) {
+        // this callback will be called asynchronously
+        // when the response is available
+      }).error(function(data, status, headers, config) {
+        // called asynchronously if an error occurs
+        // or server returns response with an error status.
+      });
+      
+    }
+
+   
+
 }]);
 
 worldlensControllers.controller('NotificationsCtrl', ['$scope', '$routeParams', 'Message',
@@ -303,23 +309,7 @@ worldlensControllers.controller('UserController', ['$scope', '$routeParams', 'Us
                 img.isLiked = !img.isLiked;
             };
 
-            $scope.highlight = function(userId, imageId, img, status) {
-
-                var key = $scope.world_images.indexOf(img);
-
-                postData = {userId:userId, imageId:imageId};
-
-                if (status == 'img.isHigh') {
-                    Highlight.insert(postData);
-                    $scope.world_images[key].h_points = parseInt($scope.world_images[key].h_points) + 1;
-                    console.log("Liked");
-                } else if (status == '!img.isHigh') {
-                    Highlight.delete(postData);
-                    $scope.world_images[key].h_points = parseInt($scope.world_images[key].h_points) - 1;
-                    console.log("Unliked");
-                }
-                img.isHigh = !img.isHigh;
-            }
+    
 
 
         });

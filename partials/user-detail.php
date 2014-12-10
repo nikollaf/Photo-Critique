@@ -41,7 +41,7 @@
                     Following <br><span class="badge">{{ mainUserInfo.following_users.length | number}}</span>
                 </li>
                 <li class="btn btn-fans">
-                    Highlights <br><span class="badge">23</span>
+                    Votes <br><span class="badge">23</span>
                 </li>
 
             </ul>
@@ -78,16 +78,13 @@
                         <button class="btn btn-warning" ng-click="cancel()">Cancel</button>
                     </div>
                 </script>
-
-
             </div>
-
         </div>
 
 
         <div class="large-9 medium-9 columns">
             <div class="row">
-                <h1>Life of {{mainUserInfo.name}}</h1>
+                <h1>{{mainUserInfo.name}}</h1>
                 <div data-magellan-expedition="fixed" data-options="destination_threshold:65;throttle_delay:0;">
                     <div class="small-12 medium-7 large-4 columns filter-nav">
 
@@ -127,35 +124,7 @@
                                 </ul>
                             </li>
 
-                            <li class="dropdown">
-                                <a class="btn btn-default btn-lg dropdown-toggle">
-                                    <span class="glyphicon glyphicon-plus-sign"></span> Vibes
-                                </a>
-                                <ul class="dropdown-menu four-cols-menu">
-                                    <li>
-                                        <a href="" ng-click="search.vibes = ''"> All</a>
-                                        <a href="" ng-click="search.vibes = 'Happy'"> Happy</a>
-                                        <a href="" ng-click="search.vibes = 'Sad'"> Sad</a>
-                                        <a href="" ng-click="search.vibes = 'Beautiful'"> Beautiful</a>
-                                        <a href="" ng-click="search.vibes = 'Hot'"> Hot</a>
-                                        <a href="" ng-click="search.vibes = 'Cold'"> Cold</a>
-                                        <a href="" ng-click="search.vibes = 'Cute'"> Cute</a>
-                                        <a href="" ng-click="search.vibes = 'Ugly'"> Ugly</a>
-                                        <a href="" ng-click="search.vibes = 'Peace'"> Peace</a>
-                                        <a href="" ng-click="search.vibes = 'Noise'"> Noise</a>
-                                        <a href="" ng-click="search.vibes = 'Exciting'"> Exciting</a>
-                                        <a href="" ng-click="search.vibes = 'Dull'"> Dull</a>
-                                        <a href="" ng-click="search.vibes = 'Romantic'"> Romantic</a>
-                                        <a href="" ng-click="search.vibes = 'Heartbreaking'"> Heartbreaking</a>
-                                        <a href="" ng-click="search.vibes = 'Funny'"> Funny</a>
-                                        <a href="" ng-click="search.vibes = 'Serious'"> Serious</a>
-                                        <a href="" ng-click="search.vibes = 'Luxury'"> Luxury</a>
-                                        <a href="" ng-click="search.vibes = 'Simplicity'"> Simplicity</a>
-                                        <a href="" ng-click="search.vibes = 'Mysterious'"> Mysterious</a>
-                                        <a href="" ng-click="search.vibes = 'Other'"> Other</a>
-                                    </li>
-                                </ul>
-                            </li>
+                          
                         </ul>
                     </div>
                 </div>
@@ -194,16 +163,6 @@
                         </button>
                         <button ng-if="!img.liked_image" ng-show="img.isLiked" class="button liked to-like" ng-click="vote(img.image_l_id, img.image_id, img, '!img.isLiked')">
                             <span class="glyphicon glyphicon-heart "></span> {{img.img_points | number}}</button>
-
-
-                        <button ng-if="!img.feature_image_id" ng-show="!img.isHigh" class="button to-highlight not-clicked-highlight" ng-click="highlight(img.id, img.image_id, img, 'img.isHigh')">
-                            <span class="glyphicon glyphicon-star"></span> {{img.h_points | number }}
-                        </button>
-
-                        <button ng-if="!img.feature_image_id" ng-show="img.isHigh" class="button highlighted to-highlight" ng-click="highlight(img.id, img.image_id, img, '!img.isHigh')">
-                            <span class="glyphicon glyphicon-star"></span> {{img.h_points | number }}
-                        </button>
-
                     </div>
                 </li>
             </ul>

@@ -21,8 +21,10 @@ worldlensServices.factory('Image', function ($resource) {
         query: { method: 'GET', params: {id: '@id'}, isArray: true },
         create: { method: 'POST', data: {comment: '@comment', imageId: '@imageId'}},
         show: {method: 'GET', isArray: true}
+       
     })
 });
+
 
 worldlensServices.factory('World', function ($resource) {
     return $resource('api/index.php/world', {}, {
