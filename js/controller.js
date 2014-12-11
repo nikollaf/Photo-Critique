@@ -116,13 +116,34 @@ function ($scope, $routeParams, Image, $location, $http) {
     
     $scope.image = Image.query({ id: $routeParams.id }, function(image) {
         $scope.mainImage = image[0];
+
+        console.log($scope.mainImage.votes[0]);
+
+       
+
+        if ($scope.mainImage.votes[0]) {
+
+            var exposure = $scope.mainImage.votes[0].exposure,
+                focus    = $scope.mainImage.votes[0].focus,
+                creativity = $scope.mainImage.votes[0].creativity,
+                lighting = $scope.mainImage.votes[0].lighting,
+                story   = $scope.mainImage.votes[0].story;
+                
+        } else {
+
+            var exposure = 0.0,
+                focus    = 0.0,
+                creativity = 0.0,
+                lighting = 0.0,
+                story   = 0.0;
+        }
+
          // fix blank load buG
         //$scope.profile_picture = 'http://res.cloudinary.com/world-lens/image/upload/w_45,h_45,c_fill/v1387844193/' +$scope.mainImage.profile_pic +'.jpg';
         $scope.main_image = 'http://res.cloudinary.com/world-lens/image/upload/w_0.8/v1387844193/' + $scope.mainImage.image_url +'.jpg';
 
         $("#exposure").rateYo({
-            maxValue: 1,
-            numStars: 1,
+            rating: exposure,
             ratedFill: '#1abc9c',
             starWidth: "60px",
             onChange: function (rating, rateYoInstance) {
@@ -131,9 +152,8 @@ function ($scope, $routeParams, Image, $location, $http) {
           });
 
          $("#focus").rateYo({
-            maxValue: 1,
-            numStars: 1,
             ratedFill: '#2ecc71',
+            rating: focus,
             starWidth: "60px",
             onChange: function (rating, rateYoInstance) {
               $('input#focus-rating').val(rating);
@@ -141,8 +161,7 @@ function ($scope, $routeParams, Image, $location, $http) {
           });
 
          $("#creativity").rateYo({
-            maxValue: 1,
-            numStars: 1,
+            rating: creativity,
             ratedFill: '#9b59b6',
             starWidth: "60px",
             onChange: function (rating, rateYoInstance) {
@@ -151,8 +170,7 @@ function ($scope, $routeParams, Image, $location, $http) {
           });
 
          $("#lighting").rateYo({
-            maxValue: 1,
-            numStars: 1,
+            rating: lighting,
             ratedFill: '#3498db',
             starWidth: "60px",
             onChange: function (rating, rateYoInstance) {
@@ -161,8 +179,7 @@ function ($scope, $routeParams, Image, $location, $http) {
           });
 
          $("#story").rateYo({
-            maxValue: 1,
-            numStars: 1,
+            rating: story,
             ratedFill: '#34495e',
             starWidth: "60px",
             onChange: function (rating, rateYoInstance) {
@@ -182,26 +199,27 @@ function ($scope, $routeParams, Image, $location, $http) {
         }
     });
     
+    
+        $scope.vote = function() {
+             $http.post('/Photo-Critique/api/index.php/vote', 
+                { 
+                    exposure : $('input#exposure-rating').val(),
+                    focus    : $('input#focus-rating').val(),
+                    lighting : $('input#lighting-rating').val(),
+                    creativity : $('input#creativity-rating').val(),
+                    story   : $('input#story-rating').val(),
+                    imageIdFk : $routeParams.id
 
-    $scope.vote = function() {
-         $http.post('/Photo-Critique/api/index.php/vote', 
-            { 
-                exposure : $('input#exposure-rating').val(),
-                focus    : $('input#focus-rating').val(),
-                lighting : $('input#lighting-rating').val(),
-                creativity : $('creativity-rating').val(),
-                story   : $('input#story-rating').val()
-
-            }
-        ).success(function(data, status, headers, config) {
-        // this callback will be called asynchronously
-        // when the response is available
-      }).error(function(data, status, headers, config) {
-        // called asynchronously if an error occurs
-        // or server returns response with an error status.
-      });
-      
-    }
+                }
+            ).success(function(data, status, headers, config) {
+            // this callback will be called asynchronously
+            // when the response is available
+          }).error(function(data, status, headers, config) {
+            // called asynchronously if an error occurs
+            // or server returns response with an error status.
+          });
+          
+        }
 
    
 

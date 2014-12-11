@@ -56,6 +56,11 @@ input:-webkit-autofill {
     background-color: white !important;
 }
 
+.game-pad img:hover {
+    cursor: pointer;
+    opacity: .8;
+}
+
 .nav>li>a:hover {
     color: #c4c4c4 !important;
 }
@@ -1901,7 +1906,9 @@ a {
 .jq-ry-container > .jq-ry-group-wrapper {
   position: relative;
   width: 100%;
+  margin-left: 10px;
 }
+
 .jq-ry-container > .jq-ry-group-wrapper > .jq-ry-group {
   position: relative;
   line-height: 0;

@@ -688,10 +688,10 @@ function showImage($id) {
     WHERE `favorites`.`user_id_fk` = `users`.`id`
     AND `favorites`.`liked_image` = :id");
 
-    $highlight = $db->prepare("SELECT id, first_name, created, feature_image_id
-    FROM `feature`, `users`
-    WHERE `feature`.`feature_user_id` = `users`.`id`
-    AND `feature`.`feature_image_id` = :id");
+    $vote = $db->prepare("SELECT exposure, focus, lighting, creativity, story
+    FROM `votes`, `users`
+    WHERE `votes`.`vote_id_fk` = `users`.`id`
+    AND `votes`.`vote_img_id` = :id");
 /*
     $feature = $db->prepare("SELECT first_name, last_name, id, feature_image_id, image_url, h_points, categories, image_l_id, vibes, img_points, created, image_id
     FROM `feature`, `images`, `users`
@@ -716,13 +716,13 @@ function showImage($id) {
     $favorites->bindParam(':id', $id);
     $image->bindValue(":id", $id);
 
-    $highlight->bindValue(':id', $id);
+    $vote->bindValue(':id', $id);
 
     try{
         $favorites->execute();
         $comment->execute();
         $image->execute();
-        $highlight->execute();
+        $vote->execute();
     }catch(PDOException $e){
         die($e->getMessage());
     }
@@ -732,7 +732,7 @@ function showImage($id) {
     $image_results = $image->fetch();
     $comments = $comment->fetchAll(PDO::FETCH_OBJ);
     $favorites_results = $favorites->fetchAll(PDO::FETCH_OBJ);
-    $highlights_results = $highlight->fetchAll(PDO::FETCH_OBJ);
+    $vote_results = $vote->fetchAll(PDO::FETCH_OBJ);
 
     $user_image = $db->prepare("SELECT image_url, image_id
     FROM images
@@ -758,13 +758,7 @@ function showImage($id) {
     LIMIT 50
     ");
 
-    $vibe = $db->prepare("SELECT image_url, image_id
-    FROM images
-    WHERE vibes = :id
-    AND image_id <> :image_id
-    ORDER BY img_points DESC
-    LIMIT 50
-    ");
+   
 
     $user_image->bindValue(":id", $image_results['user_id_fk']);
     $user_image->bindValue(":image_id", $id);
@@ -775,24 +769,22 @@ function showImage($id) {
     $category->bindValue(':id', $image_results['categories']);
     $category->bindValue(":image_id", $id);
 
-    $vibe->bindValue(':id', $image_results['vibes']);
-    $vibe->bindValue(":image_id", $id);
+    
 
     $city_image->execute();
     $user_image->execute();
     $category->execute();
-    $vibe->execute();
+    
 
 
 
     $user_images = $user_image->fetchAll(PDO::FETCH_OBJ);
     $city_images = $city_image->fetchAll(PDO::FETCH_OBJ);
     $categories = $category->fetchAll(PDO::FETCH_OBJ);
-    $vibes = $vibe->fetchAll(PDO::FETCH_OBJ);
+    
 
-    $full_feed = array_merge($comments, $favorites_results, $highlights_results);
-
-
+    $full_feed = array_merge($comments, $favorites_results);
+    $vote_feed = $vote_results;
 
     $city_inf = array(
         'id' => $image_results['image_id'],
@@ -800,7 +792,7 @@ function showImage($id) {
         'points' => $image_results['img_points'],
         'user_name' => $image_results['first_name'],
         'profile_pic' => $image_results['profile_pic'],
-        'highlights' => $image_results['h_points'],
+       
         'category' => $image_results['categories'],
         'caption' => $image_results['img_caption'],
         'vibe' => $image_results['vibes'],
@@ -811,8 +803,9 @@ function showImage($id) {
         'user_image' => $user_images,
         'city_image' => $city_images,
         'feed' => $full_feed,
-        'categories' => $categories,
-        'vibes' => $vibes
+        'votes' => $vote_feed,
+        'categories' => $categories
+       
     );
 
     $city_array = '';
@@ -1131,8 +1124,8 @@ function vote() {
                         lighting = :lighting,
                         creativity = :creativity,
                         story = :story,
-                        vote_user_id = :vote_user_id,
-                        image_id_fk = :image_id_fk";
+                        vote_id_fk = :vote_id_fk,
+                        vote_img_id = :vote_img_id";
         $db = getConnection();
         $stmt = $db->prepare($sql);
 
@@ -1142,8 +1135,8 @@ function vote() {
         $stmt->bindParam(":creativity", $data->creativity);
         $stmt->bindParam(":story", $data->story);
 
-        $stmt->bindParam(":image_id_fk", $data->imageIdFk);
-        $stmt->bindParam(":vote_user_id", $_SESSION['id']);
+        $stmt->bindParam(":vote_img_id", $data->imageIdFk);
+        $stmt->bindParam(":vote_id_fk", $_SESSION['id']);
         $stmt->execute();
         $db = null;
 

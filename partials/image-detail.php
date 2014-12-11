@@ -62,6 +62,7 @@ if (empty($_SESSION['id'])) {
 
                 <h5 id="total-rate"></h5>
                 <button class="btn vote-btn" type="submit">Vote!</button>
+
                 
             
         </form>

@@ -126,7 +126,7 @@
           <div class="row">
            
          
-             <div class="large-4 columns">
+             <div class="large-4 large-push-2 columns">
 
                  <!--
                  <div class="row">
@@ -139,7 +139,7 @@
                     <!--
                       <div ng-repeat="todo in todos" class="col-md-4">
                         -->
-                 <h4>Direct Upload</h4>
+                 <h2>Direct Upload</h2>
 
                         <input id="fileupload" type="file" name="files[]" accept="image/gif, image/jpeg, image/png">
                         <img id="imageupload" src="#" />
@@ -190,8 +190,8 @@
 
              </div>
 
-            <div class="large-4 columns instagram">
-                <h4>Instagram</h4>
+            <div class="large-4 large-pull-2 columns instagram">
+                <h2>Instagram</h2>
                 <div>
                     <label>Your Username:</label>
                     <input type="text" ng-model="user" class="form-control" placeholder="Enter your username here">
