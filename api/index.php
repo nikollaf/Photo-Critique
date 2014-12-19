@@ -205,14 +205,7 @@ function getWorldFeed() {
     $world_array = array();
     $db = getConnection();
 
-    $city = $db->prepare("SELECT  a.l_id, a.points, a.city,
-        COUNT(b.image_l_id) uploads,
-        SUM(b.h_points) highlights
-        FROM  location a
-        LEFT JOIN images b
-        ON a.l_id = b.image_l_id
-        GROUP BY a.l_id
-        ORDER BY a.points DESC");
+   
 
 
 
@@ -234,12 +227,7 @@ function getWorldFeed() {
     AND `images`.`user_id_fk` = `users`.`id`
     AND image_id NOT IN(SELECT feature_image_id FROM feature WHERE feature_image_id = image_id AND feature_user_id = :session_id)");
 
-    $feature = $db->prepare("SELECT first_name, id, feature_image_id, image_url, h_points, categories, image_l_id, vibes, img_points, images.created, image_id
-    FROM `feature`, `images`, `users`
-    WHERE `feature`.`feature_user_id` = :session_id
-    AND `feature`.`feature_image_id` = `images`.`image_id`
-    AND `images`.`user_id_fk` = `users`.`id`
-    AND image_id NOT IN (SELECT liked_image FROM favorites WHERE liked_image = image_id AND user_id_fk = :session_id)");
+    
 
     $full = $db->prepare("SELECT liked_image, first_name, id, feature_image_id, image_url, h_points, categories, image_l_id, vibes, img_points, images.created, image_id
     FROM `feature`, `images`, `users`, `favorites`
@@ -251,25 +239,14 @@ function getWorldFeed() {
 
 
     $favorites->bindValue(":session_id", $_SESSION['id']);
-
-
-    $feature->bindValue(':session_id', $_SESSION['id']);
     $full->bindValue(':session_id', $_SESSION['id']);
     $images->bindValue(':session_id', $_SESSION['id']);
 
-
-
     try{
-        $city->execute();
-        $feature->execute();
         $images->execute();
-
         $favorites->execute();
         $full->execute();
-        $cities = $city->fetchAll(PDO::FETCH_OBJ);
-
         $full_images = $full->fetchAll(PDO::FETCH_OBJ);
-        $feature_images = $feature->fetchAll(PDO::FETCH_OBJ);
         $favorites_results = $favorites->fetchAll(PDO::FETCH_OBJ);
         $images_result = $images->fetchAll(PDO::FETCH_OBJ);
 
@@ -277,18 +254,9 @@ function getWorldFeed() {
         die($e->getMessage());
     }
 
-    $image_array = array_merge($favorites_results, $images_result, $feature_images, $full_images);
+    $image_array = array_merge($favorites_results, $images_result,$full_images);
 
-
-    $world_info = array(
-        'images' => $image_array,
-        'cities' => $cities
-
-    );
-
-    $world_array[] = $world_info;
-
-    echo json_encode($world_array);
+    echo json_encode($image_array);
 
 }
 

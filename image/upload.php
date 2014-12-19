@@ -158,32 +158,9 @@
                           <option value="Other">Other</option>
                         </select>
                  </p>
-                 <p>Vibe
-                        <select name="vibe[]" class="form-control">
-                            <option value="">Vibes</option>
-                            <option value="Happy"> Happy</option>
-                            <option value="Sad"> Sad</option>
-                            <option value="Beautiful"> Beautiful</option>
-                            <option value="Hot"> Hot</option>
-                            <option value="Cold"> Cold</option>
-                            <option value="Cute"> Cute</option>
-                            <option value="Ugly"> Ugly</option>
-                            <option value="Peace"> Peace</option>
-                            <option value="Noise"> Noise</option>
-                            <option value="Exciting"> Exciting</option>
-                            <option value="Dull"> Dull</option>
-                            <option value="Romantic"> Romantic</option>
-                            <option value="Heartbreaking"> Heartbreaking</option>
-                            <option value="Funny"> Funny</option>
-                            <option value="Serious"> Serious</option>
-                            <option value="Luxury"> Luxury</option>
-                            <option value="Simplicity"> Simplicity</option>
-                            <option value="Mysterious"> Mysterious</option>
-                            <option value="Other"> Other</option>
-                       </select>
-                 </p>
+            
 
-                        <input type="checkbox" name="status[]" value="Y" checked="checked">
+                        
                 <p>Caption
                         <textarea name="caption" class="form-control"></textarea>
                 </p>
@@ -214,34 +191,9 @@
 
                             <br>
 
-                            <select name="vibe[]" class="form-control">
-                                <option value="">Vibes</option>
-                                <option value="Happy"> Happy</option>
-                                <option value="Sad"> Sad</option>
-                                <option value="Beautiful"> Beautiful</option>
-                                <option value="Hot"> Hot</option>
-                                <option value="Cold"> Cold</option>
-                                <option value="Cute"> Cute</option>
-                                <option value="Ugly"> Ugly</option>
-                                <option value="Peace"> Peace</option>
-                                <option value="Noise"> Noise</option>
-                                <option value="Exciting"> Exciting</option>
-                                <option value="Dull"> Dull</option>
-                                <option value="Romantic"> Romantic</option>
-                                <option value="Heartbreaking"> Heartbreaking</option>
-                                <option value="Funny"> Funny</option>
-                                <option value="Serious"> Serious</option>
-                                <option value="Luxury"> Luxury</option>
-                                <option value="Simplicity"> Simplicity</option>
-                                <option value="Mysterious"> Mysterious</option>
-                                <option value="Other"> Other</option>
-                            </select>
 
                             <button type="button" class="btn btn-primary btn-radio">Check</button>
                             <input type="checkbox" name="instagram[]" value="{{p.images.standard_resolution.url}}">
-
-                            <p><input id="public" type="checkbox" name="status[]" value="Y">Public</p>
-
 
                         </div>
 

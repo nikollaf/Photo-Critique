@@ -38,32 +38,25 @@ worldlensControllers.controller('WorldFeedCtrl', ['$scope', 'World', '$routePara
     function($scope, World, $routeParams, Highlight, Like) {
 
 
-        $scope.world = World.show('', function(world) {
-            $scope.mainWorld = world[0];
+        $scope.world = World.show();
 
-            $scope.world_images = world[0].images;
+       $scope.vote = function (cityId, imageId, img, status) {
 
-            $scope.vote = function (cityId, imageId, img, status) {
+            var key = $scope.world.indexOf(img);
 
-                var key = $scope.world_images.indexOf(img);
+            postData = {cityId:cityId, imageId:imageId};
 
-                postData = {cityId:cityId, imageId:imageId};
-
-                if (status == 'img.isLiked') {
-                    Like.insert(postData);
-                    $scope.world_images[key].img_points = parseInt($scope.world_images[key].img_points) + 1;
-                    console.log("Liked");
-                } else if (status == '!img.isLiked') {
-                    Like.delete(postData);
-                    $scope.world_images[key].img_points = parseInt($scope.world_images[key].img_points) - 1;
-                    console.log("Unliked");
-                }
-                img.isLiked = !img.isLiked;
-            };
-
-         
-
-        });
+            if (status == 'img.isLiked') {
+                Like.insert(postData);
+                $scope.world[key].img_points = parseInt($scope.world[key].img_points) + 1;
+                console.log("Liked");
+            } else if (status == '!img.isLiked') {
+                Like.delete(postData);
+                $scope.world[key].img_points = parseInt($scope.world[key].img_points) - 1;
+                console.log("Unliked");
+            }
+            img.isLiked = !img.isLiked;
+        };
 
         $scope.totalDisplayed = 10;
 
@@ -461,10 +454,15 @@ worldlensControllers.controller('GameListCtrl', ['$scope', 'Image', '$routeParam
 
 
 /** City List Ctrl - Return all cities **/
-worldlensControllers.controller('ListCityCtrl', ['$scope', 'City', '$routeParams',
-    function($scope, City, $routeParams) {
+worldlensControllers.controller('ListCityCtrl', ['$scope', 'City', '$routeParams', 'World',
+    function($scope, City, $routeParams, World) {
 
         $scope.cities = City.show();
+
+        $scope.list = World.show();
+
+
+        console.log($scope.list);
 
     }]);
 

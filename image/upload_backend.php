@@ -86,22 +86,22 @@ function feed($city_id_fk, $user_id_fk) {
   }
 }
 
-function addImage($public_id, $user_id_fk, $category, $gallery, $status, $vibe, $city_id_fk, $caption) {
+function addImage($public_id, $user_id_fk, $category, $gallery, $city_id_fk, $caption) {
 
     //$request = Slim::getInstance()->request();
     //$wine = json_decode($request->getBody());
     $sql = "INSERT INTO images SET image_url = :public_id,
     status = :status,
-    user_id_fk = :user_id_fk, categories = :category, gallery_id = :gallery, vibes = :vibe, image_l_id = :image_l_id, img_caption = :img_caption";
+    user_id_fk = :user_id_fk, categories = :category, gallery_id = :gallery, image_l_id = :image_l_id, img_caption = :img_caption";
     try {
         $db = getConnection();
         $stmt = $db->prepare($sql);
         $stmt->bindParam(":public_id", $public_id);
         $stmt->bindParam(":user_id_fk", $user_id_fk);
-        $stmt->bindParam(":status", $status);
+       
         $stmt->bindParam(":gallery", $gallery);
         $stmt->bindParam(":category", $category);
-        $stmt->bindParam(":vibe", $vibe);
+       
         $stmt->bindParam(":image_l_id", $city_id_fk);
         $stmt->bindParam(":img_caption", $caption);
         $stmt->execute();
@@ -115,8 +115,8 @@ function addImage($public_id, $user_id_fk, $category, $gallery, $status, $vibe, 
 //http://stackoverflow.com/questions/14069421/in-html5-how-to-show-preview-of-image-before-upload
 
 $categories[] = '';
-$status[] = '';
-$vibe[] = '';
+
+
 
 foreach ($_POST['category'] as $key => $value) {
 
@@ -124,26 +124,21 @@ foreach ($_POST['category'] as $key => $value) {
 }
 
 
-foreach ($_POST['status'] as $key => $value) {
 
-  array_push($status, $value);
-}
 
-foreach($_POST['vibe'] as $key => $value) {
-  array_push($vibe, $value);
-}
+
 
 
 //////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////////
 
-function create_photo($file_path, $categories, $gallery_id, $status, $vibe, $city_id_fk, $caption) {
+function create_photo($file_path, $categories, $gallery_id, $city_id_fk, $caption) {
   # Upload the received image file to Cloudinary
   $result = \Cloudinary\Uploader::upload($file_path, array(
    "tags" => $_POST['category'],
   ));
 
-  addImage($result['public_id'], $_SESSION['id'], $categories, $gallery_id, $status, $vibe, $city_id_fk, $caption);
+  addImage($result['public_id'], $_SESSION['id'], $categories, $gallery_id, $city_id_fk, $caption);
 }
 
 //print_r($_FILES);
@@ -161,7 +156,7 @@ if (isset($_FILES) && !empty($_FILES)) {
 
     foreach ($files["tmp_name"] as $index => $value) {
       $num = $index + 1;
-      array_push($files_data, create_photo($value, $categories[$num], $gallery_id, $status[$num], $vibe[$num], $city_id_fk, $_POST['caption']));
+      array_push($files_data, create_photo($value, $categories[$num], $gallery_id, $city_id_fk, $_POST['caption']));
       //echo $value;
     }
 
@@ -175,7 +170,7 @@ if (isset($_FILES) && !empty($_FILES)) {
         $num = $index + 1;
         echo $value;
 
-        create_photo($value, $categories[$num], $gallery_id, $status[$num], $vibe[$num], $city_id_fk, $_POST['caption']);
+        create_photo($value, $categories[$num], $gallery_id, $city_id_fk, $_POST['caption']);
         //echo $value;
     }
 
