@@ -15,60 +15,13 @@ require '../api/vendor/cloudinary/src/Uploader.php';
 //\Cloudinary\Uploader::upload('http://www.example.com/image.jpg');
 
 
-$sql = "SELECT * FROM location WHERE city = :city AND country = :country || city = :city AND state = :state";
-   try {
-    $db = getConnection();
-    $stmt = $db->prepare($sql);
-    $stmt->bindValue(":city", $_POST['city']);
-    $stmt->bindValue(":state", $_POST['state']);
-    $stmt->bindValue(":country", $_POST['country']);
 
-    $stmt->execute();
+function feed($user_id_fk) {
 
-    $gallery_id = $db->lastInsertId();
-    $db = null;
-
-  } catch(PDOException $e) {
-      echo '{"error":{"text":'. $e->getMessage() .'}}';
-  }
-
-$city = $stmt->fetch();
-
-if (!empty($city)) {
-  $city_id_fk = $city['l_id'];
-  //echo $city_id_fk;
-
-} else {
-  $sql = "INSERT INTO location SET city = :city, state = :state, country = :country, cont = :region";
-      try {
-          $db = getConnection();
-          $stmt = $db->prepare($sql);
-          $stmt->bindParam(":city", $_POST['city']);
-          $stmt->bindParam(":state", $_POST['state']);
-          $stmt->bindParam(":country", $_POST['country']);
-          $stmt->bindParam(":region", $_POST['region']);
-
-          $stmt->execute();
-
-          $city_id_fk = $db->lastInsertId();
-          $db = null;
-
-          //echo $city_id_fk;
-
-      } catch(PDOException $e) {
-          echo '{"error":{"text":'. $e->getMessage() .'}}';
-      }
-}
-
-
-
-function feed($city_id_fk, $user_id_fk) {
-
-  $sql = "INSERT INTO gallery SET city_id_fk = :city_id_fk, user_id_fk = :user_id_fk";
+  $sql = "INSERT INTO gallery SET user_id_fk = :user_id_fk";
   try {
       $db = getConnection();
       $stmt = $db->prepare($sql);
-      $stmt->bindParam(":city_id_fk", $city_id_fk);
       $stmt->bindParam(":user_id_fk", $user_id_fk);
 
       $stmt->execute();
@@ -86,13 +39,18 @@ function feed($city_id_fk, $user_id_fk) {
   }
 }
 
-function addImage($public_id, $user_id_fk, $category, $gallery, $city_id_fk, $caption) {
+function addImage($public_id, $user_id_fk, $category, $gallery, $caption) {
 
     //$request = Slim::getInstance()->request();
     //$wine = json_decode($request->getBody());
-    $sql = "INSERT INTO images SET image_url = :public_id,
-    status = :status,
-    user_id_fk = :user_id_fk, categories = :category, gallery_id = :gallery, image_l_id = :image_l_id, img_caption = :img_caption";
+    $sql = "INSERT INTO 
+                    images 
+                SET image_url = :public_id,
+             
+                    user_id_fk = :user_id_fk, 
+                    categories = :category, 
+                    gallery_id = :gallery,
+                    img_caption = :img_caption";
     try {
         $db = getConnection();
         $stmt = $db->prepare($sql);
@@ -101,8 +59,7 @@ function addImage($public_id, $user_id_fk, $category, $gallery, $city_id_fk, $ca
        
         $stmt->bindParam(":gallery", $gallery);
         $stmt->bindParam(":category", $category);
-       
-        $stmt->bindParam(":image_l_id", $city_id_fk);
+      
         $stmt->bindParam(":img_caption", $caption);
         $stmt->execute();
         $db = null;
@@ -132,22 +89,22 @@ foreach ($_POST['category'] as $key => $value) {
 //////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////////
 
-function create_photo($file_path, $categories, $gallery_id, $city_id_fk, $caption) {
+function create_photo($file_path, $categories, $gallery_id, $caption) {
   # Upload the received image file to Cloudinary
   $result = \Cloudinary\Uploader::upload($file_path, array(
-   "tags" => $_POST['category'],
+   "tags" => $_POST['category']
   ));
 
-  addImage($result['public_id'], $_SESSION['id'], $categories, $gallery_id, $city_id_fk, $caption);
+  addImage($result['public_id'], $_SESSION['id'], $categories, $gallery_id, $caption);
 }
 
 //print_r($_FILES);
 
-feed($city_id_fk, $_SESSION['id']);
+feed($_SESSION['id']);
 
-if (isset($_FILES) && !empty($_FILES)) {
+if (empty($_FILES['files']['size'] != 0)) {
 
-    //print_r($_POST);
+
 
     $files = $_FILES["files"];
     $files = is_array($files) ? $files : array($files);
@@ -155,22 +112,26 @@ if (isset($_FILES) && !empty($_FILES)) {
 
 
     foreach ($files["tmp_name"] as $index => $value) {
+
+      print_r($_FILES);
+    
+
       $num = $index + 1;
-      array_push($files_data, create_photo($value, $categories[$num], $gallery_id, $city_id_fk, $_POST['caption']));
-      //echo $value;
+      array_push($files_data, create_photo($value, $categories[$num], $gallery_id, $_POST['caption']));
+      echo $_POST['caption'];
+
+    
     }
 
 } else if (isset($_POST['instagram'])) {
 
-    print_r($_POST);
-
-
+    
     foreach ($_POST['instagram'] as $index => $value) {
 
         $num = $index + 1;
         echo $value;
 
-        create_photo($value, $categories[$num], $gallery_id, $city_id_fk, $_POST['caption']);
+        create_photo($value, $categories[$num], $gallery_id, $_POST['caption']);
         //echo $value;
     }
 

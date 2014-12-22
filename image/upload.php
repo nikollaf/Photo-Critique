@@ -94,37 +94,12 @@
 
       
       <form class="form-horizontal" action="image/upload_backend.php" method="post" enctype="multipart/form-data">
-          <div class="row">
-              <div class="col-xs-2">
-                  <!--
-                  <label for="inputEmail3" class="col-sm-2 control-label">City</label>
-                  -->
-                  <input type="hidden" value="" id="geobytescity" name="city" class="form-control" ng-model="location">
-              </div>
-              <div class="col-xs-2">
-                  <!--
-                  <label for="inputEmail3" class="col-sm-2 control-label">State</label>
-                  -->
-                  <input type="hidden" id="geobytesregionlocationcode" name="state" class="form-control">
-              </div>
-              {{result}}
-              <div class="col-xs-3">
-                  <!--
-                  <label for="inputEmail3" class="col-sm-2 control-label">Country</label>
-                    -->
-                  <input type="hidden" id="geobytescountry" value="" name="country" class="form-control" id="inputEmail3" placeholder="Country">
-              </div>
-              <div class="col-xs-3">
-                  <!--
-                  <label for="inputEmail3"  class="col-sm-2 control-label">Region</label>
-                  -->
-                  <input type="hidden" id="geobytesmapreference" value="" name="region" class="form-control" id="inputEmail3" placeholder="Region">
-              </div>
-          </div>
+          
 
 
           <div class="row">
-           
+
+
          
              <div class="large-4 large-push-2 columns">
 
@@ -143,9 +118,7 @@
 
                         <input id="fileupload" type="file" name="files[]" accept="image/gif, image/jpeg, image/png">
                         <img id="imageupload" src="#" />
-                <p>City
-                 <input class="form-control ff_elem" type="text" value="" id="f_elem_city"/>
-                </p>
+               
 
                  <p>Category
                         <select name="category[]" class="form-control">
@@ -192,7 +165,7 @@
                             <br>
 
 
-                            <button type="button" class="btn btn-primary btn-radio">Check</button>
+                           
                             <input type="checkbox" name="instagram[]" value="{{p.images.standard_resolution.url}}">
 
                         </div>

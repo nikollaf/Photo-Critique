@@ -91,6 +91,7 @@ if (empty($_SESSION['id'])) {
                 </p>
 
                 <p ng-show="feed.comment">
+                    <button ng-click="upvote()" class="btn btn-primary">
                     <a ng-href="#/user/{{feed.id}}">{{feed.first_name}}</a>: {{feed.comment}}
                 </p>
               

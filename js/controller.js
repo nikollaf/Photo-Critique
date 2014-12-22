@@ -180,7 +180,17 @@ function ($scope, $routeParams, Image, $location, $http) {
             }
           });
 
-      
+        $scope.upvote = function() {
+            $http.post('/Photo-Critique/api/index.php/upvote/:id', 
+                {
+                    id: $routeParams.id
+                }
+                ).success(function(data, status, headers, config){
+
+            }).error(function(data, status, headers, config){
+
+            });
+        }
 
         $scope.submit = function(comment) {
 
@@ -382,8 +392,8 @@ worldlensControllers.controller('UserController', ['$scope', '$routeParams', 'Us
 
 
 
-worldlensControllers.controller('GameListCtrl', ['$scope', 'Image', '$routeParams', 'Like', 'Highlight',
-    function($scope, Image, $routeParams, Like, Highlight) {
+worldlensControllers.controller('GameListCtrl', ['$scope', 'Image', '$routeParams', 'Like',
+    function($scope, Image, $routeParams, Like) {
 
         $scope.images = Image.show();
 

@@ -19,18 +19,22 @@ if (empty($_SESSION['id'])) {
 
         <ul class="pad-left-game small-block-grid-2 medium-block-grid-2 large-block-grid-2 large-centered">
             <li class="game-pad" ng-repeat="img in images | filter:{categories: randcat} | limitTo: 4">
-                <div ng-click="reorder(img.image_l_id, img.image_id, img, 'img.isLiked')">
+                <div ng-if="!img.liked_image" ng-click="reorder(img.image_l_id, img.image_id, img, 'img.isLiked')">
                     <img class="media-object img-width image{{$index}}" ng-src="http://res.cloudinary.com/world-lens/image/upload/w_240,h_240,c_fill/v1387844193/{{img.image_url}}.jpg">
+                </div>
+
+                <div ng-if="(img.image_id == img.liked_image)">
+                    <span style="width: 234px; height: 234px; display: block;"></span>
                 </div>
 
                 <div class="text-center vote">
 
 
-                    <button ng-if="(img.image_id == img.liked_image)" ng-show="img.isLiked" class="button to-like not-clicked-like" ng-click="vote(img.image_l_id, img.image_id, img, 'img.isLiked')">
+                    <button ng-if="(img.image_id == img.liked_image)" ng-show="img.isLiked" class="button to-like not-clicked-like">
                         <span class="glyphicon glyphicon-heart "></span> {{img.img_points | number}}</button>
 
 
-                    <button ng-if="(img.image_id == img.liked_image)" ng-show="!img.isLiked" class="button liked to-like" ng-click="vote(img.image_l_id, img.image_id, img, '!img.isLiked')">
+                    <button ng-if="(img.image_id == img.liked_image)" ng-show="!img.isLiked" class="button liked to-like">
                         <span class="glyphicon glyphicon-heart "></span> {{img.img_points | number}}
                     </button>
 
