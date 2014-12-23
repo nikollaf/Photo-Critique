@@ -65,6 +65,11 @@ input:-webkit-autofill {
     color: #c4c4c4 !important;
 }
 
+
+.navbar-nav {
+    margin: 0;
+}
+
 .city-up {
     float: left;
     width: 124px;

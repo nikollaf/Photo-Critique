@@ -25,20 +25,20 @@ if (empty($_SESSION['id'])) {
 
         <form ng-submit="vote()" id="rate" class="row">
                 
-                <div class="medium-2 large-2 columns">
+                <div class="medium-2 small-2 large-2 columns">
                     <h4>Exposure</h4>
                     <div id="exposure"></div>
                     <p id="exposure-p"></p>
                     <input ng-value="exposure" id="exposure-rating" type="hidden">
                 </div>
 
-                <div class="medium-2 large-2 columns">
+                <div class="medium-2 small-2 large-2 columns">
                     <h4>Focus</h4>
                     <div id="focus"></div>
                     <input ng-model="focus" id="focus-rating" type="hidden">
                 </div>
 
-                  <div class="medium-2 large-2 columns">
+                  <div class="medium-2 small-2 large-2 columns">
 
                     <h4>Lighting</h4>
                     <div id="lighting"></div>
@@ -46,13 +46,13 @@ if (empty($_SESSION['id'])) {
 
                 </div>
 
-                <div class="medium-2 large-2 columns">
+                <div class="medium-2 small-2 large-2 columns">
                     <h4>Creativity</h4>
                     <div id="creativity"></div>
                     <input ng-model="creativity" id="creativity-rating" type="hidden">
                 </div>
 
-                <div class="medium-2 large-2 columns" style='float: left;'>
+                <div class="medium-2 small-2 large-2 columns" style='float: left;'>
                     <h4>Story</h4>
                     <div id="story"></div>
                     <input ng-model="story" id="story-rating" type="hidden">
@@ -83,15 +83,17 @@ if (empty($_SESSION['id'])) {
 
             <button class="comment-btn btn" type="submit">Post New Message</button>
         </form>
-        <div class="image-feed">
-            <div ng-repeat="feed in mainImage.feed | orderBy: '-created'">
 
-                <p ng-show="feed.liked_image">
-                    <a ng-href="#/user/{{feed.id}}">{{feed.first_name}}</a> liked this image.
-                </p>
+        <div class="image-feed">
+            <div ng-repeat="feed in mainImage.feed | orderBy: 'votes'">
+
 
                 <p ng-show="feed.comment">
-                    <button ng-click="upvote()" class="btn btn-primary">
+                    <!-- messages (upvote) -->
+                    <button ng-click="changeVote(feed.com_img_id, vote, 'up')" g-class="{true:'up', false:''}[vote=='up']" class="btn">{{feed.votes}}</button>
+                    <!-- <i title="Up Votes" ng-click="changeVote(feed.com_img_id, vote, 'up')" class="fa fa-arrow-circle-up fa-2x" ng-class="{true:'up', false:''}[vote=='up']"></i> -->
+
+
                     <a ng-href="#/user/{{feed.id}}">{{feed.first_name}}</a>: {{feed.comment}}
                 </p>
               

@@ -4,7 +4,7 @@ require 'connect/database.php';
 require 'classes/users.php';
 require 'classes/general.php';
 require 'classes/bcrypt.php';
-require 'classes/Chat.php';
+
 
 
 

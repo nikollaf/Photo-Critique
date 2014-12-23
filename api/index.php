@@ -31,8 +31,12 @@ $app->get('/city/:id', 'showCity');
 $app->put('/city/:id', 'like');
 
 $app->post('/user/:id', 'followUser');
-$app->post('/highlight', 'highlight');
-$app->put('/highlight', 'unHighlight');
+$app->post('/highlight', 'upvote');
+$app->delete('/highlight', 'removeVote');
+
+
+
+
 
 $app->get('/cont/:id', 'getCont');
 $app->get('/user/:id', 'getUser');
@@ -467,18 +471,6 @@ function getFeed() {
 
     $db = getConnection();
 
-    /*
-    $users = $db->prepare("SELECT  a.id, a.first_name
-        COUNT(b.image_l_id) uploads,
-        SUM(b.h_points) highlights
-        FROM  users a
-        LEFT JOIN images b
-        ON a.id = b.user_id_fk
-        GROUP BY a.id
-        ORDER BY a.points DESC");
-    */
-
-
     $feed = "SELECT * FROM
         `gallery`,
         `users`,
@@ -489,9 +481,10 @@ function getFeed() {
     AND
         `images`.`gallery_id` = `gallery`.`image_id_fk`
     GROUP BY
-    `gallery`.`image_id_fk`
+        `gallery`.`image_id_fk`
     ORDER BY
-    `gallery`.`image_id_fk` DESC
+        `gallery`.`image_id_fk` 
+    DESC
     ";
 
     try {
@@ -627,7 +620,11 @@ function showImage($id) {
     WHERE `votes`.`vote_id_fk` = `users`.`id`
     AND `votes`.`vote_img_id` = :id");
 
-    $comment = $db->prepare("SELECT id, created, comment, first_name FROM img_comments INNER JOIN users WHERE image_id_fk = :id AND user_id_fk = id");
+    $comment = $db->prepare("SELECT 
+            id, created, comment, first_name, com_img_id, votes
+        FROM img_comments 
+        INNER JOIN users 
+        WHERE image_id_fk = :id AND user_id_fk = id");
 
 
     $comment->bindParam(":id", $id);
@@ -1083,6 +1080,89 @@ function highlight() {
         $db = getConnection();
         $stmt = $db->prepare($sql);
         $stmt->bindParam("id", $_GET['imageId']);
+        $stmt->execute();
+        $db = null;
+
+    } catch(PDOException $e) {
+        echo '{"error":{"text":'. $e->getMessage() .'}}';
+    }
+
+}
+
+
+function upvote() {
+
+    $request = \Slim\Slim::getInstance()->request();
+    $data = json_decode($request->getBody());
+
+    print_r($data);
+
+    try {
+        $sql = "INSERT INTO 
+                    com_votes 
+                SET cv_user_id = :cv_user_id, cv_img_id = :cv_img_id";
+        $db = getConnection();
+        $stmt = $db->prepare($sql);
+
+        $stmt->bindParam(":cv_img_id", $data->id);
+        $stmt->bindParam(":cv_user_id", $_SESSION['id']);
+        $stmt->execute();
+        $db = null;
+
+    } catch(PDOException $e) {
+     
+        header("HTTP/1.0 404 Not Found");
+        header('HTTP', true, 500);
+        die();
+    }
+
+
+    try {
+        $sql = "UPDATE img_comments SET votes = votes + 1 WHERE com_img_id = :id";
+        $db = getConnection();
+        $stmt = $db->prepare($sql);
+        $stmt->bindParam("id", $data->id);
+        $stmt->execute();
+        $db = null;
+
+    } catch(PDOException $e) {
+        echo '{"error":{"text":'. $e->getMessage() .'}}';
+    }
+
+}
+
+function removeVote() {
+
+    $request = \Slim\Slim::getInstance()->request();
+    $data = json_decode($request->getBody());
+
+    print_r($data);
+
+    try {
+        $sql = "DELETE FROM 
+                    com_votes 
+                WHERE cv_user_id = :cv_user_id AND cv_img_id = :cv_img_id";
+        $db = getConnection();
+        $stmt = $db->prepare($sql);
+
+        $stmt->bindParam(":cv_img_id", $data->id);
+        $stmt->bindParam(":cv_user_id", $_SESSION['id']);
+        $stmt->execute();
+        $db = null;
+
+    } catch(PDOException $e) {
+     
+        header("HTTP/1.0 404 Not Found");
+        header('HTTP', true, 500);
+        die();
+    }
+
+
+    try {
+        $sql = "UPDATE img_comments SET votes = votes - 1 WHERE com_img_id = :id";
+        $db = getConnection();
+        $stmt = $db->prepare($sql);
+        $stmt->bindParam("id", $data->id);
         $stmt->execute();
         $db = null;
 

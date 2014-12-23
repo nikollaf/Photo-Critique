@@ -1,8 +1,6 @@
 <?php
 include 'core/init.php';
 
-
-
 ?>
 <!doctype html>
 <html lang="en" ng-app="worldlensApp">
@@ -39,12 +37,9 @@ include 'core/init.php';
                 </div>
                 {{error}}
 
-                <input type="submit" id="submit" class="btn btn-default" value="Submit">
+                <input type="submit" id="submit" class="btn btn-default" value="Log In">
 
             </form>
-
-          
-
         </div>
       </div>
 
@@ -53,9 +48,6 @@ include 'core/init.php';
   <header class="navbar" role="banner">
 
   <div class="row">
-
-
-      
 
   </div>
 
@@ -99,7 +91,7 @@ include 'core/init.php';
             <ul class="notifications dropdown-menu">
 
                 <li ng-repeat="message in messages"><a href="#">{{message.first_name}}</a> wants to follow you? <span ng-click="connect(message.id , 'Y', message)" class="glyphicon glyphicon-ok"></span> / <span ng-click="connect(message.id, 'N', message)" class="glyphicon glyphicon-remove"></span></li>
-                <li ng-show="!messages.length"> You ain't got no messages!</li>
+                <li ng-show="!messages.length">&nbsp;You currently have no new messages.</li>
             </ul>
        </li>
 
@@ -115,7 +107,7 @@ include 'core/init.php';
     <div ng-view>
 
     </div>
-    </div>
+  </div>
 
 
   <script src="http://code.jquery.com/jquery-2.0.3.min.js"></script>
@@ -124,24 +116,22 @@ include 'core/init.php';
   <script src="js/script.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.5/angular.min.js"></script>
   <script src="js/vendor/modernizr.js"></script>
-   <script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
+  <script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
 
-   <script src="js/infinitescroll.min.js"></script>
+  <script src="js/infinitescroll.min.js"></script>
   <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
 
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.5/angular-route.min.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.5/angular-resource.min.js"></script>
-
   <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.5/angular-sanitize.js"></script>
   <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.5/angular-animate.js"></script>
-   <script src="js/app.js"></script>
+  <script src="js/app.js"></script>
   <script src="js/controller.js"></script>
   <script src="js/filter.js"></script>
   <script src="js/services.js"></script>
 
 
   <script src="js/foundation.min.js"></script>
-  
   <script src="js/ui-bootstrap.min.js"></script>
 
 

@@ -110,10 +110,7 @@ function ($scope, $routeParams, Image, $location, $http) {
     $scope.image = Image.query({ id: $routeParams.id }, function(image) {
         $scope.mainImage = image[0];
 
-        console.log($scope.mainImage.votes[0]);
-
-       
-
+    
         if ($scope.mainImage.votes[0]) {
 
             var exposure = $scope.mainImage.votes[0].exposure,
@@ -180,16 +177,44 @@ function ($scope, $routeParams, Image, $location, $http) {
             }
           });
 
-        $scope.upvote = function() {
-            $http.post('/Photo-Critique/api/index.php/upvote/:id', 
+        $scope.changeVote = function(id, vote, flag) {
+
+            $scope.vote = vote==flag?'None':flag;
+            alert($scope.vote);
+            
+            if ($scope.vote == 'up') {
+               $http.post('/Photo-Critique/api/index.php/highlight', 
                 {
-                    id: $routeParams.id
+                    id: id
                 }
                 ).success(function(data, status, headers, config){
 
-            }).error(function(data, status, headers, config){
+                        console.log(data);
+                        console.log(headers);
+                        console.log('SUP');
 
-            });
+                }).error(function(data, status, headers, config){
+                        console.log('You already voted!!!!!');
+                });
+            } else if ($scope.vote == 'None') {
+              $http.delete('/Photo-Critique/api/index.php/highlight', 
+                {
+                    id: id
+                }
+                ).success(function(data, status, headers, config){
+
+                        console.log(data);
+                        console.log(headers);
+                        console.log('SUP');
+
+                }).error(function(data, status, headers, config){
+                        console.log('You already voted!!!!!');
+                });
+            }
+            
+
+
+           
         }
 
         $scope.submit = function(comment) {
@@ -472,7 +497,7 @@ worldlensControllers.controller('ListCityCtrl', ['$scope', 'City', '$routeParams
         $scope.list = World.show();
 
 
-        console.log($scope.list);
+      
 
     }]);
 
