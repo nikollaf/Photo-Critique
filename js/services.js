@@ -25,6 +25,12 @@ worldlensServices.factory('Image', function ($resource) {
     })
 });
 
+worldlensServices.factory('Game', function ($resource) {
+    return $resource('api/index.php/image/game', {}, {
+        show: {method: 'GET', isArray: true}
+    })
+});
+
 
 worldlensServices.factory('World', function ($resource) {
     return $resource('api/index.php/world', {}, {

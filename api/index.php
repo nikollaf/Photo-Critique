@@ -18,6 +18,8 @@ $app->post('/image', 'addImage');
 
 
 $app->get('/image', 'showAllImages');
+$app->get('/image/game', 'showImages');
+
 $app->get('/message', 'getMessage');
 
 $app->post('/message', 'userMessage');
@@ -139,16 +141,16 @@ function showAllImages() {
 
     $db = getConnection();
 
-    $images = $db->prepare("SELECT first_name, id, image_url, categories, vibes, img_points, h_points, images.created, image_id
+    $images = $db->prepare("SELECT first_name, id, image_url, categories, img_points, h_points, images.created, image_id
     FROM
         `images`, `users`
     WHERE `images`.`user_id_fk` = `users`.`id`
     AND
     image_id NOT IN (SELECT liked_image FROM favorites WHERE liked_image = image_id AND user_id_fk = :session_id)
-    AND image_id NOT IN(SELECT feature_image_id FROM feature WHERE feature_image_id = image_id AND feature_user_id = :session_id)");
+    ");
 
 
-    $favorites = $db->prepare("SELECT first_name, id, liked_image, image_url, categories, h_points, vibes, img_points, images.created, image_id
+    $favorites = $db->prepare("SELECT first_name, id, liked_image, image_url, categories, h_points, img_points, images.created, image_id
     FROM `favorites`, `images`, `users`
     WHERE `favorites`.`user_id_fk` = :session_id
     AND `favorites`.`liked_image` = `images`.`image_id`
@@ -157,7 +159,7 @@ function showAllImages() {
 
     
 
-    $full = $db->prepare("SELECT first_name, id, image_url, h_points, categories, vibes, img_points, images.created, image_id
+    $full = $db->prepare("SELECT first_name, id, image_url, h_points, categories, img_points, images.created, image_id
     FROM `feature`, `images`, `users`, `favorites`
     WHERE `feature`.`feature_user_id` = :session_id
     AND `favorites`.`user_id_fk` = :session_id
@@ -193,6 +195,38 @@ function showAllImages() {
 
 }
 
+function showImages() {
+
+    $db = getConnection();
+
+    $images = $db->prepare("SELECT first_name, id, image_url, categories, img_points, h_points, images.created, image_id
+    FROM
+        `images`, `users`
+    WHERE `images`.`user_id_fk` = `users`.`id`
+    AND
+    image_id NOT IN (SELECT liked_image FROM favorites WHERE liked_image = image_id AND user_id_fk = :session_id)");
+
+
+    $images->bindValue(':session_id', $_SESSION['id']);
+
+    try{
+        $images->execute();
+       
+       
+        
+        $images_result = $images->fetchAll(PDO::FETCH_OBJ);
+
+    }catch(PDOException $e){
+        die($e->getMessage());
+    }
+
+    //$image_array = array_merge($favorites_results, $images_result, $full_images);
+
+
+    echo json_encode($images_result);
+
+}
+
 /********************************************************/
 /*-------------------------------------------------------*/
 /*                        World FEED (GET)               */
@@ -210,7 +244,7 @@ function getWorldFeed() {
 
     //$name = $db->prepare("SELECT first_name, last_name, id, profile_pic, id, info FROM `users` WHERE `id` = :id");
 
-    $images = $db->prepare("SELECT first_name, id, image_url, categories,vibes, img_points, h_points, images.created, image_id  FROM
+    $images = $db->prepare("SELECT first_name, id, image_url, categories,img_points,  images.created, image_id  FROM
         `images`, `users`
     WHERE `images`.`user_id_fk` = `users`.`id`
    
@@ -218,7 +252,7 @@ function getWorldFeed() {
     image_id NOT IN (SELECT liked_image FROM favorites WHERE liked_image = image_id AND user_id_fk = :session_id)");
 
 
-    $favorites = $db->prepare("SELECT first_name, id, liked_image, image_url, categories, h_points, vibes, img_points, images.created, image_id
+    $favorites = $db->prepare("SELECT first_name, id, liked_image, image_url, categories, h_points, img_points, images.created, image_id
     FROM `favorites`, `images`, `users`
     WHERE `favorites`.`user_id_fk` = :session_id
     AND `favorites`.`liked_image` = `images`.`image_id`
@@ -227,7 +261,7 @@ function getWorldFeed() {
 
     
 
-    $full = $db->prepare("SELECT liked_image, first_name, id, feature_image_id, image_url, h_points, categories, vibes, img_points, images.created, image_id
+    $full = $db->prepare("SELECT liked_image, first_name, id, feature_image_id, image_url, h_points, categories, img_points, images.created, image_id
     FROM `feature`, `images`, `users`, `favorites`
     WHERE `feature`.`feature_user_id` = :session_id
     AND `favorites`.`user_id_fk` = :session_id
@@ -337,7 +371,7 @@ function getUser($id) {
     $name = $db->prepare("SELECT first_name, id, profile_pic, id, info FROM `users` WHERE `id` = :id");
 
     // Image Array
-    $images = $db->prepare("SELECT h_points, image_url, categories, vibes, img_points, images.created, image_id
+    $images = $db->prepare("SELECT image_url, categories, img_points, images.created, image_id
     FROM `gallery`, `images`, `users`
     WHERE `gallery`.`user_id_fk` = :id
     AND `images`.`user_id_fk` = `users`.`id`
@@ -345,7 +379,7 @@ function getUser($id) {
     AND image_id NOT IN (SELECT liked_image FROM favorites WHERE liked_image = image_id AND user_id_fk = :session_id)");
 
 
-    $favorites = $db->prepare("SELECT h_points, liked_image, image_url, categories, vibes, img_points, images.created, image_id
+    $favorites = $db->prepare("SELECT liked_image, image_url, categories, img_points, images.created, image_id
     FROM `favorites`, `images`
     WHERE `favorites`.`user_id_fk` = :session_id
     AND `favorites`.`liked_image` = `images`.`image_id`
@@ -703,7 +737,7 @@ function showImage($id) {
        
         'category' => $image_results['categories'],
         'caption' => $image_results['img_caption'],
-        'vibe' => $image_results['vibes'],
+        
         
         'user_id' => $image_results['id'],
       
@@ -732,18 +766,17 @@ function showCity($id) {
     $db = getConnection();
 
     $city = $db->prepare("SELECT `points`, `city`, `l_id`, `cont` FROM `location` WHERE `l_id` = :id");
-;
+
 
     $upload = $db->prepare("SELECT
         COUNT(b.image_l_id) uploads,
-        SUM(b.h_points) highlights,
         COUNT(DISTINCT b.user_id_fk) members
         FROM  location a
         LEFT JOIN images b
         ON a.l_id = b.image_l_id
         WHERE a.l_id = :id");
 
-    $images = $db->prepare("SELECT first_name, id, image_url, categories, vibes, img_points, h_points, images.created, image_id, image_l_id   FROM
+    $images = $db->prepare("SELECT first_name, id, image_url, categories, img_points, images.created, image_id, image_l_id   FROM
         `images`, `users`
     WHERE `images`.`user_id_fk` = `users`.`id`
     AND `images`.`image_l_id` = :id
@@ -752,7 +785,7 @@ function showCity($id) {
     AND image_id NOT IN(SELECT feature_image_id FROM feature WHERE feature_image_id = image_id AND feature_user_id = :session_id)");
 
 
-    $favorites = $db->prepare("SELECT first_name, id, liked_image, image_url, categories, h_points, image_l_id, vibes, img_points, images.created, image_id
+    $favorites = $db->prepare("SELECT first_name, id, liked_image, image_url, categories, image_l_id, img_points, images.created, image_id
     FROM `favorites`, `images`, `users`
     WHERE `favorites`.`user_id_fk` = :session_id
     AND `favorites`.`liked_image` = `images`.`image_id`
@@ -760,7 +793,7 @@ function showCity($id) {
     AND `images`.`user_id_fk` = `users`.`id`
     AND image_id NOT IN(SELECT feature_image_id FROM feature WHERE feature_image_id = image_id AND feature_user_id = :session_id)");
 
-    $feature = $db->prepare("SELECT first_name, id, feature_image_id, image_url, h_points, categories, image_l_id, vibes, img_points, images.created, image_id
+    $feature = $db->prepare("SELECT first_name, id, feature_image_id, image_url, categories, image_l_id, img_points, images.created, image_id
     FROM `feature`, `images`, `users`
     WHERE `feature`.`feature_user_id` = :session_id
     AND `image_l_id` = :id
@@ -768,7 +801,7 @@ function showCity($id) {
     AND `images`.`user_id_fk` = `users`.`id`
     AND image_id NOT IN (SELECT liked_image FROM favorites WHERE liked_image = image_id AND user_id_fk = :session_id)");
 
-    $full = $db->prepare("SELECT liked_image, first_name, id, feature_image_id, image_url, h_points, categories, image_l_id, vibes, img_points, images.created, image_id
+    $full = $db->prepare("SELECT liked_image, first_name, id, feature_image_id, image_url, categories, image_l_id, img_points, images.created, image_id
     FROM `feature`, `images`, `users`, `favorites`
     WHERE `feature`.`feature_user_id` = :session_id
     AND `image_l_id` = :id
@@ -845,7 +878,7 @@ function getCity() {
 
     $sql = "SELECT  a.l_id, a.points, a.city,
         COUNT(b.image_l_id) uploads,
-        SUM(b.h_points) highlights,
+        
         b.image_url,
         b.image_id,
         COUNT(DISTINCT b.user_id_fk) members
@@ -1054,40 +1087,6 @@ function vote() {
 
 }
 
-function highlight() {
-
-    $request = \Slim\Slim::getInstance()->request();
-    $data = json_decode($request->getBody());
-
-    try {
-        $sql = "INSERT INTO feature SET feature_image_id = :image_id_fk, feature_id = :user_id, feature_user_id = :feature_user_id";
-        $db = getConnection();
-        $stmt = $db->prepare($sql);
-
-        $stmt->bindParam(":image_id_fk", $data->imageId);
-        $stmt->bindParam(":user_id", $data->userId);
-        $stmt->bindParam(":feature_user_id", $_SESSION['id']);
-        $stmt->execute();
-        $db = null;
-
-    } catch(PDOException $e) {
-        echo '{"error":{"text":'. $e->getMessage() .'}}';
-    }
-
-
-    try {
-        $sql = "UPDATE images SET h_points = h_points + 1 WHERE image_id=:id";
-        $db = getConnection();
-        $stmt = $db->prepare($sql);
-        $stmt->bindParam("id", $_GET['imageId']);
-        $stmt->execute();
-        $db = null;
-
-    } catch(PDOException $e) {
-        echo '{"error":{"text":'. $e->getMessage() .'}}';
-    }
-
-}
 
 
 function upvote() {
@@ -1254,10 +1253,6 @@ function getMessage() {
 function userMessage() {
     $request = \Slim\Slim::getInstance()->request();
     $data = json_decode($request->getBody());
-
-
-    echo $data->id;
-    echo $data->status;
 
     $sql = "UPDATE followers SET f_status = :f_status WHERE user_id = :user_id AND follower_id = :follower_id";
     try {

@@ -122,12 +122,16 @@
 
                  <p>Category
                         <select name="category[]" class="form-control">
-                          <option value="People">People</option>
+                          <option value="Street">Street</option>
                           <option value="Architecture">Architecture</option>
-                          <option value="Food">Food</option>
+                          <option value="Landscape">Landscape</option>
                           <option value="Sports">Sports</option>
-                          <option value="Animals">Animals</option>
+                          <option value="Wildlife">Wildlife</option>
                           <option value="Nature">Nature</option>
+                          <option value="Aerial">Aerial</option>
+                          <option value="People">People</option>
+                          <option value="Portrait">Portrait</option>
+                          <option value="Macro">Macro</option>
                           <option value="Other">Other</option>
                         </select>
                  </p>
@@ -153,19 +157,21 @@
 
                             <img ng-src="{{p.images.low_resolution.url}}" class="img-instagram">
                             <select name="category[]" class="form-control">
-                                <option value="People">People</option>
+                                <option value="Street">Street</option>
                                 <option value="Architecture">Architecture</option>
-                                <option value="Food">Food</option>
+                                <option value="Landscape">Landscape</option>
                                 <option value="Sports">Sports</option>
-                                <option value="Animals">Animals</option>
+                                <option value="Wildlife">Wildlife</option>
                                 <option value="Nature">Nature</option>
+                                <option value="Aerial">Aerial</option>
+                                <option value="People">People</option>
+                                <option value="Portrait">Portrait</option>
+                                <option value="Macro">Macro</option>
                                 <option value="Other">Other</option>
                             </select>
 
                             <br>
 
-
-                           
                             <input type="checkbox" name="instagram[]" value="{{p.images.standard_resolution.url}}">
 
                         </div>
@@ -188,25 +194,25 @@
     </div>
 
 </div>
-        <script>
+<script>
 
-            function readURL(input) {
-                if (input.files && input.files[0]) {
-                    var reader = new FileReader();
+    function readURL(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
 
-                    reader.onload = function (e) {
-                        $('#imageupload').attr('src', e.target.result);
-                    }
-
-                    reader.readAsDataURL(input.files[0]);
-                }
+            reader.onload = function (e) {
+                $('#imageupload').attr('src', e.target.result);
             }
 
-            $("#fileupload").change(function(){
-                readURL(this);
-            });
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
 
-            //http://stackoverflow.com/questions/4459379/preview-an-image-before-it-is-uploaded
+    $("#fileupload").change(function(){
+        readURL(this);
+    });
 
-        </script>
+    //http://stackoverflow.com/questions/4459379/preview-an-image-before-it-is-uploaded
+
+</script>
 

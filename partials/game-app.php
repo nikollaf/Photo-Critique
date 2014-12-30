@@ -23,33 +23,13 @@ if (empty($_SESSION['id'])) {
                     <img class="media-object img-width image{{$index}}" ng-src="http://res.cloudinary.com/world-lens/image/upload/w_240,h_240,c_fill/v1387844193/{{img.image_url}}.jpg">
                 </div>
 
-                <div ng-if="(img.image_id == img.liked_image)">
-                    <span style="width: 234px; height: 234px; display: block;"></span>
-                </div>
-
                 <div class="text-center vote">
-
-
-                    <button ng-if="(img.image_id == img.liked_image)" ng-show="img.isLiked" class="button to-like not-clicked-like">
-                        <span class="glyphicon glyphicon-heart "></span> {{img.img_points | number}}</button>
-
-
-                    <button ng-if="(img.image_id == img.liked_image)" ng-show="!img.isLiked" class="button liked to-like">
-                        <span class="glyphicon glyphicon-heart "></span> {{img.img_points | number}}
-                    </button>
-
-                   
-
-
-                    <button ng-if="!img.liked_image" ng-show="!img.isLiked" class="button to-like not-clicked-like" ng-click="vote(img.image_l_id, img.image_id, img, 'img.isLiked')">
-                        <span class="glyphicon glyphicon-heart "></span> {{img.img_points | number}}
-                    </button>
-                    <button ng-if="!img.liked_image" ng-show="img.isLiked" class="button liked to-like" ng-click="vote(img.image_l_id, img.image_id, img, '!img.isLiked')">
-                        <span class="glyphicon glyphicon-heart "></span> {{img.img_points | number}}</button>
-
+                <br>
+                    <!-- <button class="btn"> {{img.img_points | number}}</button> -->
                 </div>
             </li>
         </ul>
+
 
     </div>
 </div>

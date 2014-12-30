@@ -2,8 +2,8 @@
 require '../core/session.php';
 
 if (!empty($_SESSION['id'])) {
-    //header("Location: http://localhost/projects/worldlens-dev2/#/world-feed");
-    //exit();
+    header("Location: http://localhost/projects/worldlens-dev2/#/world-feed");
+    exit();
 }
 
 
@@ -46,9 +46,9 @@ if (!empty($_SESSION['id'])) {
     <div class="text-center intro">
         <h1>Post Better Photos</h1>
 
-        <p>Get real feedback on your photos, develop your passion for photography, and become part of the community where photography is not only encouraged., but strengthened.</p>
+        <p>Get real feedback on your photos, develop your passion for photography, and become part of the community where photography is not only encouraged., but developed.</p>
 
-        <a href="/auth/register.php">Register</a>
+        <a href="auth/register.php">Register</a>
     </div>
     <p></p>
 
@@ -154,16 +154,5 @@ if (!empty($_SESSION['id'])) {
 </div>
 
 
-<script>
 
-    //http://tympanus.net/codrops/2011/09/30/scrollbar-visibility-with-jscrollpane/
-    // $('.banner').unslider({
-    //     speed: 500,               //  The speed to animate each slide (in milliseconds)
-    //     delay: 3000,              //  The delay between slide animations (in milliseconds)
-    //     complete: function() {},  //  A function that gets called after every slide animation
-    //     keys: true,               //  Enable keyboard (left, right) arrow shortcuts
-    //     dots: true,               //  Display dot navigation
-    //     fluid: false              //  Support responsive design. May break non-responsive designs
-    // });
-</script>
 

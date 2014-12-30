@@ -417,10 +417,11 @@ worldlensControllers.controller('UserController', ['$scope', '$routeParams', 'Us
 
 
 
-worldlensControllers.controller('GameListCtrl', ['$scope', 'Image', '$routeParams', 'Like',
-    function($scope, Image, $routeParams, Like) {
+worldlensControllers.controller('GameListCtrl', ['$scope', 'Image', '$routeParams', 'Like', 'Game',
+    function($scope, Image, $routeParams, Like, Game) {
 
-        $scope.images = Image.show();
+        $scope.images = Game.show();
+        //$scope.myimages = game
 
         console.log($scope.images);
 
@@ -468,23 +469,7 @@ worldlensControllers.controller('GameListCtrl', ['$scope', 'Image', '$routeParam
             return array;
         }
 
-        $scope.vote = function (cityId, imageId, img, status) {
-
-            var key = $scope.images.indexOf(img);
-
-            postData = {cityId:cityId, imageId:imageId};
-
-            if (status == 'img.isLiked') {
-                Like.insert(postData);
-                $scope.images[key].img_points = parseInt($scope.images[key].img_points) + 1;
-                console.log("Liked");
-            } else if (status == '!img.isLiked') {
-                Like.delete(postData);
-                $scope.images[key].img_points = parseInt($scope.images[key].img_points) - 1;
-                console.log("Unliked");
-            }
-            img.isLiked = !img.isLiked;
-        };
+  
 }]);
 
 

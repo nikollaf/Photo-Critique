@@ -71,58 +71,62 @@ if (isset($_POST['submit'])) {
 ?>
 
 <div class="row">
-
-    <div class="large-3 push-1 columns">
-        
-    </div>
-    <div class="large-3 pull-1 small-12 medium-12 columns">
-        <form role="form" method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>" enctype="multipart/form-data">
-            <h2>Who are you? <small></small></h2>
-            <p>
-            <?php
-            if(empty($errors) === false){
-                echo '<p class="text-error">' . implode('</p><p>', $errors) . '</p>';
-            }
-
-            ?>
-        </p>
-        <hr class="colorgraph">
+    <div class="large-6 large-centered columns">
         <div class="row">
-            <div class="small-12 large-12 columns">
-                <div class="form-group">
-                    <input type="text" value="<?php if(isset($_POST['first_name'])) echo htmlentities($_POST['first_name']); ?>" name="first_name" id="first_name" class="form-control input-lg" placeholder="Name" tabindex="1">
+            <div class="large-8 small-12 medium-8 columns">
+            <form role="form" method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>" enctype="multipart/form-data">
+                <h2><small>Almost there..</small></h2>
+                <p>
+                <?php
+                if(empty($errors) === false){
+                    echo '<p class="text-error">' . implode('</p><p>', $errors) . '</p>';
+                }
+
+                ?>
+            </p>
+            <hr class="colorgraph">
+            <div class="row">
+                <div class="small-12 large-12 columns">
+                    <div class="form-group">
+                        <input type="text" value="<?php if(isset($_POST['first_name'])) echo htmlentities($_POST['first_name']); ?>" name="first_name" id="first_name" class="form-control input-lg" placeholder="Name" tabindex="1">
+                    </div>
                 </div>
             </div>
-        </div>
-        <!--
-        <div class="form-group">
-            <input type="text" value="<?php if(isset($_POST['username'])) echo htmlentities($_POST['username']); ?>" name="username" id="username" class="form-control input-lg" placeholder="Username" tabindex="3">
-        </div>
-        -->
-        <div class="form-group">
-            <input type="email" value="<?php if(isset($_POST['email'])) echo htmlentities($_POST['email']); ?>" name="email" id="email" class="form-control input-lg" placeholder="Email Address" tabindex="4">
-        </div>
-        <div class="form-group">
-            <input type="password" name="password" id="password" class="form-control input-lg" placeholder="Password" tabindex="5">
-        </div>
-        <!--
-        <div class="form-group">
-            <h4>Profile Picture</h4>
-            <input id="fileupload" type="file" name="file" accept="image/gif, image/jpeg, image/png">
-        </div>
-        -->
-        <div class="row">
-            <div class="small-6 medium-6 columns"><input type="submit" name="submit" value="Register" class="btn btn-register btn-block btn-lg" tabindex="7"></div>
-            <div class="small-6 medium-6 columns"><a href="login.php" class="btn btn-login btn-block btn-lg">Sign In</a></div>
-        </div>
-        <br>
-        <div class="row">
-            <div class="large-12 small-9 medium-9 columns">
-                By registering, you agree to the <a href="" data-toggle="modal" data-target="#t_and_c_m">Terms and Conditions</a>.
+            <!--
+            <div class="form-group">
+                <input type="text" value="<?php if(isset($_POST['username'])) echo htmlentities($_POST['username']); ?>" name="username" id="username" class="form-control input-lg" placeholder="Username" tabindex="3">
+            </div>
+            -->
+            <div class="form-group">
+                <input type="email" value="<?php if(isset($_POST['email'])) echo htmlentities($_POST['email']); ?>" name="email" id="email" class="form-control input-lg" placeholder="Email Address" tabindex="4">
+            </div>
+            <div class="form-group">
+                <input type="password" name="password" id="password" class="form-control input-lg" placeholder="Password" tabindex="5">
+            </div>
+            <!--
+            <div class="form-group">
+                <h4>Profile Picture</h4>
+                <input id="fileupload" type="file" name="file" accept="image/gif, image/jpeg, image/png">
+            </div>
+            -->
+            <div class="row">
+                <div class="small-6 medium-6 columns"><input type="submit" name="submit" value="Register" class="btn btn-register btn-block btn-lg" tabindex="7"></div>
+                <div class="small-6 medium-6 columns"><a href="login.php" class="btn btn-login btn-block btn-lg">Sign In</a></div>
+            </div>
+            <br>
+            <div class="row">
+                <div class="large-12 small-9 medium-9 columns">
+                    By registering, you agree to the <a href="" data-toggle="modal" data-target="#t_and_c_m">Terms and Conditions</a>.
+                </div>
+            </div>
+            </form>
+            </div>
+            <div class="large-4 medium-4 columns">
+            <h4>Sneak Peek</h4>
+            <p>Change your username/password at any time.</p>
             </div>
         </div>
-    </form>
-</div>
+    </div>
 </div>
 <script>
     $(document).ready(function(){

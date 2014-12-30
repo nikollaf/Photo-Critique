@@ -68,6 +68,13 @@ input:-webkit-autofill {
 
 .navbar-nav {
     margin: 0;
+  
+}
+
+.navbar {
+    border: 0;
+    margin-top: 0;
+    border-top: 0 !important;
 }
 
 .city-up {
@@ -1060,7 +1067,7 @@ a {
 .world-feed-title {
     font-size: 53px;
     margin-bottom: 0;
-    margin-top: -10px;
+    
     text-align: center;
 }
 

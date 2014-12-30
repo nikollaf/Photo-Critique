@@ -45,27 +45,28 @@ include 'core/init.php';
 
     </div>
   </header>
-  <header class="navbar" role="banner">
 
-  <div class="row">
-
-  </div>
-
-</header>
 
 <?php elseif(isset($_SESSION['id'])): ?>
-<nav class="navbar navbar-default" role="navigation">
-  <div class="row">
-  <!-- Brand and toggle get grouped for better mobile display -->
-  <div class="navbar-header">
-    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-      <span class="sr-only">Toggle navigation</span>
-      <span class="icon-bar"></span>
-      <span class="icon-bar"></span>
-      <span class="icon-bar"></span>
-    </button>
-    <a class="navbar-brand" href="#/feed">Worldlens</a>
-  </div>
+  <nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+     <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#/feed">Worldlens</a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+    
+
+ 
 
   <!-- Collect the nav links, forms, and other content for toggling
   <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -77,7 +78,7 @@ include 'core/init.php';
       
       <button type="submit" class="btn btn-default">Submit</button>
       -->
-    </form>
+   
     <ul class="nav navbar-nav navbar-left">
          <li><a ng-href="#/world-feed"><span class="glyphicon glyphicon-globe"></span> World Feed</a></li>
         <li><a ng-href="#/traveler"><span class="glyphicon glyphicon-flash"></span> Game</a></li>
@@ -86,7 +87,7 @@ include 'core/init.php';
     <ul class="nav navbar-nav navbar-right">
 
       <li class="user-nav-pic"><?php echo '<a href="#/user/'.$_SESSION['id'].'">' . $_SESSION['full_name'] ; ?></a></li>
-        <li class="dropdown" ng-controller="NotificationsCtrl">
+      <li class="dropdown" ng-controller="NotificationsCtrl">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="badge">{{messages.length}}</span> <b class="caret"></b></a>
             <ul class="notifications dropdown-menu">
 
@@ -97,6 +98,7 @@ include 'core/init.php';
 
        <li><a href="#/upload" title="Image Upload"><span class="glyphicon glyphicon-picture"></span>Upload</a></li>
        <li><a href="auth/logout.php"><span class="glyphicon glyphicon-log-out"></span></a></li>
+
     </ul>
   </div><!-- /.navbar-collapse -->
 </div>
@@ -116,7 +118,7 @@ include 'core/init.php';
   <script src="js/script.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.5/angular.min.js"></script>
   <script src="js/vendor/modernizr.js"></script>
-  <script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
+  
 
   <script src="js/infinitescroll.min.js"></script>
   <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
@@ -133,6 +135,7 @@ include 'core/init.php';
 
   <script src="js/foundation.min.js"></script>
   <script src="js/ui-bootstrap.min.js"></script>
+  <script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
 
 
 

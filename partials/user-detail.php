@@ -109,17 +109,18 @@
                                 </a>
                                 <ul class="dropdown-menu cols-menu">
                                     <li>
-                                        <a href="" ng-click="search.categories = ''"> All</a>
-                                        <a href="" ng-click="search.categories = 'People'"> People</a>
-                                        <a href="" ng-click="search.categories = 'Culture'"> Culture</a>
-
-                                        <a href="" ng-click="search.categories = 'Nature'"> Nature</a>
-                                        <a href="" ng-click="search.categories = 'Animals'"> Animals</a>
-                                        <a href="" ng-click="search.categories = 'Food'"> Food</a>
-                                        <a href="" ng-click="search.categories = 'Architecture'"> Architecture</a>
-                                        <a href="" ng-click="search.categories = 'Fashion'"> Fashion</a>
-                                        <a href="" ng-click="search.categories = 'Sports'"> Sports</a>
-                                        <a href="" ng-click="search.categories = 'Other'"> Other</a>
+                                      <a href="" ng-click="search.categories = ''"> All</a>
+                                      <a href="" ng-click="search.categories = 'Street'">Street<</a>
+                                      <a href="" ng-click="search.categories = 'Architecture'">Architecture<</a>
+                                      <a href="" ng-click="search.categories = 'Landscape'">Landscape<</a>
+                                      <a href="" ng-click="search.categories = 'Sports'">Sports<</a>
+                                      <a href="" ng-click="search.categories = 'Wildlife'">Wildlife<</a>
+                                      <a href="" ng-click="search.categories = 'Nature'">Nature<</a>
+                                      <a href="" ng-click="search.categories = 'Aerial'">Aerial<</a>
+                                      <a href="" ng-click="search.categories = 'People'">People<</a>
+                                      <a href="" ng-click="search.categories = 'Portrait'">Portrait<</a>
+                                      <a href="" ng-click="search.categories = 'Macro'">Macro<</a>
+                                      <a href="" ng-click="search.categories = 'Other'">Other<</a>
                                     </li>
                                 </ul>
                             </li>
@@ -149,13 +150,7 @@
                             <span class="glyphicon glyphicon-heart "></span> {{img.img_points | number}}
                         </button>
 
-                        <button ng-if="(img.image_id == img.feature_image_id)" ng-show="img.isHigh" class="button to-highlight not-clicked-highlight" ng-click="highlight(img.id, img.image_id, img, 'img.isHigh')">
-                            <span class="glyphicon glyphicon-star"></span> {{img.h_points | number }}
-                        </button>
-
-                        <button ng-if="(img.image_id == img.feature_image_id)" ng-show="!img.isHigh" class="button highlighted to-highlight" ng-click="highlight(img.id, img.image_id, img, '!img.isHigh')">
-                            <span class="glyphicon glyphicon-star"></span> {{img.h_points | number }}
-                        </button>
+                    
 
 
                         <button ng-if="!img.liked_image" ng-show="!img.isLiked" class="button to-like not-clicked-like" ng-click="vote(img.image_l_id, img.image_id, img, 'img.isLiked')">

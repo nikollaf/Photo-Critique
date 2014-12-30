@@ -56,16 +56,17 @@ if (empty($_SESSION['id'])) {
                             <ul class="dropdown-menu cols-menu">
                                 <li>
                                     <a href="" ng-click="search.categories = ''"> All</a>
-                                    <a href="" ng-click="search.categories = 'People'"> People</a>
-                                    <a href="" ng-click="search.categories = 'Culture'"> Culture</a>
-
-                                    <a href="" ng-click="search.categories = 'Nature'"> Nature</a>
-                                    <a href="" ng-click="search.categories = 'Animals'"> Animals</a>
-                                    <a href="" ng-click="search.categories = 'Food'"> Food</a>
-                                    <a href="" ng-click="search.categories = 'Architecture'"> Architecture</a>
-                                    <a href="" ng-click="search.categories = 'Fashion'"> Fashion</a>
-                                    <a href="" ng-click="search.categories = 'Sports'"> Sports</a>
-                                    <a href="" ng-click="search.categories = 'Other'"> Other</a>
+                                    <a href="" ng-click="search.categories = 'Street'">Street<</a>
+                                    <a href="" ng-click="search.categories = 'Architecture'">Architecture<</a>
+                                    <a href="" ng-click="search.categories = 'Landscape'">Landscape<</a>
+                                    <a href="" ng-click="search.categories = 'Sports'">Sports<</a>
+                                    <a href="" ng-click="search.categories = 'Wildlife'">Wildlife<</a>
+                                    <a href="" ng-click="search.categories = 'Nature'">Nature<</a>
+                                    <a href="" ng-click="search.categories = 'Aerial'">Aerial<</a>
+                                    <a href="" ng-click="search.categories = 'People'">People<</a>
+                                    <a href="" ng-click="search.categories = 'Portrait'">Portrait<</a>
+                                    <a href="" ng-click="search.categories = 'Macro'">Macro<</a>
+                                    <a href="" ng-click="search.categories = 'Other'">Other<</a>
                                 </li>
                             </ul>
                         </li>

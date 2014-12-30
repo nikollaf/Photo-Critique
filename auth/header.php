@@ -17,11 +17,9 @@
 
 <div class="row brand-name">
     <div class="col-md-2 col-md-offset-5 col-xs-2 col-xs-offset-4">
-        <h1><a href="../#/">Worldlens</a></h1>
+        <h1><a href="../#/">Picritic</a></h1>
     </div>
-    <div class="col-md-2 col-md-offset-3 col-xs-5 col-xs-offset-3 auth">
-        <a href="register.php">Register</a> / <a href="login.php">Login</a>
-    </div>
+   
 </div>
 
 
