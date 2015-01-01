@@ -149,7 +149,7 @@ body {
     -moz-box-shadow: none;
     box-shadow: none;
     height: 25px;
-    font-size: 11px;
+    
     padding: 0 10px;
     display: inline-block;
     position: relative;
@@ -274,7 +274,7 @@ body {
 }
 
 .game-pad {
-    padding: 0 0.625rem .4rem !important;
+    padding: 0 0.25rem .0rem !important;
 }
 
 .padles img {
@@ -573,7 +573,7 @@ a {
 }
 
 .small-user-feed, .user-images, .full-image {
-    border-radius: 90px;
+    border-radius: 120px;
 }
 
 .small-user-feed:hover, .user-images:hover, .full-image:hover {
@@ -853,7 +853,12 @@ a {
 }
 
 .nav>li>a {
-    padding: 15px 38px;
+    padding: 15px 16px;
+}
+
+img.media-object.img-width.image0, img.media-object.img-width.image2 {
+    display: block;
+    margin: 0 auto;
 }
 
 .auth {
@@ -1039,7 +1044,7 @@ a {
 }
 
 .to-like {
-    float: right;
+    
     background: none;
     border: none;
 }

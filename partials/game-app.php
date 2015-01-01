@@ -23,6 +23,8 @@ if (empty($_SESSION['id'])) {
                     <img class="media-object img-width image{{$index}}" ng-src="http://res.cloudinary.com/world-lens/image/upload/w_240,h_240,c_fill/v1387844193/{{img.image_url}}.jpg">
                 </div>
 
+                
+
                 <div class="text-center vote">
                 <br>
                     <!-- <button class="btn"> {{img.img_points | number}}</button> -->

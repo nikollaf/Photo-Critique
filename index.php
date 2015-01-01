@@ -24,20 +24,21 @@ include 'core/init.php';
 
      <div class="row">
       <div class="brand-name">
-        <div class="col-md-2 col-md-offset-5 col-xs-2 col-xs-offset-4">
+        <div class="large-2 medium-2 small-12 columns">
           <h1><a href="#/feed">Picritic</a></h1>
         </div>
-        <div class="col-md-4 col-md-offset-1 col-xs-5 col-xs-offset-3 auth">
+        <div class="large-6 medium-6 small-12 columns auth">
             <form class="row" ng-submit="submit(email, password)" ng-controller="LoginController">
-                <div class="large-6 columns">
+                <div class="large-5 columns">
                     <input type="text" class="form-control" ng-model="email" name="email" placeholder="email">
                 </div>
-                <div class="large-6 columns">
+                <div class="large-4 columns">
                     <input type="password" class="form-control" ng-model="password" name="password" placeholder="password">
                 </div>
                 {{error}}
-
-                <input type="submit" id="submit" class="btn btn-default" value="Log In">
+                <div class="large-1 columns">
+                  <input type="submit" id="submit" class="btn btn-default" value="Log In">
+                </div>
 
             </form>
         </div>
@@ -82,7 +83,9 @@ include 'core/init.php';
     <ul class="nav navbar-nav navbar-left">
          <li><a ng-href="#/world-feed"><span class="glyphicon glyphicon-globe"></span> World Feed</a></li>
         <li><a ng-href="#/traveler"><span class="glyphicon glyphicon-flash"></span> Game</a></li>
-        <li><a ng-href="#/cities"><span class="glyphicon glyphicon-stats"></span> City Ranks</a></li>
+        <li><a ng-href="#/cities"><span class="glyphicon glyphicon-stats"></span> Top Images</a></li>
+        <li><a ng-href="#/users"><span class="glyphicon glyphicon-stats"></span> Top Users</a></li>
+        <li><a ng-href="#/shop"><span class="glyphicon glyphicon-stats"></span> Shop</a></li>
     </ul>
     <ul class="nav navbar-nav navbar-right">
 

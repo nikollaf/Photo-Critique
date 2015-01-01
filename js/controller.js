@@ -58,7 +58,7 @@ worldlensControllers.controller('WorldFeedCtrl', ['$scope', 'World', '$routePara
             img.isLiked = !img.isLiked;
         };
 
-        $scope.totalDisplayed = 10;
+        $scope.totalDisplayed = 30;
 
         $scope.loadMore = function() {
             $scope.totalDisplayed += 20;
