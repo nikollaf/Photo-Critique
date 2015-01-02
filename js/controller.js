@@ -477,14 +477,14 @@ worldlensControllers.controller('GameListCtrl', ['$scope', 'Image', '$routeParam
 worldlensControllers.controller('ListCityCtrl', ['$scope', 'City', '$routeParams', 'World',
     function($scope, City, $routeParams, World) {
 
-        $scope.cities = City.show();
+       
 
         $scope.list = World.show();
 
-
+        console.log($scope.list);
       
 
-    }]);
+}]);
 
 
 worldlensControllers.controller('AddImageCtrl', ['$scope', '$http', 'Image', '$location', 'instagram','$resource',

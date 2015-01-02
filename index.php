@@ -36,7 +36,7 @@ include 'core/init.php';
                     <input type="password" class="form-control" ng-model="password" name="password" placeholder="password">
                 </div>
                 {{error}}
-                <div class="large-1 columns">
+                <div class="large-1 columns" style="float: left;">
                   <input type="submit" id="submit" class="btn btn-default" value="Log In">
                 </div>
 
@@ -84,8 +84,8 @@ include 'core/init.php';
          <li><a ng-href="#/world-feed"><span class="glyphicon glyphicon-globe"></span> World Feed</a></li>
         <li><a ng-href="#/traveler"><span class="glyphicon glyphicon-flash"></span> Game</a></li>
         <li><a ng-href="#/cities"><span class="glyphicon glyphicon-stats"></span> Top Images</a></li>
-        <li><a ng-href="#/users"><span class="glyphicon glyphicon-stats"></span> Top Users</a></li>
-        <li><a ng-href="#/shop"><span class="glyphicon glyphicon-stats"></span> Shop</a></li>
+        <li><a ng-href="#/users"><span class="glyphicon glyphicon-star"></span> Top Users</a></li>
+        <li><a ng-href="#/shop"><span class="glyphicon glyphicon-gift"></span> Shop</a></li>
     </ul>
     <ul class="nav navbar-nav navbar-right">
 

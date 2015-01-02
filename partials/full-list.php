@@ -24,29 +24,29 @@ if (empty($_SESSION['id'])) {
                     </div>
                     <div class="large-7 medium-7 small-12 columns">
                         <div class="row city-ranks">
-                                <div class="large-2 medium-2 small-2">
-                                    <h4 class="media-heading city-name"><a ng-href="#/city/{{image.image_id}}">{{image.first_name}}</a></h4>
+                                <div class="large-8 medium-8 small-2">
+                                    <div class="media-heading city-name">
+                                        <span class="img-caption"><a ng-href="#/image/{{image.image_id}}">{{image.img_caption}}</a></span>
+                                        <span class="user-name"><a ng-href="#/user/{{image.id}}">{{image.first_name}}</a></span>
+                                    </div>
                                 </div>
                                 <div class="large-3 medium-3 small-2 columns pad-left-none">
                                     <span class="city-rank-int">4.3</span>
-                                            <h6 class="city-rank-name">Points</h6>
+                                            <h6 class="city-rank-name">Rating</h6>
                                 </div>
                                 <div class="large-3 medium-3 small-2 columns">
-                                            <span class="city-rank-int">.5</span>
-                                            <h6 class="city-rank-name">Members</h6>
+                                            <span class="city-rank-int">{{image.img_points}}</span>
+                                            <h6 class="city-rank-name">Points</h6>
                                 </div>
-                                <div class="large-3 medium-3 columns">
-                                    <span class="city-rank-int">.7</span>
-                                    <h6 class="city-rank-name">Uploads</h6>
+                                <div class="large-3 medium-3 columns end">
+                                    <span class="city-rank-int">{{image.categories}}</span>
+                                    <h6 class="city-rank-name">Category</h6>
                                 </div>
-                                <div class="large-3 medium-3 columns">
-                                    <span class="city-rank-int">3</span>
-                                    <h6 class="city-rank-name">Highlights</h6>
-                                </div>
+                               
                         </div>
                     </div>
                     <div class="large-1 medium-1 small-2 columns city-rank-arrow">
-                        <a ng-href="#/city/{{image.image_id}}">
+                        <a ng-href="#/image/{{image.image_id}}">
                             <span class="glyphicon glyphicon-chevron-right"></span>
                         </a>
                     </div>

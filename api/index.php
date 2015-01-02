@@ -37,10 +37,6 @@ $app->post('/highlight', 'upvote');
 $app->delete('/highlight', 'removeVote');
 
 
-
-
-
-$app->get('/cont/:id', 'getCont');
 $app->get('/user/:id', 'getUser');
 $app->get('/image/:id', 'showImage');
 
@@ -238,13 +234,7 @@ function getWorldFeed() {
     $world_array = array();
     $db = getConnection();
 
-   
-
-
-
-    //$name = $db->prepare("SELECT first_name, last_name, id, profile_pic, id, info FROM `users` WHERE `id` = :id");
-
-    $images = $db->prepare("SELECT first_name, id, image_url, categories,img_points,  images.created, image_id  FROM
+    $images = $db->prepare("SELECT img_caption, first_name, id, image_url, categories,img_points, images.created, image_id  FROM
         `images`, `users`
     WHERE `images`.`user_id_fk` = `users`.`id`
    
@@ -252,7 +242,7 @@ function getWorldFeed() {
     image_id NOT IN (SELECT liked_image FROM favorites WHERE liked_image = image_id AND user_id_fk = :session_id)");
 
 
-    $favorites = $db->prepare("SELECT first_name, id, liked_image, image_url, categories, h_points, img_points, images.created, image_id
+    $favorites = $db->prepare("SELECT img_caption, first_name, id, liked_image, image_url, categories, img_points, images.created, image_id
     FROM `favorites`, `images`, `users`
     WHERE `favorites`.`user_id_fk` = :session_id
     AND `favorites`.`liked_image` = `images`.`image_id`
@@ -261,10 +251,9 @@ function getWorldFeed() {
 
     
 
-    $full = $db->prepare("SELECT liked_image, first_name, id, feature_image_id, image_url, h_points, categories, img_points, images.created, image_id
-    FROM `feature`, `images`, `users`, `favorites`
-    WHERE `feature`.`feature_user_id` = :session_id
-    AND `favorites`.`user_id_fk` = :session_id
+    $full = $db->prepare("SELECT img_caption, liked_image, first_name, id, image_url, categories, img_points, images.created, image_id
+    FROM  `images`, `users`, `favorites`
+    WHERE `favorites`.`user_id_fk` = :session_id
     AND `favorites`.`liked_image` = `images`.`image_id`
     AND `images`.`user_id_fk` = `users`.`id`");
 
@@ -384,12 +373,8 @@ function getUser($id) {
     WHERE `favorites`.`user_id_fk` = :session_id
     AND `favorites`.`liked_image` = `images`.`image_id`
     AND `images`.`user_id_fk` = :id
-    
     ");
 
-   
-
-    
     // end of image array
 
     $following_user = $db->prepare("SELECT first_name, profile_pic FROM `followers`, `users` WHERE user_id = :id AND `followers`.`follower_id` = `users`.`id` AND `f_status` = 'Y'");
@@ -399,14 +384,8 @@ function getUser($id) {
     $favorites->bindValue(":session_id", $_SESSION['id']);
     $favorites->bindValue(":id", $id);
     
-    
-
-    
-
     $following_user->bindValue(":id", $id);
     $follower->bindValue(':id', $id);
-
-   
 
     $active_follower->bindValue(":session_id", $_SESSION['id']);
     $active_follower->bindValue(":id", $id);
@@ -569,68 +548,6 @@ function getImage($id) {
 }
 
 
-function getCont($id) {
-
-  $cont_feed = '';
-  $image = '';
-
-    $feed = "SELECT * FROM
-        `location`
-    WHERE
-      `location`.`cont` LIKE :id
-     ORDER BY points DESC
-        ";
-
-    try {
-        $db = getConnection();
-        $stmt = $db->prepare($feed);
-        $stmt->bindValue(':id', '%' . $id . '%');
-        $stmt->execute();
-        $cont_feed = $stmt->fetchAll(PDO::FETCH_OBJ);
-        $db = null;
-
-    } catch(PDOException $e) {
-        echo '{"error":{"text":'. $e->getMessage() .'}}';
-    }
-
-    $image = "SELECT `image_id`, `img_points`, `image_url`, `city`, `country`, `first_name`,`cont`,`state` FROM
-        `gallery`,
-        `location`,
-        `images`,
-        `users`
-    WHERE
-      `location`.`cont` LIKE :id
-     AND
-      `images`.`user_id_fk` = `users`.`id`
-     AND
-      `gallery`.`city_id_fk` = `location`.`l_id`
-    AND
-      `gallery`.`image_id_fk` = `images`.`gallery_id`
-   GROUP BY
-      `image_id`
-   ORDER BY
-    `img_points` DESC
-        ";
-
-    try {
-        $db = getConnection();
-        $stmt = $db->prepare($image);
-        $stmt->bindValue(':id', '%' . $id . '%');
-        $stmt->execute();
-        $image = $stmt->fetch(PDO::FETCH_OBJ);
-        $db = null;
-
-    } catch(PDOException $e) {
-        echo '{"error":{"text":'. $e->getMessage() .'}}';
-    }
-
-    $cont_feed[] = $image;
-
-   echo json_encode($cont_feed);
-
-    //print_r($feed);
-}
-
 
 
 
@@ -691,8 +608,6 @@ function showImage($id) {
     LIMIT 50
     ");
 
-  
-
     $category = $db->prepare("SELECT image_url, image_id
     FROM images
     WHERE categories = :id
@@ -701,27 +616,16 @@ function showImage($id) {
     LIMIT 50
     ");
 
-   
-
     $user_image->bindValue(":id", $image_results['user_id_fk']);
     $user_image->bindValue(":image_id", $id);
-
-   
 
     $category->bindValue(':id', $image_results['categories']);
     $category->bindValue(":image_id", $id);
 
-    
-
-    
     $user_image->execute();
     $category->execute();
     
-
-
-
     $user_images = $user_image->fetchAll(PDO::FETCH_OBJ);
-    
     $categories = $category->fetchAll(PDO::FETCH_OBJ);
     
 
@@ -734,20 +638,14 @@ function showImage($id) {
         'points' => $image_results['img_points'],
         'user_name' => $image_results['first_name'],
         'profile_pic' => $image_results['profile_pic'],
-       
         'category' => $image_results['categories'],
         'caption' => $image_results['img_caption'],
-        
-        
         'user_id' => $image_results['id'],
-      
         'date' => date("Y-m-d H:i:s", strtotime($image_results['created'])),
         'user_image' => $user_images,
-        
         'feed' => $full_feed,
         'votes' => $vote_feed,
         'categories' => $categories
-       
     );
 
     $city_array = '';

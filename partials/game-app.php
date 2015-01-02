@@ -9,6 +9,7 @@ if (empty($_SESSION['id'])) {
 <div class="row">
     <div class="large-6 medium-9 large-centered medium-centered columns">
         <h2 class="text-center">May the best picture win.</h2>
+        <p class="text-center">Click on which image you think is best.</p>
         <!-- <h2 class="text-center">{{randcat}}</h2> -->
         <!-- <div style="position: absolute; left: 50%; top: 50%">
             <div style="position: relative; left: -50%;">
