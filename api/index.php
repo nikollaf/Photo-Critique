@@ -34,7 +34,7 @@ $app->put('/city/:id', 'like');
 
 $app->post('/user/:id', 'followUser');
 $app->post('/highlight', 'upvote');
-$app->delete('/highlight', 'removeVote');
+$app->put('/highlight', 'removeVote');
 
 
 $app->get('/user/:id', 'getUser');
@@ -44,6 +44,8 @@ $app->post('/login', 'login');
 $app->post('/register', 'register');
 
 $app->get('/user', 'mainUser');
+
+$app->get('/users', 'getUsers');
 
 $app->post('/vote', 'vote');
 
@@ -196,29 +198,25 @@ function showImages() {
     $db = getConnection();
 
     $images = $db->prepare("SELECT first_name, id, image_url, categories, img_points, h_points, images.created, image_id
-    FROM
-        `images`, `users`
+    FROM `images`, `users`
     WHERE `images`.`user_id_fk` = `users`.`id`
-    AND
-    image_id NOT IN (SELECT liked_image FROM favorites WHERE liked_image = image_id AND user_id_fk = :session_id)");
+    AND image_id 
+    NOT IN (SELECT liked_image FROM favorites WHERE liked_image = image_id AND user_id_fk = :session_id)");
 
 
     $images->bindValue(':session_id', $_SESSION['id']);
 
-    try{
+    try
+    {
         $images->execute();
-       
-       
-        
         $images_result = $images->fetchAll(PDO::FETCH_OBJ);
-
-    }catch(PDOException $e){
+    }
+    catch(PDOException $e)
+    {
         die($e->getMessage());
     }
 
     //$image_array = array_merge($favorites_results, $images_result, $full_images);
-
-
     echo json_encode($images_result);
 
 }
@@ -312,6 +310,30 @@ function getCities() {
     echo json_encode($full_array);
 
 }
+
+function getUsers() {
+
+
+    $db = getConnection();
+
+    
+
+    $user = $db->prepare("SELECT
+        id, first_name, points, info
+    FROM `users`
+    ");
+
+    try{
+        $user->execute();
+        $users = $user->fetchAll(PDO::FETCH_OBJ);
+    }catch(PDOException $e){
+        die($e->getMessage());
+    }
+
+    echo json_encode($users);
+
+}
+
 
 
 function mainUser() {
@@ -560,7 +582,6 @@ function showImage($id) {
     WHERE `images`.`image_id` = :id
     AND `images`.`user_id_fk` = `users`.`id`");
 
-
     $favorites = $db->prepare("SELECT id, created, first_name, id, liked_image
     FROM `favorites`, `users`
     WHERE `favorites`.`user_id_fk` = `users`.`id`
@@ -571,32 +592,44 @@ function showImage($id) {
     WHERE `votes`.`vote_id_fk` = `users`.`id`
     AND `votes`.`vote_img_id` = :id");
 
-    $comment = $db->prepare("SELECT 
-            id, created, comment, first_name, com_img_id, votes
-        FROM img_comments 
-        INNER JOIN users 
-        WHERE image_id_fk = :id AND user_id_fk = id");
+    $user_comment = $db->prepare("SELECT id, created, comment, first_name, com_img_id, votes, cv_img_id
+    FROM `img_comments`, `users`, `com_votes`
+    WHERE `img_comments`.`image_id_fk` = :id
+    AND `img_comments`.`image_id_fk` = `com_votes`.`master_img_id`
+    AND `img_comments`.`com_img_id` = `com_votes`.`cv_img_id`
+    AND `com_votes`.`cv_user_id` = :session_id
+    AND `img_comments`.`user_id_fk` = `users`.`id`
+    AND `img_comments`.`com_img_id`");
+
+    $comment = $db->prepare("SELECT id, created, comment, first_name, com_img_id, votes
+    FROM `img_comments`, `users` 
+    WHERE `img_comments`.`image_id_fk` = :id 
+    AND `img_comments`.`user_id_fk` = `users`.`id`
+    AND `img_comments`.`com_img_id` 
+    NOT IN(SELECT cv_img_id FROM com_votes WHERE master_img_id = :id AND cv_user_id = :session_id)");
 
 
+    $user_comment->bindParam(":id", $id);
+    $user_comment->bindParam(":session_id", $_SESSION['id']);
     $comment->bindParam(":id", $id);
+    $comment->bindParam(":session_id", $_SESSION['id']);
     $favorites->bindParam(':id', $id);
     $image->bindValue(":id", $id);
-
     $vote->bindValue(':id', $id);
 
     try{
         $favorites->execute();
         $comment->execute();
+        $user_comment->execute();
         $image->execute();
         $vote->execute();
     }catch(PDOException $e){
         die($e->getMessage());
     }
-   // $favorites_results = $favorites->fetchAll();
 
-   // $city_results = $city->fetch();
     $image_results = $image->fetch();
     $comments = $comment->fetchAll(PDO::FETCH_OBJ);
+    $user_comments = $user_comment->fetchAll(PDO::FETCH_OBJ);
     $favorites_results = $favorites->fetchAll(PDO::FETCH_OBJ);
     $vote_results = $vote->fetchAll(PDO::FETCH_OBJ);
 
@@ -605,16 +638,14 @@ function showImage($id) {
     WHERE user_id_fk = :id
     AND image_id <> :image_id
     ORDER BY img_points DESC
-    LIMIT 50
-    ");
+    LIMIT 30");
 
     $category = $db->prepare("SELECT image_url, image_id
     FROM images
     WHERE categories = :id
     AND image_id <> :image_id
     ORDER BY img_points DESC
-    LIMIT 50
-    ");
+    LIMIT 30");
 
     $user_image->bindValue(":id", $image_results['user_id_fk']);
     $user_image->bindValue(":image_id", $id);
@@ -629,7 +660,7 @@ function showImage($id) {
     $categories = $category->fetchAll(PDO::FETCH_OBJ);
     
 
-    $full_feed = array_merge($comments, $favorites_results);
+    $full_feed = array_merge($comments, $user_comments);
     $vote_feed = $vote_results;
 
     $city_inf = array(
@@ -997,11 +1028,12 @@ function upvote() {
     try {
         $sql = "INSERT INTO 
                     com_votes 
-                SET cv_user_id = :cv_user_id, cv_img_id = :cv_img_id";
+                SET cv_user_id = :cv_user_id, cv_img_id = :cv_img_id, master_img_id = :master_img_id";
         $db = getConnection();
         $stmt = $db->prepare($sql);
 
         $stmt->bindParam(":cv_img_id", $data->id);
+        $stmt->bindParam(":master_img_id", $data->imageId);
         $stmt->bindParam(":cv_user_id", $_SESSION['id']);
         $stmt->execute();
         $db = null;
@@ -1043,6 +1075,7 @@ function removeVote() {
         $stmt = $db->prepare($sql);
 
         $stmt->bindParam(":cv_img_id", $data->id);
+        
         $stmt->bindParam(":cv_user_id", $_SESSION['id']);
         $stmt->execute();
         $db = null;

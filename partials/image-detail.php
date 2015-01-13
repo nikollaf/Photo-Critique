@@ -90,7 +90,12 @@ if (empty($_SESSION['id'])) {
 
                 <p ng-show="feed.comment">
                     <!-- messages (upvote) -->
-                    <button ng-click="changeVote(feed.com_img_id, vote, 'up')" g-class="{true:'up', false:''}[vote=='up']" class="btn">{{feed.votes}}</button>
+                    <div ng-if="(feed.com_img_id == feed.cv_img_id)">
+                        <button ng-click="changeVote(feed.com_img_id, vote, 'none')" g-class="{true:'up', false:''}[vote=='up']" class="btn">{{feed.votes}}</button>
+                    </div>
+                    <div ng-if="(feed.com_img_id != feed.cv_img_id)">
+                        <button ng-click="changeVote(feed.com_img_id, vote, 'up')" g-class="{true:'up', false:''}[vote=='up']" class="btn">{{feed.votes}}</button>
+                    </div>
                     <!-- <i title="Up Votes" ng-click="changeVote(feed.com_img_id, vote, 'up')" class="fa fa-arrow-circle-up fa-2x" ng-class="{true:'up', false:''}[vote=='up']"></i> -->
 
 

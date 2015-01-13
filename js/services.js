@@ -53,6 +53,13 @@ worldlensServices.factory('User', function ($resource) {
     })
 });
 
+
+worldlensServices.factory('Users', function ($resource) {
+    return $resource('api/index.php/users', {}, {
+        show: { method: 'GET', isArray: true }
+    })
+});
+
 worldlensServices.factory('MainUser', function ($resource) {
     return $resource('api/index.php/user', {}, {
         show: { method: 'GET', isArray: true }

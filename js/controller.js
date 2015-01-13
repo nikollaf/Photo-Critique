@@ -110,6 +110,7 @@ function ($scope, $routeParams, Image, $location, $http) {
     $scope.image = Image.query({ id: $routeParams.id }, function(image) {
         $scope.mainImage = image[0];
 
+        console.log($scope.mainImage)
     
         if ($scope.mainImage.votes[0]) {
 
@@ -185,7 +186,8 @@ function ($scope, $routeParams, Image, $location, $http) {
             if ($scope.vote == 'up') {
                $http.post('/Photo-Critique/api/index.php/highlight', 
                 {
-                    id: id
+                    id: id,
+                    imageId: $routeParams.id
                 }
                 ).success(function(data, status, headers, config){
 
@@ -197,7 +199,7 @@ function ($scope, $routeParams, Image, $location, $http) {
                         console.log('You already voted!!!!!');
                 });
             } else if ($scope.vote == 'None') {
-              $http.delete('/Photo-Critique/api/index.php/highlight', 
+              $http.put('/Photo-Critique/api/index.php/highlight', 
                 {
                     id: id
                 }
@@ -205,7 +207,7 @@ function ($scope, $routeParams, Image, $location, $http) {
 
                         console.log(data);
                         console.log(headers);
-                        console.log('SUP');
+                        console.log('delete');
 
                 }).error(function(data, status, headers, config){
                         console.log('You already voted!!!!!');
@@ -484,6 +486,12 @@ worldlensControllers.controller('ListCityCtrl', ['$scope', 'City', '$routeParams
         console.log($scope.list);
       
 
+}]);
+
+worldlensControllers.controller('ListUserCtrl', ['$scope', '$routeParams', 'Users',
+    function($scope, $routeParams, Users) {
+
+        $scope.users = Users.show();
 }]);
 
 

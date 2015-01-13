@@ -60,6 +60,10 @@ worldlensApp.config(['$routeProvider',
                 templateUrl: 'partials/image-detail.php',
                 controller: 'ImageListCtrl'
             }).
+            when('/users', {
+                templateUrl: 'partials/user-list.php',
+                controller: 'ListUserCtrl'
+            }).
             when('/cont/:id', {
                 templateUrl: 'partials/cont-detail.php',
                 controller: 'ContListCtrl'
