@@ -242,8 +242,7 @@ class Users{
         //$password   = $bcrypt->genHash($password);
 
         $query 	= $this->db->prepare("UPDATE `users` SET email = :email,
-								first_name = :first_name, info = :info, profile_pic = :profile_pic,
-								location = :location
+								first_name = :first_name, info = :info
 		 WHERE id = :id");
 
 
@@ -251,8 +250,6 @@ class Users{
         $query->bindParam(':email', $email);
         $query->bindParam(':first_name', $first_name);
         $query->bindParam(':info', $info);
-        $query->bindParam(':profile_pic', $profile_pic);
-        $query->bindParam(':location', $location);
         $query->bindParam(':id', $id);
 
 

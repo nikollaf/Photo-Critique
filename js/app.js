@@ -52,7 +52,7 @@ worldlensApp.config(['$routeProvider',
                 templateUrl: 'partials/user-detail.php',
                 controller: 'UserController'
             }).
-            when('/cities', {
+            when('/images', {
                 templateUrl: 'partials/full-list.php',
                 controller: 'ListCityCtrl'
             }).

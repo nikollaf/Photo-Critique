@@ -4,19 +4,10 @@
      <!-- A standard form for sending the image data to your server -->
     <div id='backend_upload'>
 
-        <div class="row text-center">
-            <!--
-
-      <h1 class="text-center">Upload Image</h1>
-           <div class="medium-12">
-               <h4>Enter city</h4>
-           </div>
-
-           <div class="medium-12 large-9 large-centered columns">
-               <input class="form-control ff_elem" type="text" value="" id="f_elem_city"/>
-           </div>
-           -->
-        </div>
+        <nav class="row text-center">
+            <a href="" ng-click="active='direct'">Direct Upload</a>
+            <a href="" ng-click="active='instagram'">Instagram</a>
+        </nav>
 
       
       <form class="form-horizontal" action="image/upload_backend.php" method="post" enctype="multipart/form-data">
@@ -26,18 +17,16 @@
           <div class="row">
 
 
-         
-             <div class="large-4 large-push-2 columns">
+            <!-- DIRECT -->
+             <div class="large-12 columns" ng-show="active == 'direct'">
 
-                 <!--
-                 <div class="row">
+                    <!--
+                     <div class="row">
                      <label></label>
                      <a href="" class="btn" ng-click="addImage()">Add Image</a>
 
                  </div>
-                 -->
-
-                    <!--
+                
                       <div ng-repeat="todo in todos" class="col-md-4">
                         -->
                  <h2>Direct Upload</h2>
@@ -70,7 +59,9 @@
 
              </div>
 
-            <div class="large-4 large-pull-2 columns instagram">
+
+            <!-- INSTAGRAM -->
+            <div class="large-12 columns instagram" ng-show="active == 'instagram'">
                 <h2>Instagram</h2>
                 <div>
                     <label>Your Username:</label>
@@ -79,7 +70,7 @@
                 </div>
                     <div>
                         <!-- A compact view smaller photos and titles -->
-                        <div ng-repeat="p in pics" class="col-md-4">
+                        <div ng-repeat="p in pics" class="col-md-4 col-xs-2 col">
 
                             <img ng-src="{{p.images.low_resolution.url}}" class="img-instagram">
                             <select name="category[]" class="form-control">

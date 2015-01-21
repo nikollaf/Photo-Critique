@@ -27,7 +27,6 @@ worldlensControllers.controller('ContListCtrl', ['$scope', 'Cont', '$routeParams
         $scope.cities = Cont.query({id: $routeParams.id}, function(cont) {
             $scope.mainImage = cont.pop();
 
-
             $scope.main_image = 'http://res.cloudinary.com/world-lens/image/upload/w_450,h_450,c_fill/v1387844193/' + $scope.mainImage.image_url +'.jpg';
         });
 }]);
@@ -58,7 +57,7 @@ worldlensControllers.controller('WorldFeedCtrl', ['$scope', 'World', '$routePara
             img.isLiked = !img.isLiked;
         };
 
-        $scope.totalDisplayed = 30;
+        $scope.totalDisplayed = 60;
 
         $scope.loadMore = function() {
             $scope.totalDisplayed += 20;
@@ -118,34 +117,29 @@ function ($scope, $routeParams, Image, $location, $http) {
                 focus    = $scope.mainImage.votes[0].focus,
                 creativity = $scope.mainImage.votes[0].creativity,
                 lighting = $scope.mainImage.votes[0].lighting,
-                story   = $scope.mainImage.votes[0].story;
-                
+                story   = $scope.mainImage.votes[0].story;  
         } else {
 
-            var exposure = 0.0,
-                focus    = 0.0,
-                creativity = 0.0,
-                lighting = 0.0,
-                story   = 0.0;
+            var exposure    = 0.0,
+                focus       = 0.0,
+                creativity  = 0.0,
+                lighting    = 0.0,
+                story       = 0.0;
         }
-
          // fix blank load buG
-        //$scope.profile_picture = 'http://res.cloudinary.com/world-lens/image/upload/w_45,h_45,c_fill/v1387844193/' +$scope.mainImage.profile_pic +'.jpg';
         $scope.main_image = 'http://res.cloudinary.com/world-lens/image/upload/w_0.8/v1387844193/' + $scope.mainImage.image_url +'.jpg';
 
         $("#exposure").rateYo({
             rating: exposure,
-            ratedFill: '#1abc9c',
-            starWidth: "60px",
+            ratedFill: '#c0392b',
             onChange: function (rating, rateYoInstance) {
               $('input#exposure-rating').val(rating);
             }
           });
 
          $("#focus").rateYo({
-            ratedFill: '#2ecc71',
+            ratedFill: '#f39c12',
             rating: focus,
-            starWidth: "60px",
             onChange: function (rating, rateYoInstance) {
               $('input#focus-rating').val(rating);
             }
@@ -153,8 +147,7 @@ function ($scope, $routeParams, Image, $location, $http) {
 
          $("#creativity").rateYo({
             rating: creativity,
-            ratedFill: '#9b59b6',
-            starWidth: "60px",
+            ratedFill: '#27ae60',
             onChange: function (rating, rateYoInstance) {
               $('input#creativity-rating').val(rating);
             }
@@ -163,7 +156,6 @@ function ($scope, $routeParams, Image, $location, $http) {
          $("#lighting").rateYo({
             rating: lighting,
             ratedFill: '#3498db',
-            starWidth: "60px",
             onChange: function (rating, rateYoInstance) {
               $('input#lighting-rating').val(rating);
             }
@@ -172,51 +164,39 @@ function ($scope, $routeParams, Image, $location, $http) {
          $("#story").rateYo({
             rating: story,
             ratedFill: '#34495e',
-            starWidth: "60px",
             onChange: function (rating, rateYoInstance) {
               $('input#story-rating').val(rating);
             }
           });
 
-        $scope.changeVote = function(id, vote, flag) {
+        $scope.changeVote = function(id, userid, vote, flag) {
 
             $scope.vote = vote==flag?'None':flag;
-            alert($scope.vote);
-            
+
             if ($scope.vote == 'up') {
                $http.post('/Photo-Critique/api/index.php/highlight', 
                 {
                     id: id,
+                    userid: userid,
                     imageId: $routeParams.id
                 }
                 ).success(function(data, status, headers, config){
 
-                        console.log(data);
-                        console.log(headers);
-                        console.log('SUP');
-
                 }).error(function(data, status, headers, config){
-                        console.log('You already voted!!!!!');
+                       
                 });
             } else if ($scope.vote == 'None') {
               $http.put('/Photo-Critique/api/index.php/highlight', 
                 {
-                    id: id
+                    id: id,
+                    userid: userid
                 }
                 ).success(function(data, status, headers, config){
 
-                        console.log(data);
-                        console.log(headers);
-                        console.log('delete');
-
                 }).error(function(data, status, headers, config){
-                        console.log('You already voted!!!!!');
+                       
                 });
             }
-            
-
-
-           
         }
 
         $scope.submit = function(comment) {
@@ -479,13 +459,8 @@ worldlensControllers.controller('GameListCtrl', ['$scope', 'Image', '$routeParam
 worldlensControllers.controller('ListCityCtrl', ['$scope', 'City', '$routeParams', 'World',
     function($scope, City, $routeParams, World) {
 
-       
-
         $scope.list = World.show();
-
-        console.log($scope.list);
       
-
 }]);
 
 worldlensControllers.controller('ListUserCtrl', ['$scope', '$routeParams', 'Users',
@@ -499,6 +474,8 @@ worldlensControllers.controller('AddImageCtrl', ['$scope', '$http', 'Image', '$l
 function ($scope, Image, $location, $http, instagram, $resource) {
 
     $scope.todos = [];
+
+    $scope.active = 'direct';
 
  
   $scope.addImage = function() {

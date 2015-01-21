@@ -83,7 +83,7 @@ include 'core/init.php';
     <ul class="nav navbar-nav navbar-left">
          <li><a ng-href="#/world-feed"><span class="glyphicon glyphicon-globe"></span> World Feed</a></li>
         <li><a ng-href="#/traveler"><span class="glyphicon glyphicon-flash"></span> Game</a></li>
-        <li><a ng-href="#/cities"><span class="glyphicon glyphicon-stats"></span> Top Images</a></li>
+        <li><a ng-href="#/images"><span class="glyphicon glyphicon-stats"></span> Top Images</a></li>
         <li><a ng-href="#/users"><span class="glyphicon glyphicon-star"></span> Top Users</a></li>
         <li><a ng-href="#/shop"><span class="glyphicon glyphicon-gift"></span> Shop</a></li>
     </ul>

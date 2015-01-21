@@ -1,6 +1,6 @@
 
 <div class="row">
-        <div class="large-21 medium-3 columns curvy mar-top">
+        <div class="medium-3 columns curvy mar-top">
             <div class="row">
                 <div class="medium-3 medium-centered columns profile-pic">
                     {{UserInfo.profile_pic}}

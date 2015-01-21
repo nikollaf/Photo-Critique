@@ -66,7 +66,7 @@ if (empty($_SESSION['id'])) {
 
             <ul class="small-block-grid-1 medium-block-grid-2 large-block-grid-5">
 
-                    <li class="scale-fade" ng-class="animation"  ng-repeat="img in world | orderBy:orderProp:true | filter:search | limitTo: totalDisplayed">
+                    <li class="scale-fade" ng-class="animation"  ng-repeat="img in world | orderBy:orderProp:true | limitTo: totalDisplayed">
                         <a ng-href="#/image/{{img.image_id}}">
                             <img class="full-image image" ng-src="http://res.cloudinary.com/world-lens/image/upload/w_640,h_640,c_fill/v1387844193/{{img.image_url}}.jpg">
                         </a>

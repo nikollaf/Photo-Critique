@@ -10,7 +10,7 @@ if (empty($_SESSION['id'])) {
     <h1>&nbsp;</h1>
     <div class="large-9 large-offset-1 medium-11 small-11">
         <ul class="cities">
-            <li class="full-list" ng-repeat="image in list">
+            <li class="full-list" ng-repeat="image in list | orderBy: '-average'">
                 <div class="row">
                     <div class="city-rank-num large-1 medium-1 small-3 columns">
                     {{$index + 1}}
@@ -31,7 +31,7 @@ if (empty($_SESSION['id'])) {
                                     </div>
                                 </div>
                                 <div class="large-3 medium-3 small-2 columns pad-left-none">
-                                    <span class="city-rank-int">4.3</span>
+                                    <span class="city-rank-int">{{image.average}}</span>
                                             <h6 class="city-rank-name">Rating</h6>
                                 </div>
                                 <div class="large-3 medium-3 small-2 columns">

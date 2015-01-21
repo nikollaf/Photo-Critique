@@ -6,11 +6,11 @@ if (empty($_SESSION['id'])) {
     exit();
 }
 ?>
-<div class="row">
-    <h1>&nbsp;</h1>
+<div class="row list-page">
+    <h1>Top Users</h1>
     <div class="large-9 large-offset-1 medium-11 small-11">
         <ul class="cities">
-            <li class="full-list" ng-repeat="user in users">
+            <li class="full-list" ng-repeat="user in users | orderBy: '-points'">
                 <div class="row">
                     <div class="city-rank-num large-1 medium-1 small-3 columns">
                     {{$index + 1}}

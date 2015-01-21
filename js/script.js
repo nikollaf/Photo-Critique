@@ -33,7 +33,7 @@
 
   var DEFAULTS = {
 
-    starWidth: "62px",
+    starWidth: "60px",
     normalFill: "white",
     ratedFill: "#c0392b",
     numStars: 1,

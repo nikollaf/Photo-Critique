@@ -139,7 +139,7 @@ function showAllImages() {
 
     $db = getConnection();
 
-    $images = $db->prepare("SELECT first_name, id, image_url, categories, img_points, h_points, images.created, image_id
+    $images = $db->prepare("SELECT first_name, id, image_url, categories, img_points, images.created, image_id
     FROM
         `images`, `users`
     WHERE `images`.`user_id_fk` = `users`.`id`
@@ -147,26 +147,16 @@ function showAllImages() {
     image_id NOT IN (SELECT liked_image FROM favorites WHERE liked_image = image_id AND user_id_fk = :session_id)
     ");
 
-
-    $favorites = $db->prepare("SELECT first_name, id, liked_image, image_url, categories, h_points, img_points, images.created, image_id
-    FROM `favorites`, `images`, `users`
-    WHERE `favorites`.`user_id_fk` = :session_id
-    AND `favorites`.`liked_image` = `images`.`image_id`
-    AND `images`.`user_id_fk` = `users`.`id`
-    ");
-
     
 
-    $full = $db->prepare("SELECT first_name, id, image_url, h_points, categories, img_points, images.created, image_id
-    FROM `feature`, `images`, `users`, `favorites`
-    WHERE `feature`.`feature_user_id` = :session_id
-    AND `favorites`.`user_id_fk` = :session_id
+    $full = $db->prepare("SELECT first_name, id, image_url, categories, img_points, images.created, image_id
+    FROM `images`, `users`, `favorites`
+    WHERE
+     `favorites`.`user_id_fk` = :session_id
    
     AND `favorites`.`liked_image` = `images`.`image_id`
     AND `images`.`user_id_fk` = `users`.`id`");
 
-
-    $favorites->bindValue(":session_id", $_SESSION['id']);
     
     $full->bindValue(':session_id', $_SESSION['id']);
     $images->bindValue(':session_id', $_SESSION['id']);
@@ -174,12 +164,7 @@ function showAllImages() {
     try{
         $images->execute();
         $full->execute();
-        $favorites->execute();
-       
-
         $full_images = $full->fetchAll(PDO::FETCH_OBJ);
-       
-        $favorites_results = $favorites->fetchAll(PDO::FETCH_OBJ);
         $images_result = $images->fetchAll(PDO::FETCH_OBJ);
 
     }catch(PDOException $e){
@@ -197,7 +182,7 @@ function showImages() {
 
     $db = getConnection();
 
-    $images = $db->prepare("SELECT first_name, id, image_url, categories, img_points, h_points, images.created, image_id
+    $images = $db->prepare("SELECT first_name, id, image_url, categories, img_points, images.created, image_id
     FROM `images`, `users`
     WHERE `images`.`user_id_fk` = `users`.`id`
     AND image_id 
@@ -232,7 +217,7 @@ function getWorldFeed() {
     $world_array = array();
     $db = getConnection();
 
-    $images = $db->prepare("SELECT img_caption, first_name, id, image_url, categories,img_points, images.created, image_id  FROM
+    $images = $db->prepare("SELECT img_caption, first_name, id, image_url, categories,img_points, images.created, image_id, average  FROM
         `images`, `users`
     WHERE `images`.`user_id_fk` = `users`.`id`
    
@@ -240,39 +225,31 @@ function getWorldFeed() {
     image_id NOT IN (SELECT liked_image FROM favorites WHERE liked_image = image_id AND user_id_fk = :session_id)");
 
 
-    $favorites = $db->prepare("SELECT img_caption, first_name, id, liked_image, image_url, categories, img_points, images.created, image_id
-    FROM `favorites`, `images`, `users`
-    WHERE `favorites`.`user_id_fk` = :session_id
-    AND `favorites`.`liked_image` = `images`.`image_id`
-    AND `images`.`user_id_fk` = `users`.`id`
-    AND image_id NOT IN(SELECT feature_image_id FROM feature WHERE feature_image_id = image_id AND feature_user_id = :session_id)");
 
-    
-
-    $full = $db->prepare("SELECT img_caption, liked_image, first_name, id, image_url, categories, img_points, images.created, image_id
+    $full = $db->prepare("SELECT img_caption, liked_image, first_name, id, image_url, categories, img_points, images.created, image_id,average
     FROM  `images`, `users`, `favorites`
     WHERE `favorites`.`user_id_fk` = :session_id
     AND `favorites`.`liked_image` = `images`.`image_id`
     AND `images`.`user_id_fk` = `users`.`id`");
 
 
-    $favorites->bindValue(":session_id", $_SESSION['id']);
+    
     $full->bindValue(':session_id', $_SESSION['id']);
     $images->bindValue(':session_id', $_SESSION['id']);
 
     try{
         $images->execute();
-        $favorites->execute();
+       
         $full->execute();
         $full_images = $full->fetchAll(PDO::FETCH_OBJ);
-        $favorites_results = $favorites->fetchAll(PDO::FETCH_OBJ);
+ 
         $images_result = $images->fetchAll(PDO::FETCH_OBJ);
 
     }catch(PDOException $e){
         die($e->getMessage());
     }
 
-    $image_array = array_merge($favorites_results, $images_result,$full_images);
+    $image_array = array_merge($images_result, $full_images);
 
     echo json_encode($image_array);
 
@@ -589,7 +566,7 @@ function showImage($id) {
 
     $vote = $db->prepare("SELECT exposure, focus, lighting, creativity, story
     FROM `votes`, `users`
-    WHERE `votes`.`vote_id_fk` = `users`.`id`
+    WHERE `votes`.`vote_id_fk` = :session_id
     AND `votes`.`vote_img_id` = :id");
 
     $user_comment = $db->prepare("SELECT id, created, comment, first_name, com_img_id, votes, cv_img_id
@@ -616,6 +593,7 @@ function showImage($id) {
     $favorites->bindParam(':id', $id);
     $image->bindValue(":id", $id);
     $vote->bindValue(':id', $id);
+    $vote->bindParam(":session_id", $_SESSION['id']);
 
     try{
         $favorites->execute();
@@ -710,42 +688,28 @@ function showCity($id) {
     WHERE `images`.`user_id_fk` = `users`.`id`
     AND `images`.`image_l_id` = :id
     AND
-    image_id NOT IN (SELECT liked_image FROM favorites WHERE liked_image = image_id AND user_id_fk = :session_id)
-    AND image_id NOT IN(SELECT feature_image_id FROM feature WHERE feature_image_id = image_id AND feature_user_id = :session_id)");
+    image_id NOT IN (SELECT liked_image FROM favorites WHERE liked_image = image_id AND user_id_fk = :session_id)");
 
 
-    $favorites = $db->prepare("SELECT first_name, id, liked_image, image_url, categories, image_l_id, img_points, images.created, image_id
-    FROM `favorites`, `images`, `users`
-    WHERE `favorites`.`user_id_fk` = :session_id
-    AND `favorites`.`liked_image` = `images`.`image_id`
-    AND `image_l_id` = :id
-    AND `images`.`user_id_fk` = `users`.`id`
-    AND image_id NOT IN(SELECT feature_image_id FROM feature WHERE feature_image_id = image_id AND feature_user_id = :session_id)");
+    
 
-    $feature = $db->prepare("SELECT first_name, id, feature_image_id, image_url, categories, image_l_id, img_points, images.created, image_id
-    FROM `feature`, `images`, `users`
-    WHERE `feature`.`feature_user_id` = :session_id
-    AND `image_l_id` = :id
-    AND `feature`.`feature_image_id` = `images`.`image_id`
-    AND `images`.`user_id_fk` = `users`.`id`
-    AND image_id NOT IN (SELECT liked_image FROM favorites WHERE liked_image = image_id AND user_id_fk = :session_id)");
+    
 
-    $full = $db->prepare("SELECT liked_image, first_name, id, feature_image_id, image_url, categories, image_l_id, img_points, images.created, image_id
-    FROM `feature`, `images`, `users`, `favorites`
-    WHERE `feature`.`feature_user_id` = :session_id
-    AND `image_l_id` = :id
+    $full = $db->prepare("SELECT liked_image, first_name, id, image_url, categories, image_l_id, img_points, images.created, image_id
+    FROM `images`, `users`, `favorites`
+    WHERE `image_l_id` = :id
     AND `favorites`.`user_id_fk` = :session_id
-    AND `feature`.`feature_image_id` = `images`.`image_id`
+   
     AND `favorites`.`liked_image` = `images`.`image_id`
     AND `images`.`user_id_fk` = `users`.`id`");
 
     try{
         $favorites->bindValue(":session_id", $_SESSION['id']);
-        $feature->bindValue(':session_id', $_SESSION['id']);
+        
         $full->bindValue(':session_id', $_SESSION['id']);
         $images->bindValue(':session_id', $_SESSION['id']);
         $favorites->bindValue(":id", $id);
-        $feature->bindValue(':id', $id);
+        
         $full->bindValue(':id', $id);
         $images->bindValue(':id', $id);
         $city->bindValue(":id", $id);
@@ -757,7 +721,7 @@ function showCity($id) {
         $city->execute();
         $images->execute();
         $full->execute();
-        $feature->execute();
+        
 
         $upload->execute();
 
@@ -768,14 +732,14 @@ function showCity($id) {
 
     $favorites_results = $favorites->fetchAll(PDO::FETCH_OBJ);
 
-    $feature_results = $feature->fetchAll(PDO::FETCH_OBJ);
+    
     $full_results = $full->fetchAll(PDO::FETCH_OBJ);
     $city_results = $city->fetch();
     $images_results = $images->fetchAll(PDO::FETCH_OBJ);
     $uploads = $upload->fetch();
 
 
-    $full_array = array_merge($images_results, $favorites_results, $full_results, $feature_results);
+    $full_array = array_merge($images_results, $favorites_results, $full_results);
 
     $near = $db->prepare("SELECT `points`, `city`, `l_id` FROM `location` WHERE cont = :cont
     AND l_id NOT IN (SELECT l_id FROM location WHERE l_id = :id) ORDER BY points DESC");
@@ -855,25 +819,7 @@ function addImage() {
 /*-------------------------------------------------------*/
 /*********************************************************/
 
-function feature() {
 
-    try {
-        $sql = "INSERT INTO feature
-        SET feature_user_id = :session_id, feature_id = :user_id, feature_image_id = :image_id";
-        $db = getConnection();
-        $stmt = $db->prepare($sql);
-
-        $stmt->bindParam(":image_id", $_POST['imageId']);
-        $stmt->bindParam(":user_id", $_POST['userId']);
-        $stmt->bindParam(":session_id", $_SESSION['id']);
-        $stmt->execute();
-        $db = null;
-
-    } catch(PDOException $e) {
-        echo '{"error":{"text":'. $e->getMessage() .'}}';
-    }
-
-}
 
 /********************************************************/
 /*---------------------------------------------------------*/
@@ -983,36 +929,81 @@ function vote() {
     $request = \Slim\Slim::getInstance()->request();
     $data = json_decode($request->getBody());
 
-    print_r($data);
+    //print_r($data);
 
-    try {
-        $sql = "INSERT INTO 
-                        votes 
-                    SET 
-                        exposure = :exposure, 
-                        focus = :focus, 
-                        lighting = :lighting,
-                        creativity = :creativity,
-                        story = :story,
-                        vote_id_fk = :vote_id_fk,
-                        vote_img_id = :vote_img_id";
+    $sum_data = $data->exposure + $data->focus + $data->lighting + $data->creativity + $data->story;
+
+
+
+  
+    
+    if ($row['average'])
+        try {
+            $sql = "INSERT INTO 
+                            votes 
+                        SET 
+                            exposure = :exposure, 
+                            focus = :focus, 
+                            lighting = :lighting,
+                            creativity = :creativity,
+                            story = :story,
+                            vote_id_fk = :vote_id_fk,
+                            vote_img_id = :vote_img_id";
+            $db = getConnection();
+            $stmt = $db->prepare($sql);
+
+            $stmt->bindParam(":exposure", $data->exposure);
+            $stmt->bindParam(":focus", $data->focus);
+            $stmt->bindParam(":lighting", $data->lighting);
+            $stmt->bindParam(":creativity", $data->creativity);
+            $stmt->bindParam(":story", $data->story);
+
+            $stmt->bindParam(":vote_img_id", $data->imageIdFk);
+            $stmt->bindParam(":vote_id_fk", $_SESSION['id']);
+            $stmt->execute();
+            $db = null;
+
+        } catch(PDOException $e) {
+            echo '{"error":{"text":'. $e->getMessage() .'}}';
+        }
+
+    try 
+    {
+        $db = getConnection();
+        $statement = $db->prepare("SELECT average FROM images WHERE image_id = :imageId");
+        $statement->bindParam(":imageId", $data->imageIdFk);
+        $statement->execute();
+
+        $row = $statement->fetch();
+        $db = null;
+    } catch(PDOException $e) {
+        echo '{"error":{"text":'. $e->getMessage() .'}}';
+    }
+
+
+    if ($row['average'] == 0.00) {
+        $average = $sum_data;
+    } else {
+        $average = ($sum_data + $row['average']) / 2;
+    }
+
+    //print_r($row);
+    //echo $average;
+    //echo $sum_data;
+
+     try {
+        $sql = "UPDATE images SET average = :average WHERE image_id = :id";
         $db = getConnection();
         $stmt = $db->prepare($sql);
-
-        $stmt->bindParam(":exposure", $data->exposure);
-        $stmt->bindParam(":focus", $data->focus);
-        $stmt->bindParam(":lighting", $data->lighting);
-        $stmt->bindParam(":creativity", $data->creativity);
-        $stmt->bindParam(":story", $data->story);
-
-        $stmt->bindParam(":vote_img_id", $data->imageIdFk);
-        $stmt->bindParam(":vote_id_fk", $_SESSION['id']);
+        $stmt->bindParam(":average", $average);
+        $stmt->bindParam(":id", $data->imageIdFk);
         $stmt->execute();
         $db = null;
 
     } catch(PDOException $e) {
         echo '{"error":{"text":'. $e->getMessage() .'}}';
     }
+
 
 }
 
@@ -1051,6 +1042,18 @@ function upvote() {
         $db = getConnection();
         $stmt = $db->prepare($sql);
         $stmt->bindParam("id", $data->id);
+        $stmt->execute();
+        $db = null;
+
+    } catch(PDOException $e) {
+        echo '{"error":{"text":'. $e->getMessage() .'}}';
+    }
+
+    try {
+        $sql = "UPDATE users SET points = points + 1 WHERE id = :id";
+        $db = getConnection();
+        $stmt = $db->prepare($sql);
+        $stmt->bindParam("id", $data->userid);
         $stmt->execute();
         $db = null;
 
@@ -1100,17 +1103,11 @@ function removeVote() {
         echo '{"error":{"text":'. $e->getMessage() .'}}';
     }
 
-}
-
-function unHighlight() {
-    $request = \Slim\Slim::getInstance()->request();
-    $data = json_decode($request->getBody());
-
-    try {
-        $sql = "UPDATE images SET h_points = h_points - 1 WHERE image_id=:id";
+     try {
+        $sql = "UPDATE users SET points = points - 1 WHERE id = :id";
         $db = getConnection();
         $stmt = $db->prepare($sql);
-        $stmt->bindParam("id", $data->imageId);
+        $stmt->bindParam("id", $data->userid);
         $stmt->execute();
         $db = null;
 
@@ -1118,20 +1115,9 @@ function unHighlight() {
         echo '{"error":{"text":'. $e->getMessage() .'}}';
     }
 
-    $sql = "DELETE FROM feature WHERE feature_image_id = :feature_image_id AND feature_user_id = :user_id_fk AND feature_id = :feature_id";
-    try {
-        $db = getConnection();
-        $stmt = $db->prepare($sql);
-        $stmt->bindParam(":feature_image_id", $data->imageId);
-        $stmt->bindParam(":feature_id", $data->userId);
-        $stmt->bindValue(":user_id_fk", $_SESSION['id']);
-        $stmt->execute();
-        $db = null;
-
-    } catch(PDOException $e) {
-        echo '{"error":{"text":'. $e->getMessage() .'}}';
-    }
 }
+
+
 
 /********************************************************/
 /*---------------------------------------------------------*/

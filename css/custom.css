@@ -53,8 +53,9 @@ form#rate {
 }
 
 img {
-  display: none !important;
+    display: none !important;
 }
+
 
 input:-webkit-autofill {
     background-color: white !important;
@@ -73,6 +74,15 @@ input:-webkit-autofill {
 .navbar-nav {
     margin: 0;
 
+}
+
+#rate ul li {
+    display: inline-block;
+    padding-left: 20px;
+}
+
+#rate ul {
+    margin-left: 0;
 }
 
 .navbar {
@@ -546,7 +556,8 @@ a {
 .more-pics img {
     border-radius: 75px;
     opacity: .65;
-
+    margin: 0 auto;
+    display: block;
 }
 
 .no-margin {

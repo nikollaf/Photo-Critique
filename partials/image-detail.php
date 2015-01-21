@@ -24,39 +24,34 @@ if (empty($_SESSION['id'])) {
         <div style="clear: both;"></div>
 
         <form ng-submit="vote()" id="rate" class="row">
-                
-                <div class="medium-2 small-2 large-2 columns">
+            <ul> 
+                <li>
                     <h4>Exposure</h4>
                     <div id="exposure"></div>
                     <p id="exposure-p"></p>
                     <input ng-value="exposure" id="exposure-rating" type="hidden">
-                </div>
-
-                <div class="medium-2 small-2 large-2 columns">
+                </li>
+                <li>
                     <h4>Focus</h4>
                     <div id="focus"></div>
                     <input ng-model="focus" id="focus-rating" type="hidden">
-                </div>
-
-                  <div class="medium-2 small-2 large-2 columns">
-
+                </li>
+                <li>
                     <h4>Lighting</h4>
                     <div id="lighting"></div>
                     <input ng-model="lighting" id="lighting-rating" type="hidden">
-
-                </div>
-
-                <div class="medium-2 small-2 large-2 columns">
-                    <h4>Creativity</h4>
-                    <div id="creativity"></div>
-                    <input ng-model="creativity" id="creativity-rating" type="hidden">
-                </div>
-
-                <div class="medium-2 small-2 large-2 columns" style='float: left;'>
+                </li>
+                <li>
                     <h4>Story</h4>
                     <div id="story"></div>
                     <input ng-model="story" id="story-rating" type="hidden">
-                </div>
+                </li>
+                 <li>
+                    <h4>Creativity</h4>
+                    <div id="creativity"></div>
+                    <input ng-model="creativity" id="creativity-rating" type="hidden">
+                </li>
+            </ul>
 
                 <div style="clear: both;"></div>
 
@@ -73,33 +68,36 @@ if (empty($_SESSION['id'])) {
 </div>
 <div class="row">
     <!-- COMMENTS -->
-    <div class="medium-5 large-5 large-push-3 medium-push-3 columns feed">
+    <div class="medium-8 large-6 large-push-2 medium-push-1 columns feed">
         
 
         <form ng-submit="submit(comment)">
-            <h6 id="counter">{{150 - comment.length}} characters remaining</h6>
-            <textarea ng-model="comment" class="form-control counted" name="message" placeholder="Type in your message"
-                      rows="4" style="margin-bottom:10px;"></textarea>
+            <h6 id="counter">{{400 - comment.length}} characters remaining</h6>
+            <textarea ng-model="comment" ng-maxlength="400" class="form-control counted" name="message" placeholder="Type in your message"
+                      rows="6" style="margin-bottom:10px;"></textarea>
 
             <button class="comment-btn btn" type="submit">Post New Message</button>
         </form>
 
         <div class="image-feed">
-            <div ng-repeat="feed in mainImage.feed | orderBy: 'votes'">
+            <div ng-repeat="feed in mainImage.feed | orderBy: '-votes'" class="row">
 
 
                 <p ng-show="feed.comment">
                     <!-- messages (upvote) -->
-                    <div ng-if="(feed.com_img_id == feed.cv_img_id)">
-                        <button ng-click="changeVote(feed.com_img_id, vote, 'none')" g-class="{true:'up', false:''}[vote=='up']" class="btn">{{feed.votes}}</button>
-                    </div>
-                    <div ng-if="(feed.com_img_id != feed.cv_img_id)">
-                        <button ng-click="changeVote(feed.com_img_id, vote, 'up')" g-class="{true:'up', false:''}[vote=='up']" class="btn">{{feed.votes}}</button>
-                    </div>
-                    <!-- <i title="Up Votes" ng-click="changeVote(feed.com_img_id, vote, 'up')" class="fa fa-arrow-circle-up fa-2x" ng-class="{true:'up', false:''}[vote=='up']"></i> -->
+                    <div class="large-1 medium-1 small-2 columns">
+                        <div ng-if="(feed.com_img_id == feed.cv_img_id)">
+                            <button ng-click="changeVote(feed.com_img_id, feed.id, vote, 'none')" g-class="{true:'up', false:''}[vote=='up']" class="btn">{{feed.votes}}</button>
+                        </div>
 
-
-                    <a ng-href="#/user/{{feed.id}}">{{feed.first_name}}</a>: {{feed.comment}}
+                        <div ng-if="(feed.com_img_id != feed.cv_img_id)">
+                            <button ng-click="changeVote(feed.com_img_id, feed.id, vote, 'up')" g-class="{true:'', false:''}[vote=='up']" class="btn">{{feed.votes}}</button>
+                        </div>
+                    </div>
+                    <div class="large-7 medium-7 small-7 columns">
+                        <h4><a ng-href="#/user/{{feed.id}}">{{feed.first_name}}</a></h4>
+                        <p>{{feed.comment}}</p>
+                    </div>
                 </p>
               
             </div>
@@ -118,7 +116,7 @@ if (empty($_SESSION['id'])) {
                         <ul class="small-block-grid-4 medium-block-grid-2 large-block-grid-2">
                             <li ng-repeat="img in mainImage.user_image | limitTo: 4">
                                 <a ng-href="#/image/{{img.image_id}}">
-                                    <img ng-src="http://res.cloudinary.com/world-lens/image/upload/w_100,h_100,c_fill/v1387844193/{{img.image_url}}.jpg">
+                                    <img ng-src="http://res.cloudinary.com/world-lens/image/upload/w_125,h_125,c_fill/v1387844193/{{img.image_url}}.jpg">
                                 </a>
 
                             </li>
@@ -134,7 +132,7 @@ if (empty($_SESSION['id'])) {
                     <ul class="small-block-grid-4 medium-block-grid-2 large-block-grid-2">
                         <li ng-repeat="img in mainImage.categories | limitTo: 4">
                             <a ng-href="#/image/{{img.image_id}}">
-                                <img ng-src="http://res.cloudinary.com/world-lens/image/upload/w_100,h_100,c_fill/v1387844193/{{img.image_url}}.jpg">
+                                <img ng-src="http://res.cloudinary.com/world-lens/image/upload/w_125,h_125,c_fill/v1387844193/{{img.image_url}}.jpg">
                             </a>
 
                         </li>
@@ -147,15 +145,6 @@ if (empty($_SESSION['id'])) {
     </div>
 </div>
 
-<script>
-    $(function() {
-        $('.large-23').perfectScrollbar({
-            useBothWheelAxes: false
-        });
-
-         
-    });
-</script>
 <!--
 
             <div class="panel panel-default">

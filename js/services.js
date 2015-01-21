@@ -77,15 +77,6 @@ worldlensServices.factory('Like', function ($resource) {
 
 });
 
-worldlensServices.factory('Highlight', function ($resource) {
-
-    return $resource('api/index.php/highlight', {}, {
-
-        insert: { method: "POST", data: {userId: '@userId', imageId: '@imageId'}},
-        delete: { method: "PUT", data: {userId: '@userId', imageId: '@imageId'}}
-    })
-
-});
 
 worldlensServices.factory('Message', function ($resource) {
 
