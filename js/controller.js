@@ -296,8 +296,8 @@ worldlensControllers.controller('FeedImage', ['$scope', '$routeParams', 'Feed', 
 }]);
 
 
-worldlensControllers.controller('UserController', ['$scope', '$routeParams', 'User', 'City', '$modal', 'Like', 'Highlight',
-    function ($scope, $routeParams, User, City, $modal, Like, Highlight) {
+worldlensControllers.controller('UserController', ['$scope', '$routeParams', 'User', 'City', '$modal', 'Like',
+    function ($scope, $routeParams, User, City, $modal, Like) {
 
         $scope.class = 'red';
         $scope.message = "Connect";
@@ -524,6 +524,15 @@ function ($scope, Image, $location, $http, instagram, $resource) {
     if($scope.user!="") {
         $scope.search();
     }
+
+
+    $scope.preventEnter = function(keyEvent, user) {
+        if (event.keyCode === 13)
+            //$scope.search(user);
+            event.preventDefault();
+            //alert(user);
+            
+        }
 
 }]);
 

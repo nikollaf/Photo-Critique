@@ -1,92 +1,80 @@
 
 <div class="row">
-        <div class="medium-3 columns curvy mar-top">
+       
+
+
+        <div class="large-12 medium-12 columns">
             <div class="row">
-                <div class="medium-3 medium-centered columns profile-pic">
-                    {{UserInfo.profile_pic}}
-                    <img ng-src="{{user_pro_pic}}" alt="profile-pic">
+                <h1 class="text-center">{{mainUserInfo.name}}</h1>
+                 <div class="medium-3 medium-centered columns curvy mar-top">
+                <div class="row">
+                    <div class="medium-3 medium-centered columns profile-pic">
+                        
 
 
-                    <div class="connect" ng-show="user">
-                        <a href="auth/profile.php" ng-class="connect">
-                            <span class="glyphicon glyphicon-plus"></span> Edit
-                        </a>
+                        <div class="connect" ng-show="user">
+                            <a href="auth/profile.php" ng-class="connect">
+                                <span class="glyphicon glyphicon-plus"></span> Edit
+                            </a>
+                        </div>
+
+                        <div class="connect" ng-show="!mainUserInfo.active_follower && !user && !mainUserInfo.waiting_follower && !mainUserInfo.denied_follower">
+                            <button ng-click="follow(mainUserInfo.id)" ng-class="connect" ng-disabled="isDisabled">
+                                <span class="glyphicon glyphicon-plus"></span> {{ message }}
+                            </button>
+                        </div>
+                        <div class="connect" ng-show="mainUserInfo.active_follower">
+                            <button class="">
+                                <span class="glyphicon glyphicon-ok"></span> Connected
+                            </button>
+                        </div>
                     </div>
 
-                    <div class="connect" ng-show="!mainUserInfo.active_follower && !user && !mainUserInfo.waiting_follower && !mainUserInfo.denied_follower">
-                        <button ng-click="follow(mainUserInfo.id)" ng-class="connect" ng-disabled="isDisabled">
-                            <span class="glyphicon glyphicon-plus"></span> {{ message }}
-                        </button>
+                </div>
+                <div class="row">
+                    <div class="user-info">
+                        <p>{{mainUserInfo.info}}</p>
                     </div>
-                    <div class="connect" ng-show="mainUserInfo.active_follower">
-                        <button class="">
-                            <span class="glyphicon glyphicon-ok"></span> Connected
-                        </button>
-                    </div>
+
+                    <ul class="fans">
+                        <li class="btn btn-fans bord" ng-click="showFollowers()">
+                            
+                            Follower <br><span class="badge">{{mainUserInfo.follower_users.length | number}}</span>
+                        </li>
+                        <li class="btn btn-fans bord" ng-click="showFollowing()">
+                            
+                            Following <br><span class="badge">{{ mainUserInfo.following_users.length | number}}</span>
+                        </li>
+                        <li class="btn btn-fans">
+                            Votes <br><span class="badge">23</span>
+                        </li>
+
+                    </ul>
                 </div>
 
+
+                <div>
+                    <script type="text/ng-template" id="myModalContent.html">
+                        <div class="modal-header">
+                            <h3>{{header}}</h3>
+                        </div>
+                        <div class="modal-body">
+                            <ul>
+                                <li ng-repeat="item in items">
+                                    <a>{{ item.first_name }}</a>
+                                </li>
+                            </ul>
+
+                        </div>
+                        <div class="modal-footer">
+                            <button class="btn btn-warning" ng-click="cancel()">Cancel</button>
+                        </div>
+                    </script>
+                </div>
             </div>
-
-            <div class="user-info">
-                <p>{{mainUserInfo.info}}</p>
-            </div>
-
-            <ul class="fans">
-                <li class="btn btn-fans bord" ng-click="showFollowers()">
-                    
-                    Follower <br><span class="badge">{{mainUserInfo.follower_users.length | number}}</span>
-                </li>
-                <li class="btn btn-fans bord" ng-click="showFollowing()">
-                    
-                    Following <br><span class="badge">{{ mainUserInfo.following_users.length | number}}</span>
-                </li>
-                <li class="btn btn-fans">
-                    Votes <br><span class="badge">23</span>
-                </li>
-
-            </ul>
-
-
-<!--
-            <div class="feature test text-center">
-                <h4>Highlights <span class="glyphicon glyphicon-star-empty"></span></h4>
-                <ul class="cities">
-                    <li ng-repeat="img in mainUserInfo.featured">
-                        <div class="text-center vote">{{img.first_name}} {{img.last_name}}</div>
-                        <a ng-href="#/image/{{img.image_id}}">
-                            <img ng-src="http://res.cloudinary.com/world-lens/image/upload/w_200,h_200,c_fill/v1387844193/{{img.image_url}}.jpg">
-                        </a>
-
-                    </li>
-                </ul>
-            </div>
--->
-            <div>
-                <script type="text/ng-template" id="myModalContent.html">
-                    <div class="modal-header">
-                        <h3>{{header}}</h3>
-                    </div>
-                    <div class="modal-body">
-                        <ul>
-                            <li ng-repeat="item in items">
-                                <a>{{ item.first_name }}</a>
-                            </li>
-                        </ul>
-
-                    </div>
-                    <div class="modal-footer">
-                        <button class="btn btn-warning" ng-click="cancel()">Cancel</button>
-                    </div>
-                </script>
-            </div>
-        </div>
-
-
-        <div class="large-9 medium-9 columns">
             <div class="row">
-                <h1>{{mainUserInfo.name}}</h1>
                 <div data-magellan-expedition="fixed" data-options="destination_threshold:65;throttle_delay:0;">
-                    <div class="small-12 medium-7 large-4 columns filter-nav">
+                    <div class="small-12 medium-12 large-4 columns filter-nav">
 
 
                         <ul class="filter">
@@ -99,7 +87,7 @@
                                         <a href="" ng-click="orderProp = 'created'">Newest</a>
                                         <a href="" ng-click="orderProp = '-created'">Oldest</a>
                                         <a href="" ng-click="orderProp = 'img_points'">Most Liked</a>
-                                        <a href="" ng-click="orderProp = 'h_points'">Most Featured</a>
+                                       
                                     </li>
                                 </ul>
                             </li>
@@ -110,17 +98,17 @@
                                 <ul class="dropdown-menu cols-menu">
                                     <li>
                                       <a href="" ng-click="search.categories = ''"> All</a>
-                                      <a href="" ng-click="search.categories = 'Street'">Street<</a>
+                                      <a href="" ng-click="search.categories = 'Street'">Street</a>
                                       <a href="" ng-click="search.categories = 'Architecture'">Architecture<</a>
-                                      <a href="" ng-click="search.categories = 'Landscape'">Landscape<</a>
-                                      <a href="" ng-click="search.categories = 'Sports'">Sports<</a>
-                                      <a href="" ng-click="search.categories = 'Wildlife'">Wildlife<</a>
-                                      <a href="" ng-click="search.categories = 'Nature'">Nature<</a>
-                                      <a href="" ng-click="search.categories = 'Aerial'">Aerial<</a>
-                                      <a href="" ng-click="search.categories = 'People'">People<</a>
-                                      <a href="" ng-click="search.categories = 'Portrait'">Portrait<</a>
-                                      <a href="" ng-click="search.categories = 'Macro'">Macro<</a>
-                                      <a href="" ng-click="search.categories = 'Other'">Other<</a>
+                                      <a href="" ng-click="search.categories = 'Landscape'">Landscape</a>
+                                      <a href="" ng-click="search.categories = 'Sports'">Sports</a>
+                                      <a href="" ng-click="search.categories = 'Wildlife'">Wildlife</a>
+                                      <a href="" ng-click="search.categories = 'Nature'">Nature</a>
+                                      <a href="" ng-click="search.categories = 'Aerial'">Aerial</a>
+                                      <a href="" ng-click="search.categories = 'People'">People</a>
+                                      <a href="" ng-click="search.categories = 'Portrait'">Portrait</a>
+                                      <a href="" ng-click="search.categories = 'Macro'">Macro</a>
+                                      <a href="" ng-click="search.categories = 'Other'">Other</a>
                                     </li>
                                 </ul>
                             </li>
@@ -129,6 +117,7 @@
                         </ul>
                     </div>
                 </div>
+            </div>
     </div>
     <div class="row">
 

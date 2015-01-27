@@ -27,16 +27,16 @@ include 'core/init.php';
         <div class="large-2 medium-2 small-12 columns">
           <h1><a href="#/feed">Picritic</a></h1>
         </div>
-        <div class="large-6 medium-6 small-12 columns auth">
+        <div class="large-6 medium-8 small-12 columns auth">
             <form class="row" ng-submit="submit(email, password)" ng-controller="LoginController">
-                <div class="large-5 columns">
+                <div class="large-5 medium-5 columns">
                     <input type="text" class="form-control" ng-model="email" name="email" placeholder="email">
                 </div>
-                <div class="large-4 columns">
+                <div class="large-4 medium-5 columns">
                     <input type="password" class="form-control" ng-model="password" name="password" placeholder="password">
                 </div>
                 {{error}}
-                <div class="large-1 columns" style="float: left;">
+                <div class="large-1 medium-2 columns" style="float: left; padding: 0;">
                   <input type="submit" id="submit" class="btn btn-default" value="Log In">
                 </div>
 
@@ -60,7 +60,7 @@ include 'core/init.php';
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="#/feed">Worldlens</a>
+      <a class="navbar-brand" href="#/feed">Pictric</a>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->

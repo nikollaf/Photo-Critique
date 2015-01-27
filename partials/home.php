@@ -58,63 +58,48 @@ if (!empty($_SESSION['id'])) {
         right: 0;
         bottom: -20px;
     }
+
+    .intro {
+        text-align: center;
+        color: black;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        float: none;
+        padding: 5em 0;
+    }
+
+    .intro h1 {
+        color: black
+    }
+
+    .cycle {
+      background-image: url(http://i.imgur.com/cxAGkCf.jpg);
+      height: 415px;
+      cursor: move;
+    }
 </style>
-<div id="bg">
-    <div class="row">
-        <div class="text-center large-centered large-8 medium-8 columns intro">
+
+<script>
+    $(document).ready(function($) {
+        $('.cycle').cyclotron();
+
+        $(".cycle").css('cursor', 'url(http://i.imgur.com/FrQFOJo.png),auto');
+    });
+
+</script>
+
+<div class="cycle">
+   <div class="large-centered large-6 medium-8 intro">
             <h1>Post Better Photos</h1>
 
             <p>Get real feedback on your photos, develop your passion for photography, and become part of the community where photography is not only encouraged., but developed.</p>
 
-            <a href="auth/register.php">Register</a>
+            <a role="button" href="auth/register.php" class="button large expand alert">Register</a>
         </div>
- 
-           
-             <!--    <form role="form" method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>" enctype="multipart/form-data">
-                    <h4>Come aboard. You can always edit/change your username <small></small></h4>
-                    <p>
-                    <?php
-                 
+</div> <!-- /.cycle -->
 
-                    ?>
-                </p>
-               
-               
-                   
-               
-                <!--
-                <div class="form-group">
-                    <input type="text" value="<?php if(isset($_POST['username'])) echo htmlentities($_POST['username']); ?>" name="username" id="username" class="form-control input-lg" placeholder="Username" tabindex="3">
-                </div>
-              
-                <div class="row">
-                    <div class="form-group small-6 medium-6 columns">
-                        <input type="email" value="<?php if(isset($_POST['email'])) echo htmlentities($_POST['email']); ?>" name="email" id="email" class="form-control" placeholder="Email Address" tabindex="4">
-                    </div>
-                    <div class="form-group small-6 medium-6 columns">
-                        <input type="password" name="password" id="password" class="form-control" placeholder="Password" tabindex="5">
-                    </div>
-                </div>
-                
-                <div class="form-group">
-                    <h4>Profile Picture</h4>
-                    <input id="fileupload" type="file" name="file" accept="image/gif, image/jpeg, image/png">
-                </div>
-              
-                <div class="row">
-                    <div class="small-6 medium-6 columns"><input type="submit" name="submit" value="Register" class="btn btn-register btn-block btn-lg" tabindex="7"></div>
-                    <div class="small-6 medium-6 columns"></div>
-                </div>
-                <br>
-                <div class="row">
-                    <div class="large-12 small-9 medium-9 columns">
-                        By registering, you agree to the <a href="" data-toggle="modal" data-target="#t_and_c_m">Terms and Conditions</a>.
-                    </div>
-                </div>
-            </form> -->
 
-    </div>
-</div>
 
 
 <div class="container">
@@ -122,51 +107,32 @@ if (!empty($_SESSION['id'])) {
         <h3 class="text-center">What makes a photo stand out?</h3>
 
         <div class="row">
-            <div class="medium-6">
+            <div class="medium-3 columns">
                 <h3>Composure</h3>
-                <p>In a strong photo, there should be a sense of overall organization. While entire books are written on composition, at the most basic level, composition is the process of establishing a sense of order for the elements within an image. Note Composition rules or guidelines are a helpful starting point, but they are useful only as long as they enhance the overall image.</p>
+                <p>There should be a sense of overall organization. Composition is the process of establishing a sense of order for the elements within an image.</p>
             </div>
-            <div class="medium-6"></div>
-        </div>
-
-        <div class="row">
-            <div class="medium-6">
-                
-            </div>
-            <div class="medium-6">
+          
+          
+            <div class="medium-3 columns">
                 <h3>Focus</h3>
-                <p>In a strong photo, there should be a sense of overall organization. While entire books are written on composition, at the most basic level, composition is the process of establishing a sense of order for the elements within an image. Note Composition rules or guidelines are a helpful starting point, but they are useful only as long as they enhance the overall image.</p>
+                <p>Is the sharpest point in the image on the center of interest of the subject of the photo? Does the depth of field enhance the subject, mood, or look of the image or does it distract from it?</p>
             </div>
-        </div>
-
-        <div class="row">
-            <div class="medium-6">
+  
+            <div class="medium-3 columns">
                 <h3>Lighting</h3>
-                <p>In a strong photo, there should be a sense of overall organization. While entire books are written on composition, at the most basic level, composition is the process of establishing a sense of order for the elements within an image. Note Composition rules or guidelines are a helpful starting point, but they are useful only as long as they enhance the overall image.</p>
+                <p>Light should be used to its maximum potential to reveal what's important in the image and to set the overall tone of the photo. Is light used to enhance the overall mood and intent of the image and subject?</p>
             </div>
-            <div class="medium-6">
-                
-            </div>
-        </div>
-
-        <div class="row">
-            <div class="medium-6">
-                
-            </div>
-            <div class="medium-6">
+           
+            <div class="medium-3 columns">
                 <h3>Creativity</h3>
-                <p>In a strong photo, there should be a sense of overall organization. While entire books are written on composition, at the most basic level, composition is the process of establishing a sense of order for the elements within an image. Note Composition rules or guidelines are a helpful starting point, but they are useful only as long as they enhance the overall image.</p>
+                <p></p>
             </div>
-        </div>
-
-        <div class="row">
-            <div class="medium-6">
+   
+            <div class="medium-3 columns" style="float: left;">
                 <h3>Story</h3>
                 <p>In a strong photo, there should be a sense of overall organization. While entire books are written on composition, at the most basic level, composition is the process of establishing a sense of order for the elements within an image. Note Composition rules or guidelines are a helpful starting point, but they are useful only as long as they enhance the overall image.</p>
             </div>
-            <div class="medium-6">
-                
-            </div>
+          
         </div>
     </div>
 </div>

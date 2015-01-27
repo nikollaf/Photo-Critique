@@ -4,10 +4,17 @@
      <!-- A standard form for sending the image data to your server -->
     <div id='backend_upload'>
 
-        <nav class="row text-center">
-            <a href="" ng-click="active='direct'">Direct Upload</a>
-            <a href="" ng-click="active='instagram'">Instagram</a>
-        </nav>
+        
+
+        <div class="btn-group btn-group-justified text-center" role="group" aria-label="...">
+          <div class="btn-group" role="group">
+            <button type="button" class="btn btn-primary" ng-click="active='direct'">Direct Upload</a>
+          </div>
+          <div class="btn-group" role="group">
+            <button type="button" class="btn btn-warning" ng-click="active='instagram'">Instagram</button>
+          </div>
+       
+        </div>
 
       
       <form class="form-horizontal" action="image/upload_backend.php" method="post" enctype="multipart/form-data">
@@ -18,7 +25,7 @@
 
 
             <!-- DIRECT -->
-             <div class="large-12 columns" ng-show="active == 'direct'">
+             <div class="large-8 large-centered columns" ng-show="active == 'direct'">
 
                     <!--
                      <div class="row">
@@ -29,11 +36,14 @@
                 
                       <div ng-repeat="todo in todos" class="col-md-4">
                         -->
-                 <h2>Direct Upload</h2>
+                 <h2 class="text-center">Direct Upload</h2>
 
                         <input id="fileupload" type="file" name="files[]" accept="image/gif, image/jpeg, image/png">
                         <img id="imageupload" src="#" />
-               
+                
+                 <p>Caption
+                        <input type="text" name="caption" class="form-control">
+                </p>
 
                  <p>Category
                         <select name="category[]" class="form-control">
@@ -53,20 +63,21 @@
             
 
                         
-                <p>Caption
-                        <textarea name="caption" class="form-control"></textarea>
-                </p>
+               
 
              </div>
 
 
             <!-- INSTAGRAM -->
             <div class="large-12 columns instagram" ng-show="active == 'instagram'">
-                <h2>Instagram</h2>
-                <div>
-                    <label>Your Username:</label>
-                    <input type="text" ng-model="user" class="form-control" placeholder="Enter your username here">
-                    <button type="button" class="btn btn-default" ng-click="search(user)">Search</button>
+                <h2 class="text-center">Instagram</h2>
+                
+                <div class="large-7 large-centered columns">
+                <p class="text-center">Please enter in your correct username and check all of the images you want to upload.</p>
+                    <div class="row">
+                      <input type="text" ng-keypress="preventEnter($event, user)" ng-model="user" class="form-control large-9 columns" placeholder="Enter your username here">
+                      <button type="button" class="btn btn-info btn-default large-3 columns" ng-click="search(user)">Search</button>
+                    </div>
                 </div>
                     <div>
                         <!-- A compact view smaller photos and titles -->
@@ -104,7 +115,7 @@
               <div class="col-md-12 text-center">
                 <label></label>
                   <br>
-                <input type="submit" class="btn btn-lg btn-image-submit" value="Upload">
+                <input type="submit" class="btn btn-lg btn-image-submit btn-success" value="Upload">
               </div>
            </div>
         </form>

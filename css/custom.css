@@ -52,6 +52,10 @@ form#rate {
     padding: 7px 130px;
 }
 
+.brand-name h1 {
+    text-align: center;
+}
+
 img {
     display: none !important;
 }
@@ -900,7 +904,7 @@ img.media-object.img-width.image0, img.media-object.img-width.image2 {
 .btn-image-submit {
     width: 80%;
     display: block;
-    padding: 5px;
+    font-size: 28px;
     margin: 0 auto;
 }
 
@@ -908,6 +912,14 @@ img.media-object.img-width.image0, img.media-object.img-width.image2 {
     display: inline;
     padding-left: 5%;
     color: #888888;
+}
+
+#backend_upload {
+    padding-top: 50px;
+}
+
+#backend_upload .btn-group {
+    padding-bottom: 15px;
 }
 
 .city-detail span {
