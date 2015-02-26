@@ -33,8 +33,8 @@ worldlensControllers.controller('ContListCtrl', ['$scope', 'Cont', '$routeParams
 ////////////////////////
 // World Feed Controller
 ////////////////////////
-worldlensControllers.controller('WorldFeedCtrl', ['$scope', 'World', '$routeParams', 'Highlight', 'Like',
-    function($scope, World, $routeParams, Highlight, Like) {
+worldlensControllers.controller('WorldFeedCtrl', ['$scope', 'World', '$routeParams', 'Like',
+    function($scope, World, $routeParams, Like) {
 
 
         $scope.world = World.show();

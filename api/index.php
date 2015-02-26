@@ -4,7 +4,6 @@ require 'vendor/autoload.php';
 
 require './../core/init.php';
 
-
  
 $app = new \Slim\Slim();
  
@@ -171,7 +170,7 @@ function showAllImages() {
         die($e->getMessage());
     }
 
-    $image_array = array_merge($favorites_results, $images_result, $full_images);
+    $image_array = array_merge($images_result, $full_images);
 
 
     echo json_encode($image_array);
