@@ -7,7 +7,7 @@ if (empty($_SESSION['id'])) {
 }
 ?>
 <div class="row list-page">
-    <h1>Top Users</h1>
+    <h1 class="text-center">Top Users</h1>
     <div class="large-9 large-offset-1 medium-11 small-11">
         <ul class="cities">
             <li class="full-list" ng-repeat="user in users | orderBy: '-points'">

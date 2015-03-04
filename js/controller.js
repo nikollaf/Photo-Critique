@@ -18,7 +18,13 @@ worldlensControllers.controller('CityListCtrl', ['$scope', 'City',
         }
         //console.log($scope.cities);
 
-    }]);
+}]);
+
+worldlensControllers.controller('ShopCtrl', ['$scope',
+    function($scope) {
+        
+        //console.log($scope.cities);
+}]);
 
 worldlensControllers.controller('ContListCtrl', ['$scope', 'Cont', '$routeParams',
     function($scope, Cont, $routeParams) {

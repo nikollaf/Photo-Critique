@@ -56,9 +56,6 @@ form#rate {
     text-align: center;
 }
 
-img {
-    display: none !important;
-}
 
 
 input:-webkit-autofill {

@@ -139,9 +139,6 @@
                             <span class="glyphicon glyphicon-heart "></span> {{img.img_points | number}}
                         </button>
 
-                    
-
-
                         <button ng-if="!img.liked_image" ng-show="!img.isLiked" class="button to-like not-clicked-like" ng-click="vote(img.image_l_id, img.image_id, img, 'img.isLiked')">
                             <span class="glyphicon glyphicon-heart "></span> {{img.img_points | number}}
                         </button>

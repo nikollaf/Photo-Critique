@@ -27,7 +27,7 @@ if (empty($_SESSION['id'])) {
                                 <a href="" ng-click="orderProp = 'created'">Newest</a>
                                 <a href="" ng-click="orderProp = '-created'">Oldest</a>
                                 <a href="" ng-click="orderProp = 'img_points'">Most Liked</a>
-                                <a href="" ng-click="orderProp = 'h_points'">Most Featured</a>
+                               
                             </li>
                         </ul>
                     </li>
@@ -59,11 +59,7 @@ if (empty($_SESSION['id'])) {
             </div>
         </div>
 
-
-
         <div class="row">
-
-
             <ul class="small-block-grid-1 medium-block-grid-2 large-block-grid-5">
 
                     <li class="scale-fade" ng-class="animation"  ng-repeat="img in world | orderBy:orderProp:true | limitTo: totalDisplayed">

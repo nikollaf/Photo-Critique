@@ -131,7 +131,6 @@ if (isset($_POST['submit'])) {
 <script>
     $(document).ready(function(){
 
-
         slideReviews();
 
         function slideReviews() {
@@ -144,8 +143,6 @@ if (isset($_POST['submit'])) {
             setTimeout(slideReviews, 700);
 
         }
-
-
     });
 
 </script>

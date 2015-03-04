@@ -72,6 +72,11 @@ worldlensApp.config(['$routeProvider',
                 templateUrl: 'partials/game-app.php',
                 controller: 'GameListCtrl'
             }).
+             }).
+            when('/shop', {
+                templateUrl: 'partials/shop.php',
+                controller: 'ShopCtrl'
+            }).
             otherwise({
                 templateUrl: 'partials/home.php'
             });
